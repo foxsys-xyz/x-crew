@@ -1,7 +1,5 @@
 <img align="left" src="https://github.com/foxsys-xyz/foxsys-xyz/blob/master/public/img/FOXSYS%20%5BXYZ%5D%20Logo%20%5BBlack%5D.png" width="256">
 
-# foxsys-xyz
-
 The main foxsys-xyz application. Still a work in progress.
 
 ## Installation
