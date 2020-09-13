@@ -11,5 +11,13 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+const tailwindcss = require('tailwindcss')
+
+mix.sass('resources/sass/app.scss', 'public/css')
+  .options({
+    processCssUrls: false,
+    postCss: [ tailwindcss('tailwind.config.js') ],
+  })
+
+mix.copyDirectory('node_modules/tabler-icons/iconfont/fonts', 'public/icons/fonts');
+mix.copy('node_modules/tabler-icons/iconfont/tabler-icons.min.css', 'public/icons');

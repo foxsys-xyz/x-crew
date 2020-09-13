@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes(['verify' => true]);
+
+Route::domain('apply.' . env('APP_URL'))->group(function () {
+    Route::get('/{id}', 'Auth\RegisterController@showApplicationForm')->name('apply');
+});
+
+Route::get('/home', 'HomeController@index')->name('home');
