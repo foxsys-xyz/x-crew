@@ -23,9 +23,19 @@
             body::-webkit-scrollbar {
                 display: none;
             }
+
             /* Hide scrollbar for IE and Edge */
             body {
                 -ms-overflow-style: none;
+            }
+            
+            /* Hide select formatting for Chrome and Edge */
+            select {
+                -o-appearance: none;
+                -ms-appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
             }
 
         </style>
