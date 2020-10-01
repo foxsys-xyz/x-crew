@@ -10,6 +10,9 @@
 
         <title>{{ env('VA_NAME') }} | foxsys-xyz</title>
 
+        <!-- foxsys-xyz Favicon -->
+        <link rel="icon" type="image/png" href="/img/foxsys-xyz [Icon] [Light Back].png">
+
         <!-- Styles -->
         <link 
             href="/css/app.css?id={{ Str::random(32) }}"

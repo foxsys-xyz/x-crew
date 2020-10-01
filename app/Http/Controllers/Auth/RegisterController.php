@@ -4,23 +4,24 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-/*
-
-* Use Facades Required Additionally
-
-*/
+/**
+ * Use Facades Required Additionally
+ *
+ */
+ 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use League\OAuth2\Client\Token;
 use App\Http\Controllers\Auth\VATSIM\OAuthController;
 use League\OAuth2\Client\Provider\GenericProvider;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
-use App\Applicant;
+use App\Models\Applicant;
+use Carbon\Carbon;
+use App\Notifications\Application\VerifyEmail;
 
 class RegisterController extends Controller
 {
@@ -155,12 +156,55 @@ class RegisterController extends Controller
             $applicant->token_expires = $token->getExpires();
         }
 
+        // Since applicant is possesing a verified email with VATSIM, verify it.
+        if ($applicant->email_verified_at == null) {
+            $applicant->email_verified_at = Carbon::now();
+        }
+
         $applicant->save();
 
         // Update applicant's UUID to resolve conflicts if already registered or created.
         $uuid = $applicant->uuid;
 
         return redirect()->route('apply.form', ['uuid' => $uuid]);
+    }
+
+    /**
+     * Show the application form for further addition of information.
+     * 
+     */
+    protected function applyManual(Request $request)
+    {
+        $applicant = Applicant::firstOrCreate(
+            [
+                'email' => request('email')
+            ],
+            [
+                'uuid' => request('uuid')
+            ]
+        );
+
+        if ($applicant->email_verified_at == null) {
+            $this->sendVerificationEmail($applicant);
+        }
+
+        // Update applicant's UUID to resolve conflicts if already registered or created.
+        $uuid = $applicant->uuid;
+
+        return redirect()->route('apply.form', ['uuid' => $uuid]);
+    }
+
+    /**
+     * Show the application form for further addition of information.
+     * 
+     */
+    protected function sendVerificationEmail($applicant)
+    {
+        $when = now()->addMinutes(10);
+
+        $applicant->notify((new VerifyEmail($applicant))->delay($when));
+
+        return redirect()->route('apply.verify', ['applicant' => $applicant]);
     }
 
     /**

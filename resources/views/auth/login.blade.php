@@ -34,7 +34,7 @@
                             </svg>
                             password
                         </span>
-                        <input class="w-full lg:w-full mt-2 outline-none px-4 py-2 rounded-full focus:shadow-outline bg-gray-200 transition duration-500" placeholder="••••••••••" />
+                        <input type="password" class="w-full lg:w-full mt-2 outline-none px-4 py-2 rounded-full focus:shadow-outline bg-gray-200 transition duration-500" placeholder="••••••••••" />
                     </div>
                 </div>
                 <div class="mt-4 lg:flex lg:float-right lg:gap-2">

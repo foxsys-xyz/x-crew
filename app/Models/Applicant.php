@@ -1,15 +1,15 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-/*
-
-* Use Facades Required Additionally
-
-*/
+/**
+ * Use Facades Required Additionally
+ *
+ */
+ 
 use League\OAuth2\Client\Token\AccessToken;
 use App\Http\Controllers\Auth\VATSIM\OAuthController;
 
@@ -25,6 +25,7 @@ class Applicant extends Model
         'fname',
         'lname',
         'email',
+        'verification_token',
         'dob',
         'country',
         'vatsim',
@@ -40,6 +41,7 @@ class Applicant extends Model
      * @var array
      */
     protected $hidden = [
+        'verification_token',
         'access_token',
         'refresh_token',
         'token_expires',

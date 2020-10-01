@@ -17,12 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes(['verify' => true]);
+Auth::routes();
 
 Route::domain('apply.' . env('APP_URL'))->group(function () {
     Route::get('/!t/{uuid}', 'Auth\RegisterController@showTemporaryForm')->name('apply');
     Route::post('/with/vatsim', 'Auth\RegisterController@applyWithVATSIM')->name('apply.with.vatsim');
     Route::get('/check/with/vatsim', 'Auth\RegisterController@applyWithVATSIM')->name('apply.check.with.vatsim');
+    Route::post('/manual', 'Auth\RegisterController@applyManual')->name('apply.manual');
+    Route::get('/verify', 'Auth\RegisterController@verifyManual')->name('apply.verify.manual');
     Route::get('/!f/{uuid}', 'Auth\RegisterController@showApplicationForm')->name('apply.form');
     Route::get('/privacy', function () {
         return view('apply.misc.privacy');
