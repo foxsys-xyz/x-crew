@@ -20,5 +20,3 @@ For production environments.
 ```sh
 $ yarn run production
 ```
-
-This repository is private and for rightly use by only foxsys-xyz. Any member or contributor will not be using this for distribution & selling purposes.
