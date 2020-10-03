@@ -5,7 +5,7 @@
     <div class="font-mono">
         <div class="h-screen flex justify-center items-center">
             <div class="w-64">
-                <img src="{{ asset('img/FOXSYS [XYZ] Logo [Black].png') }}?id={{ Str::random(32) }}" />
+                <img class="select-none" src="{{ asset('img/foxsys-xyz [Text] [Light Back].png') }}?id={{ Str::random(32) }}" />
             </div>
         </div>
     </div>
