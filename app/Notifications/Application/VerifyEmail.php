@@ -12,15 +12,17 @@ class VerifyEmail extends Notification implements ShouldQueue
     use Queueable;
 
     protected $applicant;
+    protected $verifyUrl;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($applicant)
+    public function __construct($applicant, $verifyUrl)
     {
         $this->applicant = $applicant;
+        $this->verifyUrl = $verifyUrl;
     }
 
     /**
@@ -43,15 +45,18 @@ class VerifyEmail extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('🟡 [ECAM] Application Verification Required')
+                    ->subject('⚡ [ECAM] Application Verification Required')
                     ->greeting('Hey there!')
                     ->line('
                         You need to verify your email before you proceed to fill up your application details.
                         This is a mandatory step & cannot be skipped. On successful verification, please complete your application further when prompted.
-                        Here is your application UUID just in case [' . $applicant->uuid . ']
                     ')
-                    ->action('Verify Email', $verifyUrl)
-                    ->line('In case you haven\'t requested this operation, please ignore this email. If you possess any queries, please contact us at [hr@emirates-virtual.com].');   
+                    ->line('Given below is your application unique identifier.
+                        This can be used in reference with the staff when there is some issue with your application.
+                    ')
+                    ->line('UUID: **' . $this->applicant->uuid . '**')
+                    ->action('Verify Email 🚀', $this->verifyUrl)
+                    ->line('In case you haven\'t requested this operation, please ignore this email. If you possess any queries, please contact us at [' . env('VA_EMAIL') . '].');   
     }
 
     /**

@@ -3,10 +3,10 @@
 @section('content')
 
     <div class="h-screen">
-        <div class="hidden lg:flex items-center absolute bottom-0 right-0 px-10 py-5">
-            <svg xmlns="http://www.w3.org/2000/svg" class="animate-ping icon icon-tabler icon-tabler-point inline-block w-6 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#667eea" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <div class="hidden lg:flex items-center absolute bottom-0 right-0 px-10 py-5 text-xs">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bolt inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#667eea" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                <circle cx="12" cy="12" r="4" />
+                <polyline points="13 3 13 10 19 10 11 21 11 14 5 14 13 3" />
             </svg>
             {{ $applicant->uuid }} {{ $applicant->vatsim != null ? '[ VATSIM Verified ]' : '[ Manual ]' }}
         </div>
@@ -363,7 +363,7 @@
                         <line x1="12" y1="16" x2="12.01" y2="16" />
                     </svg>
                     by continuing you agree to our&nbsp;
-                    <a class="text-blue-500" href="{{ route('privacy') }}" target="_blank">privacy policy</a>.
+                    <a class="text-indigo-500" href="{{ route('apply.privacy') }}" target="_blank">privacy policy</a>.
                 </div>
                 <div class="mt-4 lg:flex lg:float-right lg:gap-2">
                     <div class="lg:mt-0 mt-3 w-full lg:w-auto">

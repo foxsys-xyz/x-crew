@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
  * Use Facades Required Additionally
  *
  */
- 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use League\OAuth2\Client\Token;
@@ -20,7 +20,7 @@ use App\Http\Controllers\Auth\VATSIM\OAuthController;
 use League\OAuth2\Client\Provider\GenericProvider;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use App\Models\Applicant;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Crypt;
 use App\Notifications\Application\VerifyEmail;
 
 class RegisterController extends Controller
@@ -72,7 +72,6 @@ class RegisterController extends Controller
     public function showTemporaryForm($uuid)
     {
         if (!Str::isUuid($uuid)) {
-
             return view('layouts.status')->with('status', 'Invalid UUID. Code #AP5' . rand(60, 69) . '.');
         }
 
@@ -87,6 +86,9 @@ class RegisterController extends Controller
     public function applyWithVATSIM(Request $request)
     {
         if (! $request->has('code') || ! $request->has('state')) { // User has clicked "login", redirect to Connect
+            if (!Str::isUuid(request('uuid'))) {
+                return view('layouts.status')->with('status', 'Invalid UUID. Code #AP5' . rand(60, 69) . '.');
+            }
             $authorizationUrl = $this->provider->getAuthorizationUrl(); // Generates state
             $request->session()->put('vatsimauthstate', $this->provider->getState());
             $request->session()->put('uuid', request('uuid'));
@@ -158,7 +160,7 @@ class RegisterController extends Controller
 
         // Since applicant is possesing a verified email with VATSIM, verify it.
         if ($applicant->email_verified_at == null) {
-            $applicant->email_verified_at = Carbon::now();
+            $applicant->email_verified_at = now();
         }
 
         $applicant->save();
@@ -175,6 +177,14 @@ class RegisterController extends Controller
      */
     protected function applyManual(Request $request)
     {
+        if (!Str::isUuid(request('uuid'))) {
+            return view('layouts.status')->with('status', 'Invalid UUID. Code #AP5' . rand(60, 69) . '.');
+        }
+
+        $request->validate([
+            'email' => 'required|email'
+        ]);
+
         $applicant = Applicant::firstOrCreate(
             [
                 'email' => request('email')
@@ -184,8 +194,10 @@ class RegisterController extends Controller
             ]
         );
 
-        if ($applicant->email_verified_at == null) {
-            $this->sendVerificationEmail($applicant);
+        if ($applicant->email_verified_at == null && $applicant->verification_token == null) {
+            return $this->sendVerificationEmail($applicant);
+        } elseif ($applicant->email_verified_at == null && $applicant->verification_token != null) {
+            return redirect()->route('apply.verify.manual', ['uuid' => $applicant->uuid]);
         }
 
         // Update applicant's UUID to resolve conflicts if already registered or created.
@@ -195,16 +207,94 @@ class RegisterController extends Controller
     }
 
     /**
-     * Show the application form for further addition of information.
+     * Send the applicant a verification email.
      * 
      */
     protected function sendVerificationEmail($applicant)
     {
-        $when = now()->addMinutes(10);
+        $verifyToken = sha1(time());
 
-        $applicant->notify((new VerifyEmail($applicant))->delay($when));
+        $applicant->fill([
+            'verification_token' => $verifyToken
+        ])->save();
 
-        return redirect()->route('apply.verify', ['applicant' => $applicant]);
+        $verifyToken = Crypt::encryptString($applicant->verification_token);
+
+        $verifyUrl = route('apply.verify.email.manual', ['verifyToken' => $verifyToken]);
+
+        $when = now()->addSeconds(30);
+
+        $applicant->notify((new VerifyEmail($applicant, $verifyUrl))->delay($when));
+
+        return redirect()->route('apply.verify.manual', ['uuid' => $applicant->uuid]);
+    }
+
+    /**
+     * Show the verification page [awaiting user to verify email].
+     * 
+     */
+    protected function resendVerificationEmail(Request $request)
+    {
+        if (!Str::isUuid(request('uuid'))) {
+            return view('layouts.status')->with('status', 'Invalid UUID. Code #AP5' . rand(60, 69) . '.');
+        }
+
+        $applicant = Applicant::where('uuid', request('uuid'))->first();
+
+        if ($applicant == null) {
+            return view('layouts.status')->with('status', 'Invalid/Expired Token. Code #AP9' . rand(40, 49) . '.');
+        }
+
+        if ($applicant->email_verified_at != null) {
+            return redirect()->route('apply.form', ['uuid' => $applicant->uuid]);
+        }
+
+        return $this->sendVerificationEmail($applicant);
+    }
+
+    /**
+     * Show the verification page [awaiting user to verify email].
+     * 
+     */
+    public function verifyManual($uuid)
+    {
+        if (!Str::isUuid($uuid)) {
+            return view('layouts.status')->with('status', 'Invalid UUID. Code #AP5' . rand(60, 69) . '.');
+        }
+
+        $applicant = Applicant::where('uuid', $uuid)->first();
+
+        if ($applicant == null) {
+            return view('layouts.status')->with('status', 'Invalid UUID. Code #AP5' . rand(60, 69) . '.');
+        }
+
+        if ($applicant->email_verified_at != null) {
+            return redirect()->route('apply.form', ['uuid' => $applicant->uuid]);
+        }
+
+        return view('apply.verify', compact('applicant'));
+    }
+
+    /**
+     * Function for verifying the email and token.
+     * 
+     */
+    protected function verifyEmailToken($verifyToken)
+    {
+        $decryptToken = Crypt::decryptString($verifyToken);
+
+        $applicant = Applicant::where('verification_token', $decryptToken)->first();
+
+        if ($applicant == null) {
+            return view('layouts.status')->with('status', 'Invalid/Expired Token. Code #AP9' . rand(40, 49) . '.');
+        }
+
+        $applicant->fill([
+            'email_verified_at' => now(),
+            'verification_token' => null
+        ])->save();
+
+        return redirect()->route('apply.form', ['uuid' => $applicant->uuid]);
     }
 
     /**
@@ -214,54 +304,19 @@ class RegisterController extends Controller
     public function showApplicationForm($uuid)
     {
         if (!Str::isUuid($uuid)) {
-
             return view('layouts.status')->with('status', 'Invalid UUID. Code #AP5' . rand(60, 69) . '.');
         }
 
         $applicant = Applicant::where('uuid', $uuid)->first();
 
         if ($applicant == null) {
-
             return view('layouts.status')->with('status', 'Invalid UUID. Code #AP5' . rand(60, 69) . '.');
         }
 
+        if ($applicant->email_verified_at == null) {
+            return redirect()->route('apply.verify.manual', ['uuid' => $uuid]);
+        }
+
         return view('apply.form', compact('applicant'));
-    }
-
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/dashboard';
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
     }
 }

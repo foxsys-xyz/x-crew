@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
  * Use Facades Required Additionally
  *
  */
- 
+
 use League\OAuth2\Client\Token;
 use Illuminate\Support\Facades\Auth;
 use League\OAuth2\Client\Provider\GenericProvider;

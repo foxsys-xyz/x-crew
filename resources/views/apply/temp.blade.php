@@ -3,6 +3,23 @@
 @section('content')
 
     <div class="h-screen">
+        <div class="hidden lg:flex items-center absolute bottom-0 right-0 px-10 py-5 text-xs">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bolt inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#667eea" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <polyline points="13 3 13 10 19 10 11 21 11 14 5 14 13 3" />
+            </svg>
+            {{ $uuid }} [ Temporary ]
+        </div>
+        <div class="lg:flex justify-center absolute right-0 left-0 lg:top-0 px-10 py-5 text-xs text-white bg-indigo-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-box inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" />
+                <line x1="12" y1="12" x2="20" y2="7.5" />
+                <line x1="12" y1="12" x2="12" y2="21" />
+                <line x1="12" y1="12" x2="4" y2="7.5" />
+            </svg>
+            temporary application generated.
+        </div>
         <div class="container h-full mx-auto flex justify-center items-center">
             <div class="p-12 lg:p-0 w-full lg:w-2/5">
                 <img class="h-5" src="{{ asset('img/va_logo.png') }}?id={{ Str::random(32) }}" />

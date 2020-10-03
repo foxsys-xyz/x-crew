@@ -9,12 +9,15 @@ use Illuminate\Database\Eloquent\Model;
  * Use Facades Required Additionally
  *
  */
- 
+
+use Illuminate\Notifications\Notifiable;
 use League\OAuth2\Client\Token\AccessToken;
 use App\Http\Controllers\Auth\VATSIM\OAuthController;
 
 class Applicant extends Model
 {
+    use Notifiable;
+
     /**
      * Your user model will need to contain at least the following attributes.
      *
@@ -25,6 +28,7 @@ class Applicant extends Model
         'fname',
         'lname',
         'email',
+        'email_verified_at',
         'verification_token',
         'dob',
         'country',
