@@ -3,13 +3,13 @@
 @section('content')
 
     <div class="h-screen">
-        <div class="lg:flex justify-center absolute right-0 left-0 lg:top-0 px-10 py-5 text-xs text-white bg-indigo-500">
+        <div class="lg:flex justify-center absolute right-0 left-0 lg:top-0 text-center px-10 py-5 text-xs text-white bg-indigo-500">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-inbox inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                 <rect x="4" y="4" width="16" height="16" rx="2" />
                 <path d="M4 13h3l3 3h4l3 -3h3" />
             </svg>
-            we've sent a you verification email.
+            we've sent a verification email.
         </div>
         <div class="hidden lg:flex items-center absolute bottom-0 right-0 px-10 py-5 text-xs">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bolt inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#667eea" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -50,7 +50,7 @@
                 </div>
                 <div class="mt-4 lg:flex items-center lg:float-right lg:gap-2">
                     <div class="lg:mt-0 mt-3 w-full lg:w-auto text-xs">
-                        <div class="lg:flex items-center" id="time"></div>
+                        <div class="lg:flex items-center " id="verifyTime"></div>
                     </div>
                     <div x-data class="lg:mt-0 mt-3 w-full lg:w-auto">
                         <button name="resend" x-on:click="document.getElementById('resend-email').submit();" class="text-sm justify-center lg:text-base w-full lg:w-auto flex items-center focus:outline-none px-4 py-2 rounded-full focus:shadow-outline bg-indigo-500 text-white transition duration-500 " placeholder="username">
@@ -64,32 +64,12 @@
                                 <path d="M4.9 19a22 22 0 0 1 -.9 -7v-1a8 8 0 0 1 12 -6.95" />
                             </svg>
                         </button>
-                        <script type="text/javascript">
-                            var timeLeft = 60;
-                            var elem = document.getElementById('time');
-                            var timerId = setInterval(countdown, 1000);
-
-                            var btn = document.getElementsByName('resend')[0];
-                            btn.classList.add('cursor-not-allowed');
-                            btn.classList.add('opacity-75');
-                            btn.disabled = true;
-                                
-                            function countdown() {
-                                if (timeLeft == -1) {
-                                    clearTimeout(timerId);
-                                    btn.disabled = false;
-                                    btn.classList.remove('cursor-not-allowed');
-                                    btn.classList.remove('opacity-75');
-                                    btn.classList.add('hover:bg-indigo-600');
-                                    elem.classList.remove('lg:flex');
-                                    elem.classList.add('hidden');
-                                } else {
-                                    elem.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="animate-spin icon icon-tabler icon-tabler-loader inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none"/> <line x1="12" y1="6" x2="12" y2="3" /> <line x1="16.25" y1="7.75" x2="18.4" y2="5.6" /> <line x1="18" y1="12" x2="21" y2="12" /> <line x1="16.25" y1="16.25" x2="18.4" y2="18.4" /> <line x1="12" y1="18" x2="12" y2="21" /> <line x1="7.75" y1="16.25" x2="5.6" y2="18.4" /> <line x1="6" y1="12" x2="3" y2="12" /> <line x1="7.75" y1="7.75" x2="5.6" y2="5.6" /></svg> please wait ' + timeLeft + 's';
-                                    timeLeft--;
-                                }
-                            }
-                        </script>
                     </div>
+                    <script>
+                        window.onload = function() {
+                            verifyEmailPage();
+                        };
+                    </script>
                 </div>
             </div>
         </div>

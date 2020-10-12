@@ -43,7 +43,7 @@
 @if (! empty($salutation))
 {{ $salutation }}
 @else
-@lang('Regards'),<br>
+@lang('Blue Skies'),<br>
 {{ env('VA_NAME') }}
 @endif
 

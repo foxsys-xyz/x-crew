@@ -10,7 +10,7 @@
             </svg>
             {{ $uuid }} [ Temporary ]
         </div>
-        <div class="lg:flex justify-center absolute right-0 left-0 lg:top-0 px-10 py-5 text-xs text-white bg-indigo-500">
+        <div class="lg:flex justify-center absolute right-0 left-0 lg:top-0 text-center px-10 py-5 text-xs text-white bg-indigo-500">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-box inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                 <polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" />
@@ -38,8 +38,8 @@
 
                             <input type="hidden" name="uuid" value="{{ $uuid }}" />
 
-                            <span class="text-xs lg:flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <span class="text-xs lg:flex items-center {{ $errors->has('email') ? 'text-red-500' : '' }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="{{ $errors->has('email') ? '#f56565' : '#2c3e50' }}" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                     <line x1="7" y1="7" x2="17" y2="17" />
                                     <polyline points="17 8 17 17 8 17" />

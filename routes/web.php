@@ -17,10 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
 Route::domain('apply.' . env('APP_URL'))->group(function () {
-    Route::get('/!t/{uuid}', 'Auth\RegisterController@showTemporaryForm')->name('apply');
+    Route::get('/start', 'Auth\RegisterController@showRegistrationForm')->name('apply.start');
+    Route::get('/!t/{uuid}', 'Auth\RegisterController@showTemporaryForm')->name('apply.temp');
     Route::post('/with/vatsim', 'Auth\RegisterController@applyWithVATSIM')->name('apply.with.vatsim');
     Route::get('/check/with/vatsim', 'Auth\RegisterController@applyWithVATSIM')->name('apply.check.with.vatsim');
     Route::post('/manual', 'Auth\RegisterController@applyManual')->name('apply.manual');
@@ -28,7 +27,8 @@ Route::domain('apply.' . env('APP_URL'))->group(function () {
     Route::post('/verify/resend', 'Auth\RegisterController@resendVerificationEmail')->name('apply.verify.resend.manual');
     Route::get('/verify/{verifyToken}', 'Auth\RegisterController@verifyEmailToken')->name('apply.verify.email.manual');
     Route::get('/!f/{uuid}', 'Auth\RegisterController@showApplicationForm')->name('apply.form');
-    Route::post('/manual/finalize', 'Auth\RegisterController@finalizeManual');
+    Route::post('/manual/finalize', 'Auth\RegisterController@finalizeApplication')->name('apply.finalize');
+    Route::get('/complete', 'Auth\RegisterController@completeApplication')->name('apply.complete');
     Route::get('/procedure', function () {
         return view('apply.misc.procedure');
     })->name('apply.procedure');
@@ -37,4 +37,8 @@ Route::domain('apply.' . env('APP_URL'))->group(function () {
     })->name('apply.privacy');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::domain('auth.' . env('APP_URL'))->group(function () {
+    Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+});
+
+Route::get('/dashboard', 'User\DashboardController@index')->name('dashboard');

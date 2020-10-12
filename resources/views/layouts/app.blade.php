@@ -8,17 +8,17 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ env('VA_NAME') }} | foxsys-xyz</title>
+        <title>{{ env('VA_NAME') }} | {{ env('APP_NAME') }}</title>
 
         <!-- foxsys-xyz Favicon -->
         <link rel="icon" type="image/png" href="/img/foxsys-xyz [Icon] [Light Back].png">
 
         <!-- Styles -->
         <link 
-            href="/css/app.css?id={{ Str::random(32) }}"
+            href="{{ mix('/css/app.css') }}"
             rel="stylesheet"
             type="text/css"
-        />
+        /> 
 
         <style>
         
@@ -45,13 +45,16 @@
 
         <!-- Icons -->
         <link 
-            href="/icons/tabler-icons.min.css?id={{ Str::random(32) }}"
+            href="{{ mix('/icons/tabler-icons.min.css') }}"
             rel="stylesheet"
             type="text/css"
         />
 
         <!-- Alpine JS -->
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+        <!-- Custom JS -->
+        <script type="text/javascript" src="{{ mix('/js/app.js') }}"></script>
 
     </head>
 
