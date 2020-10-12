@@ -22,6 +22,7 @@ use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use App\Models\Applicant;
 use Illuminate\Support\Facades\Crypt;
 use App\Notifications\Application\VerifyEmail;
+use App\Notifications\Application\CompleteAP;
 
 class RegisterController extends Controller
 {
@@ -61,7 +62,7 @@ class RegisterController extends Controller
     {
         $uuid = (string) Str::uuid();
 
-        return redirect(route('apply', compact('uuid')));
+        return redirect()->route('apply.temp', compact('uuid'));
     }
 
     /**
@@ -172,7 +173,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * Show the application form for further addition of information.
+     * Start the manual application process.
      * 
      */
     protected function applyManual(Request $request)
@@ -230,7 +231,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * Show the verification page [awaiting user to verify email].
+     * Resend the applicant a verfication email.
      * 
      */
     protected function resendVerificationEmail(Request $request)
@@ -313,10 +314,85 @@ class RegisterController extends Controller
             return view('layouts.status')->with('status', 'Invalid UUID. Code #AP5' . rand(60, 69) . '.');
         }
 
+        if ($applicant->status == 'C') {
+            return redirect()->route('apply.complete')->with('uuid', $applicant->uuid);
+        }
+
         if ($applicant->email_verified_at == null) {
             return redirect()->route('apply.verify.manual', ['uuid' => $uuid]);
         }
 
         return view('apply.form', compact('applicant'));
+    }
+
+    /**
+     * Complete the application.
+     * 
+     */
+    protected function finalizeApplication(Request $request)
+    {
+        if (!Str::isUuid(request('uuid'))) {
+            return view('layouts.status')->with('status', 'Invalid UUID. Code #AP5' . rand(60, 69) . '.');
+        }
+
+        $applicant = Applicant::where('uuid', request('uuid'))->first();
+
+        if ($applicant == null) {
+            return view('layouts.status')->with('status', 'Invalid UUID. Code #AP5' . rand(60, 69) . '.');
+        }
+
+        if ($applicant->vatsim != null) {
+            $request->validate([
+                'dob' => 'required|date|date_format:Y-m-d'
+            ]);
+
+            $applicant->fill([
+                'dob' => request('dob'),
+                'status' => 'C'
+            ])->save();
+        } else {
+            $request->validate([
+                'fname' => 'required',
+                'lname' => 'required',
+                'dob' => 'required|date|date_format:Y-m-d',
+                'country' => 'required|max:2'
+            ]);
+
+            $applicant->fill([
+                'fname' => request('fname'),
+                'lname' => request('lname'),
+                'dob' => request('dob'),
+                'country' => request('country'),
+                'status' => 'C'
+            ])->save();
+        }
+
+        $when = now()->addSeconds(30);
+
+        $applicant->notify((new CompleteAP($applicant))->delay($when));
+
+        return redirect()->route('apply.complete')->with('uuid', $applicant->uuid);
+    }
+
+    /**
+     * Complete the application.
+     * 
+     */
+    public function completeApplication(Request $request)
+    {
+        // Set applicant UUID.
+        $uuid = $request->session()->get('uuid');
+
+        if (!Str::isUuid($uuid)) {
+            return view('layouts.status')->with('status', 'Invalid Session. Code #AP5' . rand(10, 19) . '.');
+        }
+
+        $applicant = Applicant::where('uuid', $uuid)->first();
+
+        if ($applicant == null) {
+            return view('layouts.status')->with('status', 'Invalid Session. Code #AP5' . rand(10, 19) . '.');
+        }
+
+        return view('apply.complete', compact('uuid'));
     }
 }

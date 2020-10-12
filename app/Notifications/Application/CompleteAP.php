@@ -7,22 +7,20 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class VerifyEmail extends Notification implements ShouldQueue
+class CompleteAP extends Notification implements ShouldQueue
 {
     use Queueable;
 
     protected $applicant;
-    protected $verifyUrl;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($applicant, $verifyUrl)
+    public function __construct($applicant)
     {
         $this->applicant = $applicant;
-        $this->verifyUrl = $verifyUrl;
     }
 
     /**
@@ -45,19 +43,22 @@ class VerifyEmail extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('⚡ [ECAM] Application Verification Required')
+                    ->subject('⚡ [ECAM] Application Complete')
                     ->greeting('Hey there!')
                     ->line('
-                        You need to verify your email before you proceed to fill up your application details.
-                        This is a mandatory step & cannot be skipped. On successful verification, please complete your application further when prompted.
+                        Your application is now complete as per our database systems.
                     ')
+                    ->line('
+                        Please note, no further changes in the application will now be allowed.
+                        However, in case your application gets accepted, you can make changes afterwards but only to \'non-critical\' data.
+                    ')
+                    ->line('You will receive an email as a follow up when your application is reviewed by the staff.')
                     ->line('
                         Given below is your application unique identifier.
                         This can be used in reference with the staff when there is some issue with your application.
                     ')
                     ->line('UUID: **' . $this->applicant->uuid . '**')
-                    ->action('Verify Email 🚀', $this->verifyUrl)
-                    ->line('In case you haven\'t requested this operation, please ignore this email. If you possess any queries, please contact us at [' . env('VA_EMAIL') . '].');   
+                    ->line('We sincerely thank you for taking interest in applying. If you possess any queries, please contact us at [' . env('VA_EMAIL') . '].');   
     }
 
     /**
