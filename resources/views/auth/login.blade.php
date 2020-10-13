@@ -13,30 +13,35 @@
                     </svg>howdy, sign in
                 </div>
                 <div class="border border-gray-200 border-t-1 w-1/3 mt-4"></div>
-                <div class="mt-4 lg:flex w-full gap-2">
-                    <div class="w-full lg:w-full mt-1 lg:mt-0">
-                        <span class="text-xs lg:flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <line x1="7" y1="7" x2="17" y2="17" />
-                                <polyline points="17 8 17 17 8 17" />
-                            </svg>
-                            username
-                        </span>
-                        <input class="w-full lg:w-full mt-2 outline-none px-4 py-2 rounded-full focus:shadow-outline bg-gray-200 transition duration-500" placeholder="{{ env('PCS') }}1234" />
+                <form id="login-manual" action="{{ route('login.check') }}" method="post">
+
+                    @csrf
+
+                    <div class="mt-4 lg:flex w-full gap-2">
+                        <div class="w-full lg:w-full mt-1 lg:mt-0">
+                            <span class="text-xs lg:flex items-center {{ $errors->has('username') ? 'text-red-500' : '' }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="{{ $errors->has('username') ? '#f56565' : '#2c3e50' }}" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <line x1="7" y1="7" x2="17" y2="17" />
+                                    <polyline points="17 8 17 17 8 17" />
+                                </svg>
+                                username
+                            </span>
+                            <input name="username" class="w-full lg:w-full mt-2 outline-none px-4 py-2 rounded-full focus:shadow-outline bg-gray-200 transition duration-500" placeholder="{{ env('PCS') }}1234" />
+                        </div>
+                        <div class="w-full lg:w-full mt-1 lg:mt-0">
+                            <span class="text-xs lg:flex items-center {{ $errors->has('password') ? 'text-red-500' : '' }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="{{ $errors->has('password') ? '#f56565' : '#2c3e50' }}" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <line x1="7" y1="7" x2="17" y2="17" />
+                                    <polyline points="17 8 17 17 8 17" />
+                                </svg>
+                                password
+                            </span>
+                            <input name="password" type="password" class="w-full lg:w-full mt-2 outline-none px-4 py-2 rounded-full focus:shadow-outline bg-gray-200 transition duration-500" placeholder="••••••••••" />
+                        </div>
                     </div>
-                    <div class="w-full lg:w-full mt-1 lg:mt-0">
-                        <span class="text-xs lg:flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <line x1="7" y1="7" x2="17" y2="17" />
-                                <polyline points="17 8 17 17 8 17" />
-                            </svg>
-                            password
-                        </span>
-                        <input type="password" class="w-full lg:w-full mt-2 outline-none px-4 py-2 rounded-full focus:shadow-outline bg-gray-200 transition duration-500" placeholder="••••••••••" />
-                    </div>
-                </div>
+                </form>
                 <div class="mt-4 lg:flex lg:float-right lg:gap-2">
                     <div class="w-full lg:w-auto">
                         <button class="text-sm justify-center lg:text-base w-full lg:w-auto flex items-center focus:outline-none px-4 py-2 rounded-full focus:shadow-outline bg-green-500 hover:bg-green-600 text-white transition duration-500" placeholder="username">
@@ -48,8 +53,8 @@
                             </svg>
                         </button>
                     </div>
-                    <div class="lg:mt-0 mt-3 w-full lg:w-auto">
-                        <button class="text-sm justify-center lg:text-base w-full lg:w-auto flex items-center focus:outline-none px-4 py-2 rounded-full focus:shadow-outline bg-indigo-500 hover:bg-indigo-600 text-white transition duration-500" placeholder="username">
+                    <div x-data class="lg:mt-0 mt-3 w-full lg:w-auto">
+                        <button x-on:click="document.getElementById('login-manual').submit();" class="text-sm justify-center lg:text-base w-full lg:w-auto flex items-center focus:outline-none px-4 py-2 rounded-full focus:shadow-outline bg-indigo-500 hover:bg-indigo-600 text-white transition duration-500" placeholder="username">
                             sign in
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-forward inline-block w-6 ml-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z"/>

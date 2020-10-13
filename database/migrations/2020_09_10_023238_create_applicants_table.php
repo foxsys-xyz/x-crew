@@ -15,7 +15,13 @@ class CreateApplicantsTable extends Migration
     {
         Schema::create('applicants', function (Blueprint $table) {
             $table->id();
+
+            // Add Application Identifier.
+
             $table->string('uuid')->unique();
+
+            // Include Personal Stuff.
+
             $table->string('fname')->nullable();
             $table->string('lname')->nullable();
             $table->string('email')->unique();

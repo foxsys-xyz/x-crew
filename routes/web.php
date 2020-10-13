@@ -39,6 +39,9 @@ Route::domain('apply.' . env('APP_URL'))->group(function () {
 
 Route::domain('auth.' . env('APP_URL'))->group(function () {
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+    Route::post('/login', 'Auth\LoginController@login')->name('login.check');
+    Route::get('/authenticated', 'Auth\LoginController@authenticated')->middleware('auth');
+    Route::get('/logout', 'Auth\LoginController@logout')->middleware('auth')->name('logout');
 });
 
 Route::get('/dashboard', 'User\DashboardController@index')->name('dashboard');

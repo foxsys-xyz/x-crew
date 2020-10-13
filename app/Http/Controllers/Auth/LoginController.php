@@ -32,6 +32,15 @@ class LoginController extends Controller
     }
 
     /**
+     * Replace email auth with username.
+     *
+     */
+    public function username()
+    {
+        return 'username';
+    }
+
+    /**
      * Where to redirect users after login.
      *
      * @var string
