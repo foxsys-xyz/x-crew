@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use League\OAuth2\Client\Token;
-use App\Http\Controllers\Auth\VATSIM\OAuthController;
+use App\Http\Controllers\Auth\VATSIM\Application\OAuthController;
 use League\OAuth2\Client\Provider\GenericProvider;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use App\Models\Applicant;
@@ -80,7 +80,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * Log In with VATSIM if auth code not found.
+     * Redirect to VATSIM Connect if auth code not found.
      * Go ahead and add the applicant to the database if auth code is in session.
      *
      */

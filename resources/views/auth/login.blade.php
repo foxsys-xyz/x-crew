@@ -27,7 +27,7 @@
                                 </svg>
                                 username
                             </span>
-                            <input name="username" class="w-full lg:w-full mt-2 outline-none px-4 py-2 rounded-full focus:shadow-outline bg-gray-200 transition duration-500" placeholder="{{ env('PCS') }}1234" />
+                            <input name="username" class="w-full lg:w-full mt-2 outline-none px-4 py-2 rounded-full focus:shadow-outline bg-gray-200 transition duration-500" placeholder="{{ env('PCS') }}1234" value="{{ old('username') }}" />
                         </div>
                         <div class="w-full lg:w-full mt-1 lg:mt-0">
                             <span class="text-xs lg:flex items-center {{ $errors->has('password') ? 'text-red-500' : '' }}">

@@ -155,7 +155,7 @@ return [
     |
     */
 
-    'domain' => env('SESSION_DOMAIN', null),
+    'domain' => preg_replace('#^https?://#', '.', env('APP_URL')), //env('SESSION_DOMAIN', null),
 
     /*
     |--------------------------------------------------------------------------

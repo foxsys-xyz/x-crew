@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth\VATSIM;
+namespace App\Http\Controllers\Auth\VATSIM\Application;
 
 use Illuminate\Http\Request;
 

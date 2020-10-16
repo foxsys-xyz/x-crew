@@ -40,8 +40,12 @@ Route::domain('apply.' . env('APP_URL'))->group(function () {
 Route::domain('auth.' . env('APP_URL'))->group(function () {
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
     Route::post('/login', 'Auth\LoginController@login')->name('login.check');
-    Route::get('/authenticated', 'Auth\LoginController@authenticated')->middleware('auth');
+    Route::post('/with/vatsim', 'Auth\LoginController@loginWithVATSIM')->name('login.with.vatsim');
+    Route::get('/check/with/vatsim', 'Auth\LoginController@loginWithVATSIM')->name('login.check.with.vatsim');
+    Route::get('/authenticated', 'User\DashboardController@confirmAuthentication')->name('authenticated');
     Route::get('/logout', 'Auth\LoginController@logout')->middleware('auth')->name('logout');
 });
 
-Route::get('/dashboard', 'User\DashboardController@index')->name('dashboard');
+Route::domain('cloud.' . env('APP_URL'))->group(function () {
+    Route::get('/dashboard', 'User\DashboardController@index')->name('dashboard');
+});

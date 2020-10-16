@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Notifications\Notifiable;
 use League\OAuth2\Client\Token\AccessToken;
-use App\Http\Controllers\Auth\VATSIM\OAuthController;
+use App\Http\Controllers\Auth\VATSIM\Application\OAuthController;
 
 class Applicant extends Model
 {
