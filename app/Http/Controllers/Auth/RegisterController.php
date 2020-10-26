@@ -16,9 +16,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use League\OAuth2\Client\Token;
-use App\Http\Controllers\Auth\VATSIM\Application\OAuthController;
-use League\OAuth2\Client\Provider\GenericProvider;
-use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use App\Models\Applicant;
 use Illuminate\Support\Facades\Crypt;
 use App\Notifications\Application\VerifyEmail;
@@ -39,8 +36,6 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    protected $provider;
-
     /**
      * Create a new controller instance.
      *
@@ -49,7 +44,6 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
-        $this->provider = new OAuthController;
     }
 
     /**
@@ -80,66 +74,18 @@ class RegisterController extends Controller
     }
 
     /**
-     * Redirect to VATSIM Connect if auth code not found.
-     * Go ahead and add the applicant to the database if auth code is in session.
-     *
-     */
-    public function applyWithVATSIM(Request $request)
-    {
-        if (! $request->has('code') || ! $request->has('state')) { // User has clicked "login", redirect to Connect
-            if (!Str::isUuid(request('uuid'))) {
-                return view('layouts.status')->with('status', 'Invalid UUID. Code #AP5' . rand(60, 69) . '.');
-            }
-            $authorizationUrl = $this->provider->getAuthorizationUrl(); // Generates state
-            $request->session()->put('vatsimauthstate', $this->provider->getState());
-            $request->session()->put('uuid', request('uuid'));
-	    	return redirect()->away($authorizationUrl);
-        }
-		else if ($request->input('state') !== session()->pull('vatsimauthstate')) { // State mismatch, error
-            return view('layouts.status')->with('status', 'Something\'s Wrong. Code #AP5' . rand(40, 49) . '.');
-        }
-		else { // Callback (user has just logged in Connect)
-            return $this->verifyAuthenticationWithVATSIM($request);
-        }
-    }
-
-    /**
-     * Verify if the auth code recieved from connect is valid.
-     * 
-     */
-    protected function verifyAuthenticationWithVATSIM(Request $request)
-    {
-        try {
-            $accessToken = $this->provider->getAccessToken('authorization_code', [
-                'code' => $request->input('code')
-            ]);
-        } catch (IdentityProviderException $e) {
-            return view('layouts.status')->with('status', 'Something\'s Wrong. Code #AP5' . rand(40, 49) . '.');
-        }
-        $resourceOwner = json_decode(json_encode($this->provider->getResourceOwner($accessToken)->toArray()));
-
-		// Check if user has granted us the data we need
-        if (
-            ! isset($resourceOwner->data) ||
-	        ! isset($resourceOwner->data->cid) ||
-            $resourceOwner->data->oauth->token_valid !== "true"
-        ) {
-            return view('layouts.status')->with('status', 'No Permissions. Code #AP5' . rand(40, 49) . '.');
-        }
-
-        // Set applicant UUID.
-        $uuid = $request->session()->get('uuid');
-
-        return $this->completeAuthenticationWithVATSIM($resourceOwner, $accessToken, $uuid);
-    }
-
-    /**
      * If everything is well, add the applicant to database temporarily.
      * Continue to form page to add other information.
      * 
      */
-    protected function completeAuthenticationWithVATSIM($resourceOwner, $token, $uuid)
+    protected function completeAuthenticationWithVATSIM(Request $request)
     {
+        $resourceOwner = $request->session()->get('resourceOwner');
+        $token = $request->session()->get('accessToken');
+        $uuid = $request->session()->get('uuid');
+
+        $request->session()->flush();
+
         $applicant = Applicant::firstOrNew(
             [
                 'email' => $resourceOwner->data->personal->email
@@ -153,13 +99,17 @@ class RegisterController extends Controller
             ]
         );
 
-        if ($resourceOwner->data->oauth->token_valid === "true") { // User has given us permanent access to data
+        if ($resourceOwner->data->oauth->token_valid === "true") { 
+            
+            // User has given us permanent access to data.
+
             $applicant->access_token = $token->getToken();
             $applicant->refresh_token = $token->getRefreshToken();
             $applicant->token_expires = $token->getExpires();
         }
 
         // Since applicant is possesing a verified email with VATSIM, verify it.
+
         if ($applicant->email_verified_at == null) {
             $applicant->email_verified_at = now();
         }
@@ -167,6 +117,7 @@ class RegisterController extends Controller
         $applicant->save();
 
         // Update applicant's UUID to resolve conflicts if already registered or created.
+        
         $uuid = $applicant->uuid;
 
         return redirect()->route('apply.form', ['uuid' => $uuid]);

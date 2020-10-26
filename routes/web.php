@@ -19,9 +19,9 @@ Route::get('/', function () {
 
 Route::domain('apply.' . env('APP_URL'))->group(function () {
     Route::get('/start', 'Auth\RegisterController@showRegistrationForm')->name('apply.start');
+    Route::get('/authenticated', 'User\DashboardController@confirmAuthentication')->name('authenticated');
     Route::get('/!t/{uuid}', 'Auth\RegisterController@showTemporaryForm')->name('apply.temp');
-    Route::post('/with/vatsim', 'Auth\RegisterController@applyWithVATSIM')->name('apply.with.vatsim');
-    Route::get('/check/with/vatsim', 'Auth\RegisterController@applyWithVATSIM')->name('apply.check.with.vatsim');
+    Route::get('/with/vatsim', 'Auth\RegisterController@completeAuthenticationWithVATSIM')->name('apply.with.vatsim');
     Route::post('/manual', 'Auth\RegisterController@applyManual')->name('apply.manual');
     Route::get('/!v/{uuid}', 'Auth\RegisterController@verifyManual')->name('apply.verify.manual');
     Route::post('/verify/resend', 'Auth\RegisterController@resendVerificationEmail')->name('apply.verify.resend.manual');
@@ -40,8 +40,7 @@ Route::domain('apply.' . env('APP_URL'))->group(function () {
 Route::domain('auth.' . env('APP_URL'))->group(function () {
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
     Route::post('/login', 'Auth\LoginController@login')->name('login.check');
-    Route::post('/with/vatsim', 'Auth\LoginController@loginWithVATSIM')->name('login.with.vatsim');
-    Route::get('/check/with/vatsim', 'Auth\LoginController@loginWithVATSIM')->name('login.check.with.vatsim');
+    Route::get('/with/vatsim', 'Auth\LoginController@completeAuthenticationWithVATSIM')->name('login.with.vatsim');
     Route::get('/authenticated', 'User\DashboardController@confirmAuthentication')->name('authenticated');
     Route::get('/logout', 'Auth\LoginController@logout')->middleware('auth')->name('logout');
 });

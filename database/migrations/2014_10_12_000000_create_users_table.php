@@ -26,8 +26,8 @@ class CreateUsersTable extends Migration
             $table->string('lname');
             $table->string('email')->unique();
             $table->string('password');
-            $table->date('dob')->nullable();
-            $table->string('country', 2)->nullable();
+            $table->date('dob');
+            $table->string('country', 2);
 
             // Include VATSIM Stuff.
 

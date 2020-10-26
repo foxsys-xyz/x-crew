@@ -52,14 +52,14 @@
                 </div>
                 <div class="mt-4 lg:flex lg:float-right lg:gap-2">
                     <div x-data class="w-full lg:w-auto">
-                        <form id="apply-with-vatsim" action="{{ route('apply.with.vatsim') }}" method="post">
+                        <form id="connect-with-vatsim" action="{{ route('connect.with.vatsim') }}" method="post">
 
                             @csrf
 
                             <input type="hidden" name="uuid" value="{{ $uuid }}" />
 
                         </form>
-                        <button x-on:click="document.getElementById('apply-with-vatsim').submit();" class="text-sm justify-center lg:text-base w-full lg:w-auto flex items-center focus:outline-none px-4 py-2 rounded-full focus:shadow-outline bg-green-500 hover:bg-green-600 text-white transition duration-500" placeholder="username">
+                        <button x-on:click="document.getElementById('connect-with-vatsim').submit();" class="text-sm justify-center lg:text-base w-full lg:w-auto flex items-center focus:outline-none px-4 py-2 rounded-full focus:shadow-outline bg-green-500 hover:bg-green-600 text-white transition duration-500" placeholder="username">
                             vatsim sso
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-up-right inline-block w-6 ml-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z"/>

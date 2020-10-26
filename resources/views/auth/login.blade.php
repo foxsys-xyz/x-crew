@@ -3,6 +3,18 @@
 @section('content')
 
     <div class="h-screen">
+        @if (session()->has('message'))
+
+            <div class="lg:flex justify-center absolute right-0 left-0 lg:top-0 text-center px-10 py-5 text-xs text-white bg-orange-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ban inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <circle cx="12" cy="12" r="9" />
+                    <line x1="5.7" y1="5.7" x2="18.3" y2="18.3" />
+                </svg>
+                {{ session()->get('message') }}
+            </div>
+
+        @endif
         <div class="container h-full mx-auto flex justify-center items-center">
             <div class="p-12 lg:p-0 w-full lg:w-2/5">
                 <img class="h-5" src="{{ asset('img/va_logo.png') }}?id={{ Str::random(32) }}" />
@@ -43,8 +55,13 @@
                     </div>
                 </form>
                 <div class="mt-4 lg:flex lg:float-right lg:gap-2">
-                    <div class="w-full lg:w-auto">
-                        <button class="text-sm justify-center lg:text-base w-full lg:w-auto flex items-center focus:outline-none px-4 py-2 rounded-full focus:shadow-outline bg-green-500 hover:bg-green-600 text-white transition duration-500" placeholder="username">
+                    <div x-data class="w-full lg:w-auto">
+                        <form id="connect-with-vatsim" action="{{ route('connect.with.vatsim') }}" method="post">
+
+                            @csrf
+
+                        </form>
+                        <button x-on:click="document.getElementById('connect-with-vatsim').submit();" class="text-sm justify-center lg:text-base w-full lg:w-auto flex items-center focus:outline-none px-4 py-2 rounded-full focus:shadow-outline bg-green-500 hover:bg-green-600 text-white transition duration-500" placeholder="username">
                             vatsim sso
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-up-right inline-block w-6 ml-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z"/>
