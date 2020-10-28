@@ -24,10 +24,15 @@ class CreateUsersTable extends Migration
 
             $table->string('fname');
             $table->string('lname');
+            $table->string('avatar');
             $table->string('email')->unique();
             $table->string('password');
             $table->date('dob');
             $table->string('country', 2);
+
+            // Include Virtual Airline Stuff.
+            $table->char('hub', 4);
+            $table->boolean('status')->default(1);
 
             // Include VATSIM Stuff.
 
