@@ -31,6 +31,7 @@ class CreateUsersTable extends Migration
             $table->string('country', 2);
 
             // Include Virtual Airline Stuff.
+            
             $table->char('hub', 4);
             $table->boolean('status')->default(1);
 
