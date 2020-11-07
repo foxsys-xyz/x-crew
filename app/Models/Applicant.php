@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Notifications\Notifiable;
 use League\OAuth2\Client\Token\AccessToken;
-use App\Http\Controllers\Auth\VATSIM\Application\OAuthController;
+use App\Http\Controllers\Auth\VATSIM\OAuthController;
 
 class Applicant extends Model
 {
@@ -36,7 +36,7 @@ class Applicant extends Model
         'access_token',
         'refresh_token',
         'token_expires',
-        'status'
+        'status',
     ];
 
     /**
@@ -52,7 +52,16 @@ class Applicant extends Model
     ];
 
     /**
-     * When doing $user->token, return a valid access token or null if none exists
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    /**
+     * When doing $user->token, return a valid access token or null if none exists.
      * 
      * @return \League\OAuth2\Client\Token\AccessToken 
      * @return null

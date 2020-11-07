@@ -23,12 +23,12 @@
         <style>
         
             /* Hide scrollbar for Chrome, Safari and Opera */
-            body::-webkit-scrollbar {
+            *::-webkit-scrollbar {
                 display: none;
             }
 
             /* Hide scrollbar for IE and Edge */
-            body {
+            * {
                 -ms-overflow-style: none;
             }
             
@@ -55,6 +55,10 @@
 
         <!-- Custom JS -->
         <script type="text/javascript" src="{{ mix('/js/app.js') }}"></script>
+
+        <!-- Lealet Maps -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
     </head>
 

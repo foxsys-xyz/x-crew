@@ -6,6 +6,14 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * Use Facades Required Additionally
+ *
+ */
+
+use League\OAuth2\Client\Token\AccessToken;
+use App\Http\Controllers\Auth\VATSIM\OAuthController;
+
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
@@ -16,7 +24,20 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username',
+        'fname',
+        'lname',
+        'avatar',
+        'email',
+        'password',
+        'dob',
+        'country',
+        'hub',
+        'status',
+        'vatsim',
+        'access_token',
+        'refresh_token',
+        'token_expires',
     ];
 
     /**
@@ -25,15 +46,44 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'access_token',
+        'refresh_token',
+        'token_expires',
+        'remember_token',
     ];
 
     /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
+     * When doing $user->token, return a valid access token or null if none exists.
+     * 
+     * @return \League\OAuth2\Client\Token\AccessToken 
+     * @return null
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function getTokenAttribute()
+    {
+        if ($this->access_token === null) return null;
+
+        else {
+            $token = new AccessToken([
+                'access_token' => $this->access_token,
+                'refresh_token' => $this->refresh_token,
+                'expires' => $this->token_expires,
+            ]);
+
+            if ($token->hasExpired()) {
+                $token = OAuthController::updateToken($token);
+            }
+
+            // Can't put it inside the "if token expired"; $this is null there
+            // but anyway Laravel will only update if any changes have been made.
+
+            $this->update([
+                'access_token' => ($token) ? $token->getToken() : null,
+                'refresh_token' => ($token) ? $token->getRefreshToken() : null,
+                'token_expires' => ($token) ? $token->getExpires() : null,
+            ]);
+
+            return $token;
+        }
+    }
 }

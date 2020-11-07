@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::domain('apply.' . env('APP_URL'))->group(function () {
     Route::get('/start', 'Auth\RegisterController@showRegistrationForm')->name('apply.start');
-    Route::get('/authenticated', 'User\DashboardController@confirmAuthentication')->name('authenticated');
+    Route::get('/authenticated', 'User\DashboardController@confirmAuthentication')->name('apply.authenticated');
     Route::get('/!t/{uuid}', 'Auth\RegisterController@showTemporaryForm')->name('apply.temp');
     Route::get('/with/vatsim', 'Auth\RegisterController@completeAuthenticationWithVATSIM')->name('apply.with.vatsim');
     Route::post('/manual', 'Auth\RegisterController@applyManual')->name('apply.manual');
@@ -41,10 +41,12 @@ Route::domain('auth.' . env('APP_URL'))->group(function () {
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
     Route::post('/login', 'Auth\LoginController@login')->name('login.check');
     Route::get('/with/vatsim', 'Auth\LoginController@completeAuthenticationWithVATSIM')->name('login.with.vatsim');
-    Route::get('/authenticated', 'User\DashboardController@confirmAuthentication')->name('authenticated');
-    Route::get('/logout', 'Auth\LoginController@logout')->middleware('auth')->name('logout');
+    Route::get('/authenticated', 'User\DashboardController@confirmAuthentication')->name('auth.authenticated');
+    Route::post('/logout', 'Auth\LoginController@logout')->middleware('auth')->name('logout');
 });
 
 Route::domain('cloud.' . env('APP_URL'))->group(function () {
     Route::get('/dashboard', 'User\DashboardController@index')->name('dashboard');
+    Route::get('/profile', 'User\ProfileController@index')->name('profile');
+    Route::patch('/profile', 'User\ProfileController@updateProfile')->name('profile.update');
 });

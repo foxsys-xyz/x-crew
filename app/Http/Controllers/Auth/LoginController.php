@@ -95,6 +95,17 @@ class LoginController extends Controller
     }
 
     /**
+     * The user has logged out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return mixed
+     */
+    protected function loggedOut(Request $request)
+    {
+        return redirect()->route('login');
+    }
+
+    /**
      * Where to redirect users after login.
      *
      * @var string

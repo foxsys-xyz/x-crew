@@ -24,7 +24,11 @@ class CreateUsersTable extends Migration
 
             $table->string('fname');
             $table->string('lname');
+
             $table->string('avatar');
+            $table->string('bio')->nullable();
+            $table->boolean('rwp')->default(0);
+
             $table->string('email')->unique();
             $table->string('password');
             $table->date('dob');
