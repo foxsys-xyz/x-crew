@@ -38,6 +38,7 @@ class CreateUsersTable extends Migration
             
             $table->char('hub', 4);
             $table->boolean('status')->default(1);
+            $table->boolean('staff')->default(0);
 
             // Include VATSIM Stuff.
 

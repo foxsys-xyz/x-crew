@@ -1,10 +1,38 @@
-//
+/*
+
+    Tailwind Stuff
+
+*/
 
 @tailwind base;
 
 @tailwind components;
 
 @tailwind utilities;
+
+/*
+
+    Custom Styled Scrollbar
+
+*/
+
+*::-webkit-scrollbar-track {
+    @apply rounded-full bg-white;
+}
+
+*::-webkit-scrollbar {
+    @apply w-2 bg-white;
+}
+
+*::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-gray-300 hover:bg-gray-400;
+}
+
+/*
+
+    Custom Tooltip
+
+*/
 
 .tooltip .tooltip-text {
   visibility: hidden;

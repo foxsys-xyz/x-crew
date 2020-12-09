@@ -3,21 +3,23 @@
 
     <div class="mx-12 mt-12">
         <img class="w-24 rounded-3xl" src="{{ Auth::user()->avatar }}" />
-        <div class="leading-4 mt-8">
+        <div class="leading-5 mt-8">
             <span class="text-black text-lg inline-flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <circle cx="12" cy="7" r="4" />
-                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                </svg>
                 {{ Auth::user()->username }}
+                @if (Auth::user()->rwp == 1)
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check inline-block w-5 ml-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#667eea" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M9 12l2 2l4 -4" />
+                    </svg>
+                @endif
             </span> <br />
             <span class="text-xs text-gray-500">Senior Training Captain</span>
         </div>
     </div>
 
     <nav class="mt-6 mx-8">    
-        <a class="transition duration-500 flex items-center py-3 px-3 rounded-full text-sm text-gray-700 hover:bg-gray-400 hover:bg-opacity-25"
+        <a class="transition duration-500 flex items-center py-3 px-3 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
             href="{{ route('dashboard') }}">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-smart-home inline-block w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -28,7 +30,7 @@
             <span class="mx-3">Dashboard</span>
         </a>
 
-        <a class="transition duration-500 flex items-center py-3 px-3 rounded-full text-sm text-gray-700 hover:bg-gray-400 hover:bg-opacity-25"
+        <a class="transition duration-500 flex items-center py-3 px-3 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
             href="/ui-elements">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane inline-block w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z"/>
@@ -38,7 +40,22 @@
             <span class="mx-3">CFCDC</span>
         </a>
 
-        <a class="transition duration-500 flex items-center py-3 px-3 rounded-full text-sm text-gray-700 hover:bg-gray-400 hover:bg-opacity-25"
+        <a class="transition duration-500 flex items-center py-3 px-3 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
+            href="/ui-elements">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar inline-block w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <rect x="4" y="5" width="16" height="16" rx="2" />
+                <line x1="16" y1="3" x2="16" y2="7" />
+                <line x1="8" y1="3" x2="8" y2="7" />
+                <line x1="4" y1="11" x2="20" y2="11" />
+                <line x1="11" y1="15" x2="12" y2="15" />
+                <line x1="12" y1="15" x2="12" y2="18" />
+            </svg>
+
+            <span class="mx-3">Schedule</span>
+        </a>
+
+        <a class="transition duration-500 flex items-center py-3 px-3 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
             href="/ui-elements">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-server inline-block w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -51,7 +68,7 @@
             <span class="mx-3">Resources</span>
         </a>
 
-        <a class="transition duration-500 flex items-center py-3 px-3 rounded-full text-sm text-gray-700 hover:bg-gray-400 hover:bg-opacity-25"
+        <a class="transition duration-500 flex items-center py-3 px-3 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
             href="/ui-elements">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-lifebuoy inline-block w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -66,10 +83,5 @@
             <span class="mx-3">Help</span>
         </a>
     </nav>
-
-    <div class="flex items-center m-12 mt-10 bottom-0 absolute">
-        <img class="w-4 mr-3" src="{{ asset('img/foxsys-xyz [Icon] [Light Back].png') }}" />
-        <span class="text-xs text-gray-500">foxsys-xyz, {{ date('Y') }}.</span>
-    </div>
 
 <!-- Application Sidebar End -->

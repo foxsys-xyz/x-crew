@@ -3,6 +3,10 @@
 @section('content')
 
     <div class="h-screen">
+        <div class="hidden lg:flex items-center absolute bottom-0 left-0 px-10 py-5 text-xs">
+            <img class="w-4 mr-3" src="{{ asset('img/foxsys-xyz [Icon] [Light Back].png') }}" />
+            <span class="text-xs text-gray-500">foxsys-xyz, {{ date('Y') }}. all rights reserved.</span>
+        </div>
         <div class="hidden lg:flex items-center absolute bottom-0 right-0 px-10 py-5 text-xs">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bolt inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#667eea" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -12,14 +16,9 @@
         </div>
         <div class="container h-full mx-auto flex justify-center items-center">
             <div class="p-12 lg:p-0 w-full lg:w-2/5">
-                <img class="h-5" src="{{ asset('img/va_logo.png') }}?id={{ Str::random(32) }}" />
-                <div class="lg:flex items-center mt-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane inline-block w-6 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z"/>
-                        <path d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2-4l-2 -4h3l2 2h4l-2 -7h3z" />
-                    </svg>howdy, continue application
-                </div>
-                <div class="border border-gray-200 border-t-1 w-1/3 mt-4"></div>
+                
+                @include('layouts.sso.application.header')
+
                 <form id="finalize-application" action="{{ route('apply.finalize') }}" method="post">
 
                     @csrf
@@ -44,7 +43,7 @@
                                 @endif
                                 first name
                             </span>
-                            <input name="fname" class="w-full lg:w-full mt-2 outline-none px-4 py-2 rounded-full focus:shadow-outline bg-gray-200 transition duration-500 {{ $applicant->fname == null ? '' : 'cursor-not-allowed opacity-75' }}" placeholder="John" @if ($applicant->fname != null) value="{{ $applicant->fname }}" disabled @endif />
+                            <input name="fname" class="w-full lg:w-full mt-2 outline-none px-4 py-2 rounded-full {{ $errors->has('fname') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-100 transition duration-500 {{ $applicant->fname == null ? '' : 'cursor-not-allowed' }}" placeholder="John" @if ($applicant->fname != null) value="{{ $applicant->fname }}" disabled @endif />
                         </div>
                         <div class="w-full lg:w-full mt-1 lg:mt-0">
                             <span class="text-xs lg:flex items-center {{ $errors->has('lname') ? 'text-red-500' : '' }}">
@@ -63,7 +62,7 @@
                                 @endif
                                 last name
                             </span>
-                            <input name="lname" class="w-full lg:w-full mt-2 outline-none px-4 py-2 rounded-full focus:shadow-outline bg-gray-200 transition duration-500 {{ $applicant->lname == null ? '' : 'cursor-not-allowed opacity-75' }}" placeholder="Doe" @if ($applicant->lname != null) value="{{ $applicant->lname }}" disabled @endif />
+                            <input name="lname" class="w-full lg:w-full mt-2 outline-none px-4 py-2 rounded-full {{ $errors->has('lname') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-100 transition duration-500 {{ $applicant->lname == null ? '' : 'cursor-not-allowed opacity-75' }}" placeholder="Doe" @if ($applicant->lname != null) value="{{ $applicant->lname }}" disabled @endif />
                         </div>
                     </div>
                     <div class="mt-2 w-full">
@@ -76,7 +75,7 @@
                                 </svg>
                                 email
                             </span>
-                            <input type="email" class="w-full lg:w-full mt-2 outline-none px-4 py-2 rounded-full focus:shadow-outline bg-gray-200 transition duration-500 cursor-not-allowed opacity-75" value="{{ $applicant->email }}" disabled />
+                            <input type="email" class="w-full lg:w-full mt-2 outline-none px-4 py-2 rounded-full focus:ring focus:ring-indigo-500 bg-gray-100 transition duration-500 cursor-not-allowed" value="{{ $applicant->email }}" disabled />
                         </div>
                     </div>
                     <div class="mt-2 lg:flex w-full gap-2">
@@ -89,7 +88,7 @@
                                 </svg>
                                 date of birth
                             </span>
-                            <input name="dob" class="w-full lg:w-full mt-2 outline-none px-4 py-2 rounded-full focus:shadow-outline bg-gray-200 transition duration-500" placeholder="yyyy-mm-dd" value="{{ $applicant->dob }}" />
+                            <input name="dob" class="w-full lg:w-full mt-2 outline-none px-4 py-2 rounded-full {{ $errors->has('dob') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-100 transition duration-500" placeholder="yyyy-mm-dd" value="{{ $applicant->dob }}" />
                         </div>
                         <div class="w-full lg:w-full mt-1 lg:mt-0">
                             <span class="text-xs lg:flex items-center {{ $errors->has('country') ? 'text-red-500' : '' }}">
@@ -106,9 +105,9 @@
                                         <path d="M2 12l5 5m5 -5l5 -5" />
                                     </svg>
                                 @endif
-                                country
+                                nationality
                             </span>
-                            <select name="country" class="w-full lg:w-full mt-2 outline-none px-4 py-2 rounded-full focus:shadow-outline bg-gray-200 transition duration-500 {{ $applicant->country == null ? '' : 'cursor-not-allowed opacity-75' }}" @if ($applicant->country != null) disabled @endif>
+                            <select name="country" class="w-full lg:w-full mt-2 outline-none px-4 py-2 rounded-full {{ $errors->has('country') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-100 transition duration-500 {{ $applicant->country == null ? '' : 'cursor-not-allowed opacity-75' }}" @if ($applicant->country != null) disabled @endif>
                                 <option hidden>[select]</option>
                                 <option {{ $applicant->country == "AF" ? "selected" : "" }} value="AF">Afghanistan</option>
                                 <option {{ $applicant->country == "AX" ? "selected" : "" }} value="AX">Åland Islands</option>

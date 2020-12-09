@@ -21,16 +21,6 @@
         /> 
 
         <style>
-        
-            /* Hide scrollbar for Chrome, Safari and Opera */
-            *::-webkit-scrollbar {
-                display: none;
-            }
-
-            /* Hide scrollbar for IE and Edge */
-            * {
-                -ms-overflow-style: none;
-            }
             
             /* Hide select formatting for Chrome and Edge */
             select {

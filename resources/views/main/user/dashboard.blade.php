@@ -2,7 +2,7 @@
 
 @section('content')
  
-    <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-gray-200">
+    <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-gray-100">
         <div :class="sidebarOpen ? 'block' : 'hidden'" @click="sidebarOpen = false" class="fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden"></div>
     
         <div :class="sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'" class="fixed z-30 inset-y-0 left-0 w-64 transition duration-300 transform bg-white overflow-y-auto lg:translate-x-0 lg:static lg:inset-0">
@@ -15,7 +15,7 @@
             @include('layouts.cloud.header')
 
             <div class="bg-white overflow-y-auto">
-                <main class="flex-1 overflow-x-hidden bg-gray-200 rounded-tl-3xl">
+                <main class="flex-1 overflow-x-hidden bg-gray-100 rounded-tl-3xl">
                     <div class="mx-auto px-8 py-8">
                         <h4 class="text-gray-700 text-2xl leading-3 font-medium inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-smart-home inline-block w-8 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -30,7 +30,7 @@
                         <div class="mt-8">
                             <div class="flex flex-wrap -mx-3">
                                 <div class="w-full px-3 sm:w-1/2 lg:w-1/3">
-                                    <div class="flex items-center p-6 rounded-3xl bg-white">
+                                    <div class="flex items-center p-6 rounded-3xl bg-white shadow-lg">
                                         <div class="p-3 rounded-xl bg-indigo-600">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-license inline-block w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -41,14 +41,14 @@
                                         </div>
         
                                         <div class="mx-5">
-                                            <h4 class="text-2xl font-semibold text-gray-700">2</h4>
+                                            <h4 class="text-2xl text-gray-700">2</h4>
                                             <div class="text-gray-500">PIREPs</div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="w-full mt-6 px-3 sm:w-1/2 lg:w-1/3 sm:mt-0">
-                                    <div class="flex items-center p-6 rounded-3xl bg-white">
+                                    <div class="flex items-center p-6 rounded-3xl bg-white shadow-lg">
                                         <div class="p-3 rounded-xl bg-gray-600">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock inline-block w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -58,15 +58,15 @@
                                         </div>
         
                                         <div class="mx-5">
-                                            <h4 class="text-2xl font-semibold text-gray-700">03:21</h4>
+                                            <h4 class="text-2xl text-gray-700">03:21</h4>
                                             <div class="text-gray-500">Chrono</div>
                                         </div>
                                     </div>
                                 </div>
         
                                 <div class="w-full mt-6 px-3 sm:w-1/2 lg:w-1/3 lg:mt-0">
-                                    <div class="flex items-center p-6 rounded-3xl bg-white">
-                                        <div class="p-3 rounded-xl bg-orange-600">
+                                    <div class="flex items-center p-6 rounded-3xl bg-white shadow-lg">
+                                        <div class="p-3 rounded-xl bg-yellow-600">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane-arrival inline-block w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                                 <path d="M15 12h5a2 2 0 0 1 0 4h-15l-3 -6h3l2 2h3l-2 -7h3z" transform="rotate(15 12 12) translate(0 -1)" />
@@ -75,14 +75,14 @@
                                         </div>
         
                                         <div class="mx-5">
-                                            <h4 class="text-2xl font-semibold text-gray-700">-221</h4>
+                                            <h4 class="text-2xl text-gray-700">-221</h4>
                                             <div class="text-gray-500">Average</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="w-full lg:w-3/5 mt-8 bg-white rounded-3xl p-6">
+                            <div class="w-full lg:w-3/5 mt-8 bg-white rounded-3xl p-6 shadow-lg">
                                 <h5 class="text-gray-700 leading-3 font-medium inline-flex items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="animate-spin icon icon-tabler icon-tabler-forbid-2 inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

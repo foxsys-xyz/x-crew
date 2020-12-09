@@ -28,6 +28,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'fname',
         'lname',
         'avatar',
+        'bio',
+        'rwp',
         'email',
         'password',
         'dob',
@@ -51,6 +53,15 @@ class User extends Authenticatable implements MustVerifyEmail
         'refresh_token',
         'token_expires',
         'remember_token',
+    ];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'dob',
     ];
 
     /**

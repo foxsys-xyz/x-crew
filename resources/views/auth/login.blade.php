@@ -3,9 +3,14 @@
 @section('content')
 
     <div class="h-screen">
+        <div class="hidden lg:flex items-center absolute bottom-0 left-0 px-10 py-5 text-xs">
+            <img class="w-4 mr-3" src="{{ asset('img/foxsys-xyz [Icon] [Light Back].png') }}" />
+            <span class="text-xs text-gray-500">foxsys-xyz, {{ date('Y') }}. all rights reserved.</span>
+        </div>
+
         @if (session()->has('message'))
 
-            <div class="lg:flex justify-center absolute right-0 left-0 lg:top-0 text-center px-10 py-5 text-xs text-white bg-orange-500">
+            <div class="lg:flex justify-center absolute right-0 left-0 lg:top-0 text-center px-10 py-5 text-xs text-white bg-red-500">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ban inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <circle cx="12" cy="12" r="9" />
@@ -18,7 +23,7 @@
 
         @if ($errors->any())
 
-            <div class="lg:flex justify-center absolute right-0 left-0 lg:top-0 text-center px-10 py-5 text-xs text-white bg-orange-500">
+            <div class="lg:flex justify-center absolute right-0 left-0 lg:top-0 text-center px-10 py-5 text-xs text-white bg-red-500">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ban inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <circle cx="12" cy="12" r="9" />
@@ -31,14 +36,9 @@
 
         <div class="container h-full mx-auto flex justify-center items-center">
             <div class="p-12 lg:p-0 w-full lg:w-2/5">
-                <img class="h-5" src="{{ asset('img/va_logo.png') }}?id={{ Str::random(32) }}" />
-                <div class="lg:flex items-center mt-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane inline-block w-6 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z"/>
-                        <path d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2-4l-2 -4h3l2 2h4l-2 -7h3z" />
-                    </svg>howdy, sign in
-                </div>
-                <div class="border border-gray-200 border-t-1 w-1/3 mt-4"></div>
+                
+                @include('layouts.sso.auth.header')
+
                 <form id="login-manual" action="{{ route('login.check') }}" method="post">
 
                     @csrf
@@ -53,7 +53,7 @@
                                 </svg>
                                 username
                             </span>
-                            <input name="username" class="w-full lg:w-full mt-2 outline-none px-4 py-2 rounded-full focus:shadow-outline bg-gray-200 transition duration-500" placeholder="{{ env('PCS') }}1234" value="{{ old('username') }}" />
+                            <input name="username" class="w-full lg:w-full mt-2 outline-none px-4 py-2 rounded-full {{ $errors->has('username') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-100 transition duration-500" placeholder="{{ env('ICAO') }}1234" value="{{ old('username') }}" />
                         </div>
                         <div class="w-full lg:w-full mt-1 lg:mt-0">
                             <span class="text-xs lg:flex items-center {{ $errors->has('password') ? 'text-red-500' : '' }}">
@@ -64,7 +64,7 @@
                                 </svg>
                                 password
                             </span>
-                            <input name="password" type="password" class="w-full lg:w-full mt-2 outline-none px-4 py-2 rounded-full focus:shadow-outline bg-gray-200 transition duration-500" placeholder="••••••••••" />
+                            <input name="password" type="password" class="w-full lg:w-full mt-2 outline-none px-4 py-2 rounded-full {{ $errors->has('password') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-100 transition duration-500" placeholder="••••••••••" />
                         </div>
                     </div>
                 </form>
