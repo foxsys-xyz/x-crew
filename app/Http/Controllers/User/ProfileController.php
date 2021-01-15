@@ -14,6 +14,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -37,7 +38,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Show the user profile & update form.
+     * Update user profile.
      *
      */
     public function updateProfile(Request $request)
@@ -70,6 +71,31 @@ class ProfileController extends Controller
             'bio' => $bio,
         ]);
 
-        return redirect('/profile')->with('success', 'Your profile has been successfully updated!');
+        return redirect('/profile')->with('message', 'your profile has been updated successfully.');
+    }
+
+    /**
+     * Update user password.
+     *
+     */
+    public function updatePassword(Request $request)
+    {
+        $this->validate($request, [
+            'oldpass' => 'required',
+            'newpass' => 'required|confirmed',
+            'newpass_confirmation' => 'required'
+        ]);
+
+        $user = User::find(Auth::user()->id);
+
+        if (!Hash::check(request('oldpass'), $user->password)) {
+            return back()->withErrors();
+        }
+
+        $user->update([
+            'password' => Hash::make(request('newpass'))
+        ]);
+
+        return redirect('/profile')->with('message', 'your password has been updated successfully.');
     }
 }

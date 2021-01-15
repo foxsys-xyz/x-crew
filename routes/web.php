@@ -49,4 +49,5 @@ Route::domain('cloud.' . env('APP_URL'))->group(function () {
     Route::get('/dashboard', 'User\DashboardController@index')->name('dashboard');
     Route::get('/profile', 'User\ProfileController@index')->name('profile');
     Route::patch('/profile', 'User\ProfileController@updateProfile')->name('profile.update');
+    Route::patch('/profile/password', 'User\ProfileController@updatePassword')->name('profile.password.update');
 });

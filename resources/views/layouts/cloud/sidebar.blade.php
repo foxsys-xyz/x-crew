@@ -19,7 +19,7 @@
     </div>
 
     <nav class="mt-6 mx-8">    
-        <a class="transition duration-500 flex items-center py-3 px-3 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
+        <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
             href="{{ route('dashboard') }}">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-smart-home inline-block w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -30,7 +30,7 @@
             <span class="mx-3">Dashboard</span>
         </a>
 
-        <a class="transition duration-500 flex items-center py-3 px-3 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
+        <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
             href="/ui-elements">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane inline-block w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z"/>
@@ -40,7 +40,7 @@
             <span class="mx-3">CFCDC</span>
         </a>
 
-        <a class="transition duration-500 flex items-center py-3 px-3 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
+        <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
             href="/ui-elements">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar inline-block w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -55,7 +55,7 @@
             <span class="mx-3">Schedule</span>
         </a>
 
-        <a class="transition duration-500 flex items-center py-3 px-3 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
+        <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
             href="/ui-elements">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-server inline-block w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -68,7 +68,7 @@
             <span class="mx-3">Resources</span>
         </a>
 
-        <a class="transition duration-500 flex items-center py-3 px-3 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
+        <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
             href="/ui-elements">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-lifebuoy inline-block w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

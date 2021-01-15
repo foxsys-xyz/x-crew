@@ -18,20 +18,7 @@
             href="{{ mix('/css/app.css') }}"
             rel="stylesheet"
             type="text/css"
-        /> 
-
-        <style>
-            
-            /* Hide select formatting for Chrome and Edge */
-            select {
-                -o-appearance: none;
-                -ms-appearance: none;
-                -webkit-appearance: none;
-                -moz-appearance: none;
-                appearance: none;
-            }
-
-        </style>
+        />
 
         <!-- Icons -->
         <link 

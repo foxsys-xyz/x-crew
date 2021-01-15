@@ -16,16 +16,38 @@
 
 */
 
+@media (max-device-width: 768px) {
+    *::-webkit-scrollbar-thumb,
+    *::-webkit-scrollbar,
+    *::-webkit-scrollbar-track, {
+        @apply hidden;
+    }
+}
+
 *::-webkit-scrollbar-track {
-    @apply rounded-full bg-white;
+    @apply rounded-full bg-gray-100;
 }
 
 *::-webkit-scrollbar {
-    @apply w-2 bg-white;
+    @apply w-1 bg-gray-100;
 }
 
 *::-webkit-scrollbar-thumb {
     @apply rounded-full bg-gray-300 hover:bg-gray-400;
+}
+
+/*
+
+    Hide select formatting for Chrome and Edge
+
+*/
+
+select {
+    -o-appearance: none;
+    -ms-appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 /*
@@ -37,9 +59,9 @@
 .tooltip .tooltip-text {
   visibility: hidden;
   text-align: center;
-  position: absolute;
   z-index: 100;
 }
+
 .tooltip:hover .tooltip-text {
   visibility: visible;
 }

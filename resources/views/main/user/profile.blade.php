@@ -11,11 +11,11 @@
 
         </div>
         <div class="flex-1 flex flex-col overflow-hidden">
-            
-            @include('layouts.cloud.header')
-
             <div class="bg-white overflow-y-auto">
-                <main class="flex-1 overflow-x-hidden bg-gray-100 rounded-tl-3xl">
+
+                @include('layouts.cloud.header')
+
+                <main class="flex-1 overflow-x-hidden bg-gray-100 rounded-tl-3xl rounded-bl-3xl">
                     <div class="mx-auto px-8 py-8">
                         <h4 class="text-gray-700 text-2xl leading-3 font-medium inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user inline-block w-8 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -26,6 +26,32 @@
                             Profile
                         </h4>
                         <span class="flex leading-3 text-gray-500 text-xs">hey {{ Auth::user()->fname }}, you can manage your profile here.</span>
+
+                        @if (session()->has('message'))
+
+                            <div class="lg:flex justify-center text-center px-10 py-5 text-xs text-white bg-indigo-500 mt-8 rounded-3xl">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ban inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <circle cx="12" cy="12" r="9" />
+                                    <line x1="5.7" y1="5.7" x2="18.3" y2="18.3" />
+                                </svg>
+                                {{ session()->get('message') }}
+                            </div>
+
+                        @endif
+
+                        @if ($errors->any())
+
+                            <div class="lg:flex justify-center text-center px-10 py-5 text-xs text-white bg-red-500 mt-8 rounded-3xl">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ban inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <circle cx="12" cy="12" r="9" />
+                                    <line x1="5.7" y1="5.7" x2="18.3" y2="18.3" />
+                                </svg>
+                                there was a problem in the updating. maybe retry entering the details correctly?
+                            </div>
+
+                        @endif
 
                         <div class="mt-8">
                             <div class="lg:flex w-full gap-8">
@@ -151,8 +177,8 @@
                                             </div>
                                             <div class="lg:flex mt-2 gap-2">
                                                 <div class="lg:w-3/5 mb-2 lg:mb-0">
-                                                    <span class="text-xs lg:flex items-center">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <span class="text-xs lg:flex items-center {{ $errors->has('email') ? 'text-red-500' : '' }}">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="{{ $errors->has('email') ? '#f56565' : '#2c3e50' }}" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                                             <line x1="7" y1="7" x2="17" y2="17" />
                                                             <polyline points="17 8 17 17 8 17" />
@@ -231,11 +257,80 @@
                                             </div>
                                         </form>
                                     </div>
+                                    <div class="bg-white rounded-3xl p-6 mt-8 shadow-lg">
+                                        <h5 class="text-gray-700 leading-3 font-medium inline-flex items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-lock inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                <rect x="5" y="11" width="14" height="10" rx="2" />
+                                                <circle cx="12" cy="16" r="1" />
+                                                <path d="M8 11v-4a4 4 0 0 1 8 0v4" />
+                                            </svg>
+                                            Edit / Update Password
+                                        </h5>
+                                        <span class="flex text-gray-500 text-xs">please confirm old, and enter new password</span>
+
+                                        <form action="{{ route('profile.password.update') }}" method="post">
+
+                                            @csrf
+
+                                            @method('patch')
+
+                                            <div class="lg:flex mt-6 gap-2">
+                                                <div class="lg:w-1/3 mb-2 lg:mb-0">
+                                                    <span class="text-xs lg:flex items-center {{ $errors->has('oldpass') ? 'text-red-500' : '' }}">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="{{ $errors->has('oldpass') ? '#f56565' : '#2c3e50' }}" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                            <line x1="7" y1="7" x2="17" y2="17" />
+                                                            <polyline points="17 8 17 17 8 17" />
+                                                        </svg>
+                                                        old password
+                                                    </span>
+                                                    <input name="oldpass" type="password" class="w-full lg:w-full mt-2 outline-none px-4 py-2 rounded-full {{ $errors->has('oldpass') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-100 transition duration-500" placeholder="••••••••••" />
+                                                </div>
+                                                <div class="lg:w-1/3 mb-2 lg:mb-0">
+                                                    <span class="text-xs lg:flex items-center {{ $errors->has('newpass') ? 'text-red-500' : '' }}">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="{{ $errors->has('newpass') ? '#f56565' : '#2c3e50' }}" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                            <line x1="7" y1="7" x2="17" y2="17" />
+                                                            <polyline points="17 8 17 17 8 17" />
+                                                        </svg>
+                                                        new password
+                                                    </span>
+                                                    <input name="newpass" type="password" class="w-full lg:w-full mt-2 outline-none px-4 py-2 rounded-full {{ $errors->has('newpass') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-100 transition duration-500" placeholder="••••••••••" />
+                                                </div>
+                                                <div class="lg:w-1/3 mb-2 lg:mb-0">
+                                                    <span class="text-xs lg:flex items-center {{ $errors->has('newpass_confirmation') ? 'text-red-500' : '' }}">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="{{ $errors->has('newpass_confirmation') ? '#f56565' : '#2c3e50' }}" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                            <line x1="7" y1="7" x2="17" y2="17" />
+                                                            <polyline points="17 8 17 17 8 17" />
+                                                        </svg>
+                                                        confirm new password
+                                                    </span>
+                                                    <input name="newpass_confirmation" type="password" class="w-full lg:w-full mt-2 outline-none px-4 py-2 rounded-full {{ $errors->has('newpass_confirmation') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-100 transition duration-500" placeholder="••••••••••" />
+                                                </div>
+                                            </div>
+                                            <div class="mt-6 flex justify-end">
+                                                <div class="lg:mt-0 mt-3 w-full lg:w-auto">
+                                                    <button type="submit" class="text-sm justify-center lg:text-base w-full lg:w-auto flex items-center focus:outline-none px-4 py-2 rounded-full focus:shadow-outline bg-indigo-500 hover:bg-indigo-600 text-white transition duration-500" placeholder="username">
+                                                        update password
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rotate-clockwise inline-block w-6 ml-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                            <path d="M4.05 11a8 8 0 1 1 .5 4m-.5 5v-5h5" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </main>
+                
+                @include('layouts.cloud.footer')
+
             </div>
         </div>
     </div>
