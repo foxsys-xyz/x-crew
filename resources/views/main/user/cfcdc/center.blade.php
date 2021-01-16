@@ -57,23 +57,23 @@
                                 <div class="w-full lg:w-3/5">
                                     <div class="rounded-3xl overflow-hidden bg-white shadow-lg">
                                         <div class="h-80 overflow-hidden">
-                                            <div class="h-full bg-cover bg-center" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/d/d4/JAL_night_landing_at_Osaka_International_Airport.jpg); filter: blur(2px); -webkit-filter: blur(2px);"></div>
-                                            <div class="text-white relative -mt-72 p-8">
-                                                <h1 class="text-3xl flex items-center">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-access-point inline-block w-10 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                                        <line x1="12" y1="12" x2="12" y2="12.01" />
-                                                        <path d="M14.828 9.172a4 4 0 0 1 0 5.656" />
-                                                        <path d="M17.657 6.343a8 8 0 0 1 0 11.314" />
-                                                        <path d="M9.168 14.828a4 4 0 0 1 0 -5.656" />
-                                                        <path d="M6.337 17.657a8 8 0 0 1 0 -11.314" />
-                                                    </svg>
-                                                    VIDP
-                                                </h1>
-                                                <p>24&deg;C</p>
-                                                <p>155&deg / 13kts</p>
-                                                <p class="my-4 max-w-md">VIDP 150930Z 00000KT 1600 R28/1900 R29/P2000 FU FEW100 21/07 Q1013 NOSIG</p>
-                                                <p class="text-xs">weather by aviationweather.gov</p>
+                                            <div class="h-full bg-cover bg-center flex items-center" style="background-image: url('{{ asset('/img/bg/cfcdc [1].png') }}');">
+                                                <div class="text-white p-8">
+                                                    <h1 class="text-3xl flex items-center">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-access-point inline-block w-10 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                            <line x1="12" y1="12" x2="12" y2="12.01" />
+                                                            <path d="M14.828 9.172a4 4 0 0 1 0 5.656" />
+                                                            <path d="M17.657 6.343a8 8 0 0 1 0 11.314" />
+                                                            <path d="M9.168 14.828a4 4 0 0 1 0 -5.656" />
+                                                            <path d="M6.337 17.657a8 8 0 0 1 0 -11.314" />
+                                                        </svg>
+                                                        {{ $weather->station_id }} <span class="text-sm ml-3 -mb-2">[{{ $currentloc->iata }}]</span>
+                                                    </h1>
+                                                    <p class="text-sm">{{ $currentloc->airport_name }}, {{ $currentloc->city_name }}.</p>
+                                                    <p class="my-4 max-w-md">{{ $weather->raw_text }}</p>
+                                                    <p class="text-xs">weather by aviationweather.gov</p>
+                                                </div>                                            
                                             </div>
                                         </div>
                                         <div class="p-8">

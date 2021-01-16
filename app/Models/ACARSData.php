@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class ACARSData extends Model
 {
     use HasFactory;
+
+    /**
+     * Assign ACARS Data Table to Model.
+     *
+     */
+    protected $table = 'acars_data';
 }

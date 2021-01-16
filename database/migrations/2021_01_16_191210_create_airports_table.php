@@ -15,6 +15,26 @@ class CreateAirportsTable extends Migration
     {
         Schema::create('airports', function (Blueprint $table) {
             $table->id();
+
+            // Include Airports' General Data.
+
+            $table->char('icao', 4)->unique();
+            $table->char('iata', 3)->nullable();
+            $table->string('airport_name');
+            $table->string('city_name')->nullable();
+            $table->string('country');
+            $table->string('continent');
+
+            // Include Airports' Geographical Data.
+
+            $table->string('elevation')->nullable();
+            $table->string('lat');
+            $table->string('lng');
+
+            // Add Airports' Status.
+
+            $table->boolean('hub')->default(0);
+
             $table->timestamps();
         });
     }

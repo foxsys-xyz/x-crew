@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class PIREP extends Model
 {
     use HasFactory;
+
+    /**
+     * Assign PIREPS Table to Model.
+     *
+     */
+    protected $table = 'pireps';
 }
