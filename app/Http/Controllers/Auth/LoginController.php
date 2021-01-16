@@ -75,7 +75,7 @@ class LoginController extends Controller
 
         if ($account == null) {
             
-            return redirect()->route('login')->with('message', 'oops! the account is not registered.');
+            return redirect()->route('login')->with('error', 'oops! this account isn\'t registered.');
         }
 
         if ($resourceOwner->data->oauth->token_valid === "true") { 

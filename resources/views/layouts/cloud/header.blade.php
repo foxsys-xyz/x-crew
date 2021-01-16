@@ -114,7 +114,7 @@
                         Profile
                     </a>
 
-                    <a href="#"
+                    <a href="{{ route('cfcdc') }}"
                         class="transition duration-500 flex items-center px-4 py-2 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

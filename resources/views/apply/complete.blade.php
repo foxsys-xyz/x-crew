@@ -3,10 +3,12 @@
 @section('content')
 
     <div class="h-screen">
+
         <div class="hidden lg:flex items-center absolute bottom-0 left-0 px-10 py-5 text-xs">
             <img class="w-4 mr-3" src="{{ asset('img/foxsys-xyz [Icon] [Light Back].png') }}" />
             <span class="text-xs text-gray-500">foxsys-xyz, {{ date('Y') }}. all rights reserved.</span>
         </div>
+
         <div class="hidden lg:flex items-center absolute bottom-0 right-0 px-10 py-5 text-xs">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bolt inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#667eea" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -14,13 +16,15 @@
             </svg>
             {{ $uuid }} [ Complete ]
         </div>
+
         <div class="lg:flex justify-center absolute right-0 left-0 lg:top-0 text-center px-10 py-5 text-xs text-white bg-indigo-500">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-paperclip inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                 <path d="M15 7l-6.5 6.5a1.5 1.5 0 0 0 3 3l6.5 -6.5a3 3 0 0 0 -6 -6l-6.5 6.5a4.5 4.5 0 0 0 9 9l6.5 -6.5" />
             </svg>
-            database: application complete.
+            database: application is now marked complete.
         </div>
+
         <div class="container h-full mx-auto flex justify-center items-center">
             <div class="p-12 lg:p-0 w-full lg:w-2/5">
                 

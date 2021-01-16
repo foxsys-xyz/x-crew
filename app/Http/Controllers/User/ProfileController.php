@@ -71,7 +71,7 @@ class ProfileController extends Controller
             'bio' => $bio,
         ]);
 
-        return redirect('/profile')->with('message', 'your profile has been updated successfully.');
+        return redirect('/profile')->with('success', 'your profile has been updated successfully.');
     }
 
     /**
@@ -89,13 +89,13 @@ class ProfileController extends Controller
         $user = User::find(Auth::user()->id);
 
         if (!Hash::check(request('oldpass'), $user->password)) {
-            return back()->withErrors();
+            return back()->with('error', 'hmm... the old password seems incorrect.');
         }
 
         $user->update([
             'password' => Hash::make(request('newpass'))
         ]);
 
-        return redirect('/profile')->with('message', 'your password has been updated successfully.');
+        return redirect('/profile')->with('success', 'your password has been updated successfully.');
     }
 }

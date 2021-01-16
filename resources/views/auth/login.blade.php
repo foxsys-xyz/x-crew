@@ -8,7 +8,7 @@
             <span class="text-xs text-gray-500">foxsys-xyz, {{ date('Y') }}. all rights reserved.</span>
         </div>
 
-        @if (session()->has('message'))
+        @if (session()->has('error'))
 
             <div class="lg:flex justify-center absolute right-0 left-0 lg:top-0 text-center px-10 py-5 text-xs text-white bg-red-500">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ban inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -16,10 +16,12 @@
                     <circle cx="12" cy="12" r="9" />
                     <line x1="5.7" y1="5.7" x2="18.3" y2="18.3" />
                 </svg>
-                {{ session()->get('message') }}
+                {{ session()->get('error') }}
             </div>
 
         @endif
+
+        <!-- Laravel's Validation Errors -->
 
         @if ($errors->any())
 
@@ -29,7 +31,7 @@
                     <circle cx="12" cy="12" r="9" />
                     <line x1="5.7" y1="5.7" x2="18.3" y2="18.3" />
                 </svg>
-                there was an issue with authentication.
+                strange, an error. maybe retry entering the details correctly?
             </div>
 
         @endif

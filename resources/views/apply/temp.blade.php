@@ -3,10 +3,12 @@
 @section('content')
 
     <div class="h-screen">
+
         <div class="hidden lg:flex items-center absolute bottom-0 left-0 px-10 py-5 text-xs">
             <img class="w-4 mr-3" src="{{ asset('img/foxsys-xyz [Icon] [Light Back].png') }}" />
             <span class="text-xs text-gray-500">foxsys-xyz, {{ date('Y') }}. all rights reserved.</span>
         </div>
+
         <div class="hidden lg:flex items-center absolute bottom-0 right-0 px-10 py-5 text-xs">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bolt inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#667eea" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -14,6 +16,7 @@
             </svg>
             {{ $uuid }} [ Temporary ]
         </div>
+
         <div class="lg:flex justify-center absolute right-0 left-0 lg:top-0 text-center px-10 py-5 text-xs text-white bg-indigo-500">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-box inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -24,6 +27,22 @@
             </svg>
             temporary application generated.
         </div>
+        
+        <!-- Laravel's Validation Errors -->
+
+        @if ($errors->any())
+
+            <div class="lg:flex justify-center absolute right-0 left-0 lg:top-0 text-center px-10 py-5 text-xs text-white bg-red-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ban inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <circle cx="12" cy="12" r="9" />
+                    <line x1="5.7" y1="5.7" x2="18.3" y2="18.3" />
+                </svg>
+                strange, an error. maybe retry entering the details correctly?
+            </div>
+
+        @endif
+
         <div class="container h-full mx-auto flex justify-center items-center">
             <div class="p-12 lg:p-0 w-full lg:w-2/5">
                 

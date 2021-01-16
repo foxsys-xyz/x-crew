@@ -46,8 +46,30 @@ Route::domain('auth.' . env('APP_URL'))->group(function () {
 });
 
 Route::domain('cloud.' . env('APP_URL'))->group(function () {
+
     Route::get('/dashboard', 'User\DashboardController@index')->name('dashboard');
+
+    /**
+    * Profile Routes [Do Not Edit Without Lead Dev's Permission]
+    *
+    */
+
     Route::get('/profile', 'User\ProfileController@index')->name('profile');
     Route::patch('/profile', 'User\ProfileController@updateProfile')->name('profile.update');
     Route::patch('/profile/password', 'User\ProfileController@updatePassword')->name('profile.password.update');
+
+    /**
+    * CFCDC Routes [Do Not Edit Without Lead Dev's Permission]
+    *
+    */
+
+    Route::get('/cfcdc', 'User\CFCDCController@index')->name('cfcdc');
+    Route::post('/cfcdc/search', 'User\CFCDCController@search')->name('cfcdc.search');
+    Route::get('/cfcdc/!fb/{id}', 'User\CFCDCController@flight')->name('cfcdc.flight');
+    Route::post('/cfcdc/!fb/confirm/{id}', 'User\CFCDCController@confirmFlight')->name('cfcdc.flight.confirm');
+    Route::post('/cfcdc/!fb/cancel', 'User\CFCDCController@cancelFlight')->name('cfcdc.flight.cancel');
+    Route::post('/cfcdc/!pf/generate', 'User\CFCDCController@generatePreFlight')->name('cfcdc.preflight.generate');
+    Route::get('/cfcdc/!pf/{uuid}', 'User\CFCDCController@preFlight')->name('cfcdc.preflight');
+    Route::get('/cfcdc/!sb/process', 'User\CFCDCController@processSimbrief')->name('cfcdc.process.simbrief');
+    Route::get('/cfcdc/!br/{encrypt}', 'User\CFCDCController@briefing')->name('cfcdc.briefing');
 });

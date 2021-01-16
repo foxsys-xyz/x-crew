@@ -15,7 +15,7 @@
 
                 @include('layouts.cloud.header')
 
-                <main class="flex-1 overflow-x-hidden bg-gray-100 rounded-tl-3xl rounded-bl-3xl">
+                <main class="flex-1 overflow-x-hidden bg-gray-100 rounded-tl-3xl rounded-bl-3xl min-h-screen">
                     <div class="mx-auto px-8 py-8">
                         <h4 class="text-gray-700 text-2xl leading-3 font-medium inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user inline-block w-8 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -27,7 +27,7 @@
                         </h4>
                         <span class="flex leading-3 text-gray-500 text-xs">hey {{ Auth::user()->fname }}, you can manage your profile here.</span>
 
-                        @if (session()->has('message'))
+                        @if (session()->has('success'))
 
                             <div class="lg:flex justify-center text-center px-10 py-5 text-xs text-white bg-indigo-500 mt-8 rounded-3xl">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ban inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -35,10 +35,25 @@
                                     <circle cx="12" cy="12" r="9" />
                                     <line x1="5.7" y1="5.7" x2="18.3" y2="18.3" />
                                 </svg>
-                                {{ session()->get('message') }}
+                                {{ session()->get('success') }}
                             </div>
 
                         @endif
+
+                        @if (session()->has('error'))
+
+                            <div class="lg:flex justify-center text-center px-10 py-5 text-xs text-white bg-red-500 mt-8 rounded-3xl">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ban inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <circle cx="12" cy="12" r="9" />
+                                    <line x1="5.7" y1="5.7" x2="18.3" y2="18.3" />
+                                </svg>
+                                {{ session()->get('error') }}
+                            </div>
+
+                        @endif
+
+                        <!-- Laravel's Validation Errors -->
 
                         @if ($errors->any())
 
@@ -48,7 +63,7 @@
                                     <circle cx="12" cy="12" r="9" />
                                     <line x1="5.7" y1="5.7" x2="18.3" y2="18.3" />
                                 </svg>
-                                there was a problem in the updating. maybe retry entering the details correctly?
+                                strange, an error. maybe retry entering the details correctly?
                             </div>
 
                         @endif
