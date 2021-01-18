@@ -12,6 +12,9 @@ use Illuminate\Http\Request;
 
 use App\Models\PIREP;
 use App\Models\Airport;
+use App\Models\Booking;
+use App\Models\Schedule;
+use App\Models\Aircraft;
 use Illuminate\Support\Facades\Auth;
 
 class CFCDCController extends Controller
@@ -58,7 +61,9 @@ class CFCDCController extends Controller
             $schedule = Schedule::find($booking->schedule_id);
             $aircraft = Aircraft::find($booking->aircraft_id);
         } else {
-            $booking, $schedule, $aircraft = null;
+            $booking = null;
+            $schedule = null;
+            $aircraft = null;
         }
 
         return view('main.user.cfcdc.center', compact(
@@ -69,14 +74,6 @@ class CFCDCController extends Controller
             'schedule',
             'aircraft'
         ));
-    }
-
-    // Display the search page
-    public function index2()
-    {        
-        
-
-        return view('user.ops.main', compact('last_report', 'current_location', 'booking', 'booking_schedule', 'booking_aircraft'));
     }
 
     // Search the input

@@ -32,7 +32,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->date('dob');
-            $table->string('country', 2);
+            $table->char('country', 2);
 
             // Include Virtual Airline Stuff.
             
