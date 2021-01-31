@@ -65,14 +65,15 @@
                             </svg>
                         </button>
                     </div>
-                    <script>
-                        window.onload = function() {
-                            verifyEmailPage();
-                        };
-                    </script>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        window.onload = function() {
+            verifyEmailPage();
+        };
+    </script>
 
 @endsection

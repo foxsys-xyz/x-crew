@@ -76,56 +76,76 @@ class CFCDCController extends Controller
         ));
     }
 
-    // Search the input
+    /**
+     * Search Schedules Available for Booking.
+     *
+     */
     public function search(Request $request)
     {
-        $last_report = Report::where('user_id', Auth::user()->id)->latest()->limit(1)->get();
+        $this->validate($request, [
+            'icao' => 'required'
+        ]);
+
+        $lastrep = PIREP::where('user_id', Auth::user()->id)->latest()->limit(1)->first();
 
         $bookings = Booking::all()->pluck('schedule_id');
 
         if (request('icao') == null) {
-            if ($last_report == "[]") {
+            if ($lastrep == null) {
                 $schedules = Schedule::where('departure', Auth::user()->hub)->whereNotIn('id', $bookings)->get();
             } else {
-                $schedules = Schedule::where('departure', $last_report[0]->arrival)->whereNotIn('id', $bookings)->get();
+                $schedules = Schedule::where('departure', $lastrep->arrival)->whereNotIn('id', $bookings)->get();
             }
         } else {
-            if ($last_report == "[]") {
+            if ($lastrep == null) {
                 $schedules = Schedule::where('departure', Auth::user()->hub)->where('arrival', request('icao'))->whereNotIn('id', $bookings)->get();
             } else {
-                $schedules = Schedule::where('departure', $last_report[0]->arrival)->where('arrival', request('icao'))->whereNotIn('id', $bookings)->get();
+                $schedules = Schedule::where('departure', $lastrep->arrival)->where('arrival', request('icao'))->whereNotIn('id', $bookings)->get();
             }
         }
 
-        if ($last_report == "[]") {
-            $current_location = Airport::where('icao', Auth::user()->hub)->get();
+        if ($lastrep == null) {
+            $currentloc = Airport::where('icao', Auth::user()->hub)->get();
         } else {
-            $current_location = Airport::where('icao', $last_report[0]->arrival)->get();
+            $currentloc = Airport::where('icao', $lastrep->arrival)->get();
         }
 
-        return view('user.ops.results', compact('schedules', 'current_location'));
+        return view('main.user.cfcdc.search', compact(
+            'schedules',
+            'currentloc',
+            'lastrep'
+        ));
     }
 
-    // Select Params for Booking
-    public function book($id)
+    /**
+     * Render Pre Booking Page with Aircrafts Available.
+     *
+     */
+    public function preBook($id)
     {
         $schedule = Schedule::findorFail($id);
 
-        $last_report = Report::where('user_id', Auth::user()->id)->latest()->limit(1)->get();
+        $lastrep = PIREP::where('user_id', Auth::user()->id)->latest()->limit(1)->first();
 
-        if ($last_report == "[]") {
-            $current_location = Airport::where('icao', Auth::user()->hub)->get();
+        if ($lastrep == null) {
+            $currentloc = Airport::where('icao', Auth::user()->hub)->first();
         } else {
-            $current_location = Airport::where('icao', $last_report[0]->arrival)->get();
+            $currentloc = Airport::where('icao', $lastrep->arrival)->first();
         }
 
         $departure = Airport::where('icao', $schedule->departure)->first();
 
         $arrival = Airport::where('icao', $schedule->arrival)->first();
 
-        $aircrafts = Aircraft::where('model', $schedule->aircraft)->where('location', $current_location[0]->icao)->where('state', 'CLD/IDL')->get();
+        $aircrafts = Aircraft::where('icao', $schedule->aircraft)->where('location', $currentloc->icao)->where('state', 'CLD/IDL')->get();
 
-        return view('user.ops.book', compact('schedule', 'current_location', 'departure', 'arrival', 'aircrafts'));
+        return view('main.user.cfcdc.prebook', compact(
+            'schedule',
+            'currentloc',
+            'departure',
+            'arrival',
+            'aircrafts'
+        ));
     }
 
     // Confirm the Booking

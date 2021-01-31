@@ -26,18 +26,7 @@
                         </h4>
                         <span class="flex leading-3 text-gray-500 text-xs">the central flight crew data center, for all.</span>
 
-                        @if (session()->has('message'))
-
-                            <div class="lg:flex justify-center text-center px-10 py-5 text-xs text-white bg-indigo-500 mt-8 rounded-3xl">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ban inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                    <circle cx="12" cy="12" r="9" />
-                                    <line x1="5.7" y1="5.7" x2="18.3" y2="18.3" />
-                                </svg>
-                                {{ session()->get('message') }}
-                            </div>
-
-                        @endif
+                        <!-- Laravel's Validation Errors -->
 
                         @if ($errors->any())
 
@@ -47,7 +36,7 @@
                                     <circle cx="12" cy="12" r="9" />
                                     <line x1="5.7" y1="5.7" x2="18.3" y2="18.3" />
                                 </svg>
-                                there was a problem in the updating. maybe retry entering the details correctly?
+                                strange, an error. maybe retry entering the details correctly?
                             </div>
 
                         @endif
@@ -77,24 +66,20 @@
                                             </div>
                                         </div>
                                         <div class="p-8">
-                                            <form action="{{ route('profile.password.update') }}" method="post">
+                                            <form action="{{ route('cfcdc.search') }}" method="post">
 
                                                 @csrf
 
-                                                @method('patch')
-
-                                                <div class="lg:flex mt-4 gap-2">
-                                                    <div class="w-full mb-2 lg:mb-0">
-                                                        <span class="text-xs lg:flex items-center {{ $errors->has('oldpass') ? 'text-red-500' : '' }}">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="{{ $errors->has('oldpass') ? '#f56565' : '#2c3e50' }}" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                                                <line x1="7" y1="7" x2="17" y2="17" />
-                                                                <polyline points="17 8 17 17 8 17" />
-                                                            </svg>
-                                                            destination
-                                                        </span>
-                                                        <input class="w-full mt-2 outline-none px-4 py-2 rounded-full {{ $errors->has('oldpass') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-100 transition duration-500" placeholder="EGKK or Gatwick? What about Dubai?" />
-                                                    </div>
+                                                <div class="w-full mb-2 lg:mb-0">
+                                                    <span class="text-xs lg:flex items-center {{ $errors->has('icao') ? 'text-red-500' : '' }}">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="{{ $errors->has('icao') ? '#f56565' : '#2c3e50' }}" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                                            <line x1="7" y1="7" x2="17" y2="17" />
+                                                            <polyline points="17 8 17 17 8 17" />
+                                                        </svg>
+                                                        destination
+                                                    </span>
+                                                    <input name="icao" class="w-full mt-2 outline-none px-4 py-2 rounded-full {{ $errors->has('icao') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-100 transition duration-500" placeholder="EGKK or Gatwick? What about Dubai?" />
                                                 </div>
                                                 <div class="mt-6 flex justify-end">
                                                     <div class="lg:mt-0 mt-3 w-full lg:w-auto">
@@ -112,9 +97,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="w-full lg:w-2/5">
-                                    <div class="rounded-3xl overflow-hidden bg-white shadow-lg h-96">
-
+                                <div class="w-full lg:w-2/5 mt-8 lg:mt-0">
+                                    <div class="rounded-3xl bg-white shadow-lg p-6 h-96">
+                                        
                                     </div>
                                 </div>
                             </div>

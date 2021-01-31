@@ -57,11 +57,42 @@ select {
 */
 
 .tooltip .tooltip-text {
-  visibility: hidden;
-  text-align: center;
-  z-index: 100;
+    visibility: hidden;
+    text-align: center;
+    z-index: 100;
 }
 
 .tooltip:hover .tooltip-text {
-  visibility: visible;
+    visibility: visible;
+}
+
+/*
+
+    Data Tables CSS
+
+*/
+
+table.dataTable tbody tr {
+    @apply py-4;
+}
+
+table.dataTable tbody th,
+table.dataTable tbody td {
+    @apply px-4;
+}
+
+table.dataTable.no-footer {
+    @apply border-none;
+}
+
+table.dataTable thead th, table.dataTable thead td {
+    @apply border-none;
+}
+
+.dataTables_wrapper .dataTables_length select {
+    @apply mb-4 border-none outline-none px-4 py-2 rounded-full focus:ring focus:ring-indigo-500 bg-gray-100 transition duration-500;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    @apply mb-4 border-none outline-none px-4 py-2 rounded-full focus:ring focus:ring-indigo-500 bg-gray-100 transition duration-500;
 }

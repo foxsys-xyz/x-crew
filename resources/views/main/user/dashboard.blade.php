@@ -94,15 +94,6 @@
                                 <span class="flex text-gray-500 text-xs">11 aircraft stations online</span>
 
                                 <div class="mt-6 rounded-xl rounded-br-none" id="mapid" style="height: 520px;"></div>
-                                <script>
-                                    var map = L.map('mapid').setView([51.505, -0.09], 13);
-
-                                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-
-                                    L.marker([51.5, -0.09]).addTo(map)
-                                    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-                                    .openPopup();
-                                </script>
                             </div>
                         </div>
                     </div>
@@ -113,5 +104,16 @@
             </div>
         </div>
     </div>
+
+    <script>
+        var map = L.map('mapid').setView([51.505, -0.2], 5);
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> Contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+        }).addTo(map);
+
+        L.marker([51.5, -0.09]).addTo(map)
+        .bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
+    </script>
 
 @endsection

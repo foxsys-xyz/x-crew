@@ -56,14 +56,15 @@
                             </svg>
                         </button>
                     </div>
-                    <script>
-                        window.onload = function() {
-                            completeApplicationPage();
-                        };
-                    </script>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        window.onload = function() {
+            completeApplicationPage();
+        };
+    </script>
 
 @endsection

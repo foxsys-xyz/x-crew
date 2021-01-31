@@ -65,7 +65,7 @@ Route::domain('cloud.' . env('APP_URL'))->group(function () {
 
     Route::get('/cfcdc', 'User\CFCDCController@index')->name('cfcdc');
     Route::post('/cfcdc/search', 'User\CFCDCController@search')->name('cfcdc.search');
-    Route::get('/cfcdc/!fb/{id}', 'User\CFCDCController@flight')->name('cfcdc.flight');
+    Route::get('/cfcdc/!fb/{id}', 'User\CFCDCController@preBook')->name('cfcdc.flight');
     Route::post('/cfcdc/!fb/confirm/{id}', 'User\CFCDCController@confirmFlight')->name('cfcdc.flight.confirm');
     Route::post('/cfcdc/!fb/cancel', 'User\CFCDCController@cancelFlight')->name('cfcdc.flight.cancel');
     Route::post('/cfcdc/!pf/generate', 'User\CFCDCController@generatePreFlight')->name('cfcdc.preflight.generate');
