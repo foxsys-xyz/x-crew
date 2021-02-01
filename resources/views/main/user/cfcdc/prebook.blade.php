@@ -84,7 +84,7 @@
                                         </h5>
                                         <span class="flex text-gray-500 text-xs">raw flight route which is to be flown, as shown below</span>
 
-                                        <div class="mt-6 rounded-xl rounded-br-none" id="mapid" style="height: 520px;"></div>
+                                        <div class="mt-6 rounded-xl rounded-br-none z-10" id="mapid" style="height: 520px;"></div>
                                     </div>
                                 </div>
                             </div>
@@ -111,7 +111,7 @@
         ];
 
         var polyline = L.polyline(latlngs, {color: 'gray', weight: 1}).addTo(map);
-        map.fitBounds(polyline.getBounds());
+        map.fitBounds(polyline.getBounds(), {maxZoom: 2.5});
 
         L.marker([{{ $departure->lat }}, {{ $departure->lng }}]).addTo(map).bindPopup('{{ $departure->airport_name }}');
         L.marker([{{ $arrival->lat }}, {{ $arrival->lng }}]).addTo(map).bindPopup('{{ $arrival->airport_name }}');

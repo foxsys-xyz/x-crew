@@ -93,7 +93,7 @@
                                 </h5>
                                 <span class="flex text-gray-500 text-xs">11 aircraft stations online</span>
 
-                                <div class="mt-6 rounded-xl rounded-br-none" id="mapid" style="height: 520px;"></div>
+                                <div class="mt-6 rounded-xl rounded-br-none z-10" id="mapid" style="height: 520px;"></div>
                             </div>
                         </div>
                     </div>

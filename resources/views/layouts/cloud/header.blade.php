@@ -29,7 +29,7 @@
                 class="fixed inset-0 h-full w-full z-10" style="display: none;"></div>
 
                 <div x-show="notificationOpen"
-                    class="absolute right-0 mt-8 w-80 bg-white rounded-lg shadow-xl overflow-hidden z-10"
+                    class="absolute z-30 right-0 mt-8 w-80 bg-white rounded-lg shadow-xl overflow-hidden"
                     style="width: 20rem; display: none;">
                     <a href="#"
                         class="flex items-center px-4 py-3 text-gray-600 hover:text-white hover:bg-indigo-600 -mx-2">
@@ -84,7 +84,7 @@
                 style="display: none;"></div>
 
                 <div x-show="dropdownOpen"
-                    class="absolute right-0 mt-8 w-64 bg-white rounded-3xl overflow-hidden shadow-lg z-10 p-3"
+                    class="absolute z-30 right-0 mt-8 w-64 bg-white rounded-3xl overflow-hidden shadow-lg p-3"
                     style="display: none;">
 
                     <h5 class="text-sm font-semibold px-4 pt-2 flex items-center">
