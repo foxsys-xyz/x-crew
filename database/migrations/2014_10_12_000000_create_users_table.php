@@ -42,7 +42,7 @@ class CreateUsersTable extends Migration
 
             // Include VATSIM Stuff.
 
-            $table->integer('vatsim')->nullable();
+            $table->integer('vatsim')->nullable()->unique();
             $table->text('access_token')->nullable();
             $table->text('refresh_token')->nullable();
             $table->unsignedBigInteger('token_expires')->nullable();

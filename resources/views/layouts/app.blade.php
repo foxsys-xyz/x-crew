@@ -8,7 +8,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ env('VA_NAME') }} | {{ env('APP_NAME') }}</title>
+        <title>{{ env('VA_NAME') }} // {{ env('APP_NAME') }}</title>
 
         <!-- foxsys-xyz Favicon -->
         <link rel="icon" type="image/png" href="/img/foxsys-xyz [Icon] [Light Back].png">
