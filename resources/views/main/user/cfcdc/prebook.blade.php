@@ -111,7 +111,7 @@
         ];
 
         var polyline = L.polyline(latlngs, {color: 'gray', weight: 1}).addTo(map);
-        map.fitBounds(polyline.getBounds(), {maxZoom: 2.5});
+        map.fitBounds(polyline.getBounds(), {maxZoom: 4});
 
         L.marker([{{ $departure->lat }}, {{ $departure->lng }}]).addTo(map).bindPopup('{{ $departure->airport_name }}');
         L.marker([{{ $arrival->lat }}, {{ $arrival->lng }}]).addTo(map).bindPopup('{{ $arrival->airport_name }}');

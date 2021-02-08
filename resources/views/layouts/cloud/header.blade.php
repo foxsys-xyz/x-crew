@@ -87,14 +87,29 @@
                     class="absolute z-30 right-0 mt-8 w-64 bg-white rounded-3xl overflow-hidden shadow-lg p-3"
                     style="display: none;">
 
-                    <h5 class="text-sm font-semibold px-4 pt-2 flex items-center">
+                    <h5 class="font-semibold px-4 pt-2 flex items-center">
                         {{ Auth::user()->fname . ' ' . Auth::user()->lname }}
 
-                        @if (Auth::user()->rwp == 1)
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check inline-block w-5 ml-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#667eea" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        @if (Auth::user()->rwp == true)
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check inline-block w-5 ml-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6366f1" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <circle cx="12" cy="12" r="9" />
                                 <path d="M9 12l2 2l4 -4" />
+                            </svg>
+                        @endif
+
+                        @if (Auth::user()->staff == true)
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-drone inline-block w-5 {{ Auth::user()->rwp != true ? 'ml-3' : 'ml-1' }}" viewBox="0 0 24 24" stroke-width="1.5" stroke="#22c55e" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M10 10h4v4h-4z"></path>
+                                <line x1="10" y1="10" x2="6.5" y2="6.5"></line>
+                                <path d="M9.96 6a3.5 3.5 0 1 0 -3.96 3.96"></path>
+                                <path d="M14 10l3.5 -3.5"></path>
+                                <path d="M18 9.96a3.5 3.5 0 1 0 -3.96 -3.96"></path>
+                                <line x1="14" y1="14" x2="17.5" y2="17.5"></line>
+                                <path d="M14.04 18a3.5 3.5 0 1 0 3.96 -3.96"></path>
+                                <line x1="10" y1="14" x2="6.5" y2="17.5"></line>
+                                <path d="M6 14.04a3.5 3.5 0 1 0 3.96 3.96"></path>
                             </svg>
                         @endif
                     </h5>

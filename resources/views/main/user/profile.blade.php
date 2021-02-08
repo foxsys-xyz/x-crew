@@ -79,14 +79,33 @@
                                         <div class="p-8 pt-6">
                                             <h3 class="flex items-center text-black font-semibold leading-6">
                                                 {{ Auth::user()->fname . ' ' . Auth::user()->lname }} 
-                                                @if (Auth::user()->rwp == 1)
+
+                                                @if (Auth::user()->rwp == true)
                                                     <div class="tooltip">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check inline-block w-5 ml-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#667eea" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check inline-block w-5 ml-3 cursor-pointer" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6366f1" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                                             <circle cx="12" cy="12" r="9" />
                                                             <path d="M9 12l2 2l4 -4" />
                                                         </svg>
-                                                        <span class="tooltip-text text-xs font-light px-2 py-1 text-white bg-black opacity-75 ml-3 rounded-full">Real World Pilot</span>
+                                                        <span class="absolute tooltip-text text-xs font-light px-2 py-1 text-white bg-black opacity-75 ml-3 rounded-full">Real World Pilot</span>
+                                                    </div>
+                                                @endif
+
+                                                @if (Auth::user()->staff == true)
+                                                    <div class="tooltip">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-drone inline-block w-5 {{ Auth::user()->rwp != true ? 'ml-3' : 'ml-1' }} cursor-pointer" viewBox="0 0 24 24" stroke-width="1.5" stroke="#22c55e" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                            <path d="M10 10h4v4h-4z"></path>
+                                                            <line x1="10" y1="10" x2="6.5" y2="6.5"></line>
+                                                            <path d="M9.96 6a3.5 3.5 0 1 0 -3.96 3.96"></path>
+                                                            <path d="M14 10l3.5 -3.5"></path>
+                                                            <path d="M18 9.96a3.5 3.5 0 1 0 -3.96 -3.96"></path>
+                                                            <line x1="14" y1="14" x2="17.5" y2="17.5"></line>
+                                                            <path d="M14.04 18a3.5 3.5 0 1 0 3.96 -3.96"></path>
+                                                            <line x1="10" y1="14" x2="6.5" y2="17.5"></line>
+                                                            <path d="M6 14.04a3.5 3.5 0 1 0 3.96 3.96"></path>
+                                                        </svg>
+                                                        <span class="absolute tooltip-text text-xs font-light px-2 py-1 text-white bg-black opacity-75 ml-3 rounded-full">Staff Member</span>
                                                     </div>
                                                 @endif
                                             </h3>
@@ -111,13 +130,14 @@
                                                 <line x1="12" y1="8" x2="12.01" y2="8" />
                                                 <polyline points="11 12 12 12 12 16 13 16" />
                                             </svg>
-                                            about verified badges
+                                            about profile badges
                                         </h5>
-                                        <span class="flex text-gray-500 text-xs">verification badge for real world pilots</span>
+                                        <span class="flex text-gray-500 text-xs">profile badges for real world pilots & management</span>
 
                                         <p class="mt-6 text-xs">
-                                            these badges are only given to real world pilots holding a valid license. if you're a valid license holder, 
-                                            contact your virtual airline staff with an image of your license and ask them to verify you.
+                                            these badges are only given to real world pilots holding a valid license or the virtual airline managment. if you're a valid license holder, 
+                                            contact your virtual airline management with an image of your license and ask them to verify you. else, if you want to become a part of the management,
+                                            please email to the appropriate contact.
                                         </p>
                                     </div>
                                     <div class="rounded-3xl bg-white mt-8 p-6 shadow-lg">

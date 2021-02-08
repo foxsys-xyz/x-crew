@@ -29,7 +29,7 @@
                         <div class="mt-8">
                             <div class="lg:flex w-full gap-8">
                                 <div class="w-full lg:w-3/5">
-                                    <div class="rounded-3xl bg-white shadow-lg p-6">
+                                    <div class="rounded-3xl bg-white shadow-lg p-6 overflow-y-auto">
                                         <table id="search" class="pb-6">
                                             <thead>
                                                 <tr>

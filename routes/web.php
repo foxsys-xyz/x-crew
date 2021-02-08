@@ -46,7 +46,6 @@ Route::domain('auth.' . env('APP_URL'))->group(function () {
 });
 
 Route::domain('cloud.' . env('APP_URL'))->group(function () {
-
     Route::get('/dashboard', 'User\DashboardController@index')->name('dashboard');
 
     /**
@@ -72,4 +71,49 @@ Route::domain('cloud.' . env('APP_URL'))->group(function () {
     Route::get('/cfcdc/!pf/{uuid}', 'User\CFCDCController@preFlight')->name('cfcdc.preflight');
     Route::get('/cfcdc/!sb/process', 'User\CFCDCController@processSimbrief')->name('cfcdc.process.simbrief');
     Route::get('/cfcdc/!br/{encrypt}', 'User\CFCDCController@briefing')->name('cfcdc.briefing');
+});
+
+Route::domain('staff.' . env('APP_URL'))->group(function () {
+    Route::get('/dashboard', 'Staff\DashboardController@index')->name('staff.dashboard');
+
+    Route::get('/pilots/applications', 'Staff\ApplicationController@index')->name('staff.user.applications');
+    Route::post('/pilots/approve/{id}', 'Staff\ApplicationController@approve')->name('staff.user.approve');
+    Route::post('/pilots/disapprove/{id}', 'Staff\ApplicationController@disapprove')->name('staff.user.disapprove');
+
+    Route::get('/roles', 'Staff\RoleController@index')->name('staff.roles');
+    Route::post('/roles', 'Staff\RoleController@add')->name('staff.roles.add');
+    Route::put('/roles/update/{id}', 'Staff\RoleController@update')->name('staff.roles.update');
+    Route::delete('/roles/delete/{id}', 'Staff\RoleController@delete')->name('staff.roles.delete');
+
+    Route::get('/pilots', 'Staff\UserController@index')->name('staff.users');
+    Route::get('/pilots/edit/{id}', 'Staff\UserController@edit')->name('staff.user.edit');
+    Route::put('/pilots/update/{id}', 'Staff\UserController@update')->name('staff.user.update');
+
+    Route::get('/airports', 'Staff\AirportController@index')->name('staff.airports');
+    Route::get('/airports/all', 'Staff\AirportController@all')->name('staff.airports.all');
+    Route::post('/airports', 'Staff\AirportController@add')->name('staff.airport.add');
+    Route::post('/airports/import', 'Staff\AirportController@import')->name('staff.airports.import');
+    Route::get('/airports/ops/{id}', 'Staff\AirportController@edit')->name('staff.airport.edit');
+    Route::put('/airports/update/{id}', 'Staff\AirportController@update')->name('staff.airport.update');
+    Route::delete('/airports/delete/{id}', 'Staff\AirportController@delete')->name('staff.airport.delete');
+
+    Route::post('/airports/runways/import', 'Staff\AirportController@import_r')->name('staff.airports.runways.import');
+
+    Route::post('/airports/frequencies/import', 'Staff\AirportController@import_f')->name('staff.airports.frequencies.import');
+
+    Route::get('/aircrafts', 'Staff\AircraftController@index')->name('staff.aircrafts');
+    Route::get('/aircrafts/all', 'Staff\AircraftController@all')->name('staff.aircrafts.all');
+    Route::post('/aircrafts', 'Staff\AircraftController@add')->name('staff.aircraft.add');
+    Route::post('/aircrafts/import', 'Staff\AircraftController@import')->name('staff.aircrafts.import');
+    Route::get('/aircrafts/ops/{id}', 'Staff\AircraftController@edit')->name('staff.aircraft.edit');
+    Route::put('/aircrafts/update/{id}', 'Staff\AircraftController@update')->name('staff.aircraft.update');
+    Route::delete('/aircrafts/delete/{id}', 'Staff\AircraftController@delete')->name('staff.aircraft.delete');
+
+    Route::get('/schedules', 'Staff\ScheduleController@index')->name('staff.schedules');
+    Route::get('/schedules/all', 'Staff\ScheduleController@all')->name('staff.schedules.all');
+    Route::post('/schedules', 'Staff\ScheduleController@add')->name('staff.schedule.add');
+    Route::post('/schedules/import', 'Staff\ScheduleController@import')->name('staff.schedules.import');
+    Route::get('/schedules/ops/{id}', 'Staff\ScheduleController@edit')->name('staff.schedule.edit');
+    Route::put('/schedules/update/{id}', 'Staff\ScheduleController@update')->name('staff.schedule.update');
+    Route::delete('/schedules/delete/{id}', 'Staff\ScheduleController@delete')->name('staff.schedule.delete');
 });
