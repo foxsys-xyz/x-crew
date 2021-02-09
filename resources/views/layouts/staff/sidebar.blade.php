@@ -30,7 +30,7 @@
                     </svg>
                 @endif
             </span> <br />
-            <span class="text-xs text-gray-500">Senior Training Captain</span>
+            <span class="text-xs text-gray-500">Human Resources Manager</span>
         </div>
     </div>
 
@@ -58,30 +58,30 @@
 
         <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
             href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar inline-block w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                <rect x="4" y="5" width="16" height="16" rx="2" />
-                <line x1="16" y1="3" x2="16" y2="7" />
-                <line x1="8" y1="3" x2="8" y2="7" />
-                <line x1="4" y1="11" x2="20" y2="11" />
-                <line x1="11" y1="15" x2="12" y2="15" />
-                <line x1="12" y1="15" x2="12" y2="18" />
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users inline-block w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
             </svg>
 
-            <span class="mx-3">Schedule</span>
+            <span class="mx-3">Pilots</span>
         </a>
 
         <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
             href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-server inline-block w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                <rect x="3" y="4" width="18" height="8" rx="3" />
-                <rect x="3" y="12" width="18" height="8" rx="3" />
-                <line x1="7" y1="8" x2="7" y2="8.01" />
-                <line x1="7" y1="16" x2="7" y2="16.01" />
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clipboard-list inline-block w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"></path>
+                <rect x="9" y="3" width="6" height="4" rx="2"></rect>
+                <line x1="9" y1="12" x2="9.01" y2="12"></line>
+                <line x1="13" y1="12" x2="15" y2="12"></line>
+                <line x1="9" y1="16" x2="9.01" y2="16"></line>
+                <line x1="13" y1="16" x2="15" y2="16"></line>
             </svg>
 
-            <span class="mx-3">Resources</span>
+            <span class="mx-3">Applications</span>
         </a>
 
         <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
@@ -96,43 +96,39 @@
                 <line x1="18.35" y1="5.65" x2="15" y2="9" />
             </svg>
 
-            <span class="mx-3">Help</span>
+            <span class="mx-3">PIREPs</span>
         </a>
 
-        @if (Auth::user()->staff == true)
+        <div class="border border-gray-200 border-t-1 my-6 mx-4"></div>
 
-            <div class="border border-gray-200 border-t-1 my-6 mx-4"></div>
+        <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
+            href="{{ route('staff.dashboard') }}" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-drone inline-block w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M10 10h4v4h-4z"></path>
+                <line x1="10" y1="10" x2="6.5" y2="6.5"></line>
+                <path d="M9.96 6a3.5 3.5 0 1 0 -3.96 3.96"></path>
+                <path d="M14 10l3.5 -3.5"></path>
+                <path d="M18 9.96a3.5 3.5 0 1 0 -3.96 -3.96"></path>
+                <line x1="14" y1="14" x2="17.5" y2="17.5"></line>
+                <path d="M14.04 18a3.5 3.5 0 1 0 3.96 -3.96"></path>
+                <line x1="10" y1="14" x2="6.5" y2="17.5"></line>
+                <path d="M6 14.04a3.5 3.5 0 1 0 3.96 3.96"></path>
+            </svg>
 
-            <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
-                href="{{ route('staff.dashboard') }}" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-drone inline-block w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M10 10h4v4h-4z"></path>
-                    <line x1="10" y1="10" x2="6.5" y2="6.5"></line>
-                    <path d="M9.96 6a3.5 3.5 0 1 0 -3.96 3.96"></path>
-                    <path d="M14 10l3.5 -3.5"></path>
-                    <path d="M18 9.96a3.5 3.5 0 1 0 -3.96 -3.96"></path>
-                    <line x1="14" y1="14" x2="17.5" y2="17.5"></line>
-                    <path d="M14.04 18a3.5 3.5 0 1 0 3.96 -3.96"></path>
-                    <line x1="10" y1="14" x2="6.5" y2="17.5"></line>
-                    <path d="M6 14.04a3.5 3.5 0 1 0 3.96 3.96"></path>
-                </svg>
+            <span class="mx-3">Pilot Access</span>
+        </a>
 
-                <span class="mx-3">Staff Access</span>
-            </a>
+        <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
+            href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-inbox inline-block w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                <path d="M4 13h3l3 3h4l3 -3h3"></path>
+            </svg>
 
-            <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
-                href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-inbox inline-block w-6" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <rect x="4" y="4" width="16" height="16" rx="2"></rect>
-                    <path d="M4 13h3l3 3h4l3 -3h3"></path>
-                </svg>
-
-                <span class="mx-3">xMail</span>
-            </a>
-
-        @endif
+            <span class="mx-3">xMail</span>
+        </a>
     </nav>
 
 <!-- Application Sidebar End -->

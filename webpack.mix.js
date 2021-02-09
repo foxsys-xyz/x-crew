@@ -19,7 +19,11 @@ mix.sass('resources/sass/app.scss', 'public/css')
     postCss: [ tailwindcss('tailwind.config.js') ],
   })
 
-mix.scripts('resources/js/app.js', 'public/js/app.js')
+mix.js('resources/js/app.js', 'public/js')
+
+/*
+  Tabler Icons FTW!
+*/
 
 mix.copyDirectory('node_modules/@tabler/icons/iconfont/fonts', 'public/icons/fonts')
 mix.copy('node_modules/@tabler/icons/iconfont/tabler-icons.min.css', 'public/icons')

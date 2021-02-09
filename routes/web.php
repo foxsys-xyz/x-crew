@@ -40,8 +40,15 @@ Route::domain('apply.' . env('APP_URL'))->group(function () {
 Route::domain('auth.' . env('APP_URL'))->group(function () {
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
     Route::post('/login', 'Auth\LoginController@login')->name('login.check');
+
+    /**
+     * VATSIM Connect API Routes [Do Not Edit Without Lead Dev's Permission]
+     *
+     */
+
     Route::get('/with/vatsim', 'Auth\LoginController@completeAuthenticationWithVATSIM')->name('login.with.vatsim');
     Route::get('/authenticated', 'User\DashboardController@confirmAuthentication')->name('auth.authenticated');
+
     Route::post('/logout', 'Auth\LoginController@logout')->middleware('auth')->name('logout');
 });
 
@@ -49,18 +56,18 @@ Route::domain('cloud.' . env('APP_URL'))->group(function () {
     Route::get('/dashboard', 'User\DashboardController@index')->name('dashboard');
 
     /**
-    * Profile Routes [Do Not Edit Without Lead Dev's Permission]
-    *
-    */
+     * Profile Routes [Do Not Edit Without Lead Dev's Permission]
+     *
+     */
 
     Route::get('/profile', 'User\ProfileController@index')->name('profile');
     Route::patch('/profile', 'User\ProfileController@updateProfile')->name('profile.update');
     Route::patch('/profile/password', 'User\ProfileController@updatePassword')->name('profile.password.update');
 
     /**
-    * CFCDC Routes [Do Not Edit Without Lead Dev's Permission]
-    *
-    */
+     * CFCDC Routes [Do Not Edit Without Lead Dev's Permission]
+     *
+     */
 
     Route::get('/cfcdc', 'User\CFCDCController@index')->name('cfcdc');
     Route::post('/cfcdc/search', 'User\CFCDCController@search')->name('cfcdc.search');
@@ -76,18 +83,38 @@ Route::domain('cloud.' . env('APP_URL'))->group(function () {
 Route::domain('staff.' . env('APP_URL'))->group(function () {
     Route::get('/dashboard', 'Staff\DashboardController@index')->name('staff.dashboard');
 
+    /**
+     * Staff Access Routes // Application Monitoring [Do Not Edit Without Lead Dev's Permission]
+     *
+     */
+
     Route::get('/pilots/applications', 'Staff\ApplicationController@index')->name('staff.user.applications');
     Route::post('/pilots/approve/{id}', 'Staff\ApplicationController@approve')->name('staff.user.approve');
     Route::post('/pilots/disapprove/{id}', 'Staff\ApplicationController@disapprove')->name('staff.user.disapprove');
+
+    /**
+     * Staff Access Routes // Role Management [Do Not Edit Without Lead Dev's Permission]
+     *
+     */
 
     Route::get('/roles', 'Staff\RoleController@index')->name('staff.roles');
     Route::post('/roles', 'Staff\RoleController@add')->name('staff.roles.add');
     Route::put('/roles/update/{id}', 'Staff\RoleController@update')->name('staff.roles.update');
     Route::delete('/roles/delete/{id}', 'Staff\RoleController@delete')->name('staff.roles.delete');
 
+    /**
+     * Staff Access Routes // Pilot Management [Do Not Edit Without Lead Dev's Permission]
+     *
+     */
+
     Route::get('/pilots', 'Staff\UserController@index')->name('staff.users');
     Route::get('/pilots/edit/{id}', 'Staff\UserController@edit')->name('staff.user.edit');
     Route::put('/pilots/update/{id}', 'Staff\UserController@update')->name('staff.user.update');
+
+    /**
+     * Staff Access Routes // CFCDC Management // Airports [Do Not Edit Without Lead Dev's Permission]
+     *
+     */
 
     Route::get('/airports', 'Staff\AirportController@index')->name('staff.airports');
     Route::get('/airports/all', 'Staff\AirportController@all')->name('staff.airports.all');
@@ -96,10 +123,13 @@ Route::domain('staff.' . env('APP_URL'))->group(function () {
     Route::get('/airports/ops/{id}', 'Staff\AirportController@edit')->name('staff.airport.edit');
     Route::put('/airports/update/{id}', 'Staff\AirportController@update')->name('staff.airport.update');
     Route::delete('/airports/delete/{id}', 'Staff\AirportController@delete')->name('staff.airport.delete');
-
     Route::post('/airports/runways/import', 'Staff\AirportController@import_r')->name('staff.airports.runways.import');
-
     Route::post('/airports/frequencies/import', 'Staff\AirportController@import_f')->name('staff.airports.frequencies.import');
+
+    /**
+     * Staff Access Routes // CFCDC Management // Aircrafts [Do Not Edit Without Lead Dev's Permission]
+     *
+     */
 
     Route::get('/aircrafts', 'Staff\AircraftController@index')->name('staff.aircrafts');
     Route::get('/aircrafts/all', 'Staff\AircraftController@all')->name('staff.aircrafts.all');
@@ -108,6 +138,11 @@ Route::domain('staff.' . env('APP_URL'))->group(function () {
     Route::get('/aircrafts/ops/{id}', 'Staff\AircraftController@edit')->name('staff.aircraft.edit');
     Route::put('/aircrafts/update/{id}', 'Staff\AircraftController@update')->name('staff.aircraft.update');
     Route::delete('/aircrafts/delete/{id}', 'Staff\AircraftController@delete')->name('staff.aircraft.delete');
+
+    /**
+     * Staff Access Routes // CFCDC Management // Schedules [Do Not Edit Without Lead Dev's Permission]
+     *
+     */
 
     Route::get('/schedules', 'Staff\ScheduleController@index')->name('staff.schedules');
     Route::get('/schedules/all', 'Staff\ScheduleController@all')->name('staff.schedules.all');

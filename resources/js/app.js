@@ -1,5 +1,9 @@
 // require('./bootstrap');
 
+import 'alpinejs';
+global.$ = global.jQuery = require('jquery');
+import dt from 'datatables.net-dt';
+
 /* ==__ All Custom JS Goes Here For Minification __== */
 
 /* -- Email Verification Page -- */

@@ -1,7 +1,5 @@
 /*
-
     Tailwind Stuff
-
 */
 
 @tailwind base;
@@ -11,9 +9,7 @@
 @tailwind utilities;
 
 /*
-
     Custom Styled Scrollbar
-
 */
 
 @media (max-device-width: 768px) {
@@ -37,9 +33,7 @@
 }
 
 /*
-
     Hide select formatting for Chrome and Edge
-
 */
 
 select {
@@ -51,9 +45,7 @@ select {
 }
 
 /*
-
     Custom Tooltip
-
 */
 
 .tooltip .tooltip-text {
@@ -67,10 +59,10 @@ select {
 }
 
 /*
-
     Data Tables CSS
-
 */
+
+@import '~datatables.net-dt/css/jquery.dataTables.css';
 
 table.dataTable tbody tr {
     @apply py-4;
