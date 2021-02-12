@@ -3,13 +3,9 @@
 @section('content')
  
     <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-gray-100">
-        <div :class="sidebarOpen ? 'block' : 'hidden'" @click="sidebarOpen = false" class="fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden"></div>
     
-        <div :class="sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'" class="fixed z-30 inset-y-0 left-0 w-64 transition duration-300 transform bg-white overflow-y-auto lg:translate-x-0 lg:static lg:inset-0">
-            
-            @include('layouts.cloud.sidebar')
+        @include('layouts.cloud.sidebar')
 
-        </div>
         <div class="flex-1 flex flex-col overflow-hidden">
             <div class="bg-white overflow-y-auto">
 
@@ -98,8 +94,8 @@
                                     </div>
                                 </div>
                                 <div class="w-full lg:w-2/5 mt-8 lg:mt-0">
-                                    <div class="rounded-3xl bg-white shadow-lg p-6 h-96">
-                                        
+                                    <div class="rounded-3xl bg-white shadow-lg p-6">
+                                        <canvas id="myChart"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -112,5 +108,81 @@
             </div>
         </div>
     </div>
+
+    <script>
+        chartOptionsConfiguration =  {
+            maintainAspectRatio: false,
+            legend: {
+                display: false
+            },
+            tooltips: {
+                backgroundColor: '#FFFFFF',
+                titleFontColor: '#333',
+                bodyFontColor: '#666',
+                bodySpacing: 4,
+                xPadding: 12,
+                mode: "nearest",
+                intersect: 0,
+                position: "nearest"
+            },
+            responsive: true,
+            scales: {
+                yAxes: [{
+                barPercentage: 1.6,
+                    gridLines: {
+                        drawBorder: false,
+                        color: '#FFFFFF',
+                        zeroLineColor: "transparent"
+                    },
+                    ticks: {
+                        beginAtZero: true,
+                        display: false
+                    }
+                }],
+
+                xAxes: [{
+                    barPercentage: 1.6,
+                    gridLines: {
+                        drawBorder: false,
+                        color: '#FFFFFF',
+                        zeroLineColor: "transparent"
+                    },
+                    ticks: {
+                        padding: 20,
+                        fontColor: "#9A9A9A"
+                    }
+                }]
+            }
+        };
+
+        var ctx = document.getElementById("myChart").getContext("2d");
+
+        var data = {
+            labels: ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'],
+            datasets: [{
+                label: "Flights",
+                fill: true,
+                backgroundColor: '#FFFFFF',
+                borderColor: '#FF0000',
+                borderWidth: 2,
+                borderDash: [],
+                borderDashOffset: 0.0,
+                pointBackgroundColor: '#FF0000',
+                pointBorderColor: '#FFFFFF',
+                pointHoverBackgroundColor: '#FF0000',
+                pointBorderWidth: 20,
+                pointHoverRadius: 4,
+                pointHoverBorderWidth: 15,
+                pointRadius: 4,
+                data: [5, 6, 13, 2, 5, 5, 12, 8, 9, 10, 11, 12],
+            }]
+        };
+
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: chartOptionsConfiguration
+        });
+    </script>
 
 @endsection

@@ -3,6 +3,7 @@
 import 'alpinejs';
 global.$ = global.jQuery = require('jquery');
 import dt from 'datatables.net-dt';
+import Chart from 'chart.js';
 
 /* ==__ All Custom JS Goes Here For Minification __== */
 
