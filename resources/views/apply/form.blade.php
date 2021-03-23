@@ -80,7 +80,7 @@
                                 @endif
                                 last name
                             </span>
-                            <input name="lname" class="w-full mt-2 outline-none px-4 py-2 rounded-full {{ $errors->has('lname') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-100 transition duration-500 {{ $applicant->lname == null ? '' : 'cursor-not-allowed opacity-75' }}" placeholder="Doe" @if ($applicant->lname != null) value="{{ $applicant->lname }}" disabled @endif />
+                            <input name="lname" class="w-full mt-2 outline-none px-4 py-2 rounded-full {{ $errors->has('lname') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-100 transition duration-500 {{ $applicant->lname == null ? '' : 'cursor-not-allowed' }}" placeholder="Doe" @if ($applicant->lname != null) value="{{ $applicant->lname }}" disabled @endif />
                         </div>
                     </div>
                     <div class="mt-2 w-full">
@@ -125,7 +125,7 @@
                                 @endif
                                 nationality
                             </span>
-                            <select name="country" class="w-full mt-2 outline-none px-4 py-2 rounded-full {{ $errors->has('country') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-100 transition duration-500 {{ $applicant->country == null ? '' : 'cursor-not-allowed opacity-75' }}" @if ($applicant->country != null) disabled @endif>
+                            <select name="country" class="w-full mt-2 outline-none px-4 py-2 rounded-full {{ $errors->has('country') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-100 transition duration-500 {{ $applicant->country == null ? '' : 'cursor-not-allowed' }}" @if ($applicant->country != null) disabled @endif>
                                 <option hidden>[select]</option>
                                 <option {{ $applicant->country == "AF" ? "selected" : "" }} value="AF">Afghanistan</option>
                                 <option {{ $applicant->country == "AX" ? "selected" : "" }} value="AX">Åland Islands</option>
