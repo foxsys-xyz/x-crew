@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="lg:flex justify-center absolute right-0 left-0 lg:top-0 text-center px-10 py-5 text-xs text-white bg-gray-500">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-router inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-router inline-block w-4 mr-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
             <rect x="3" y="13" width="18" height="8" rx="2" />
             <line x1="17" y1="17" x2="17" y2="17.01" />

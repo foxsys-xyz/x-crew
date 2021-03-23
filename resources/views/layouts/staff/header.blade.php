@@ -14,7 +14,7 @@
         </div>
         
         <p class="flex items-center text-xs">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-satellite inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6366f1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-satellite inline-block w-5 mr-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M3.707 6.293l2.586 -2.586a1 1 0 0 1 1.414 0l5.586 5.586a1 1 0 0 1 0 1.414l-2.586 2.586a1 1 0 0 1 -1.414 0l-5.586 -5.586a1 1 0 0 1 0 -1.414z"></path>
                 <path d="M6 10l-3 3l3 3l3 -3"></path>

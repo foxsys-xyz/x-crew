@@ -22,7 +22,7 @@ class SettingSeeder extends Seeder
     public function run()
     {
         DB::table('settings')->insert([
-            'name' => 'Real Operations',
+            'name' => 'realops',
             'status' => false,
             'created_at' => Carbon::now('UTC'),
             'updated_at' => Carbon::now('UTC'),

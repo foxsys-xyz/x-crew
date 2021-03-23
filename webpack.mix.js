@@ -25,7 +25,7 @@ mix.js('resources/js/app.js', 'public/js')
   Tabler Icons FTW!
 */
 
-mix.copyDirectory('node_modules/@tabler/icons/iconfont/fonts', 'public/icons/fonts')
+mix.copy('node_modules/@tabler/icons/iconfont/fonts/tabler-icons.svg', 'public/icons')
 mix.copy('node_modules/@tabler/icons/iconfont/tabler-icons.min.css', 'public/icons')
 
 if (mix.inProduction()) {
