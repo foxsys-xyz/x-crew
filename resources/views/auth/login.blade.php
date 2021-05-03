@@ -85,19 +85,25 @@
                         </form>
                         <button x-on:click="document.getElementById('connect-with-vatsim').submit();" class="text-sm justify-center lg:text-base w-full lg:w-auto flex items-center focus:outline-none px-4 py-2 rounded-full focus:shadow-outline bg-green-600 hover:bg-green-700 text-white transition duration-500" placeholder="username">
                             vatsim sso
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-up-right inline-block w-6 ml-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z"/>
-                                <line x1="17" y1="7" x2="7" y2="17" />
-                                <polyline points="8 7 17 7 17 16" />
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rotate-clockwise-2 inline-block w-6 ml-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M9 4.55a8 8 0 0 1 6 14.9m0 -4.45v5h5"></path>
+                                <line x1="5.63" y1="7.16" x2="5.63" y2="7.17"></line>
+                                <line x1="4.06" y1="11" x2="4.06" y2="11.01"></line>
+                                <line x1="4.63" y1="15.1" x2="4.63" y2="15.11"></line>
+                                <line x1="7.16" y1="18.37" x2="7.16" y2="18.38"></line>
+                                <line x1="11" y1="19.94" x2="11" y2="19.95"></line>
                             </svg>
                         </button>
                     </div>
                     <div x-data class="lg:mt-0 mt-3 w-full lg:w-auto">
                         <button x-on:click="document.getElementById('login-manual').submit();" class="text-sm justify-center lg:text-base w-full lg:w-auto flex items-center focus:outline-none px-4 py-2 rounded-full focus:shadow-outline bg-blue-600 hover:bg-blue-700 text-white transition duration-500" placeholder="username">
                             sign in
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-forward inline-block w-6 ml-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z"/>
-                                <path d="M15 11l4 4l-4 4m4 -4h-11a4 4 0 0 1 0 -8h1" />
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-lock-open inline-block w-6 ml-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <rect x="5" y="11" width="14" height="10" rx="2"></rect>
+                                <circle cx="12" cy="16" r="1"></circle>
+                                <path d="M8 11v-5a4 4 0 0 1 8 0"></path>
                             </svg>
                         </button>
                     </div>
