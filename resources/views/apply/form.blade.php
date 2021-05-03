@@ -60,7 +60,7 @@
                                 @endif
                                 first name
                             </span>
-                            <input name="fname" class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full {{ $errors->has('fname') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-800 bg-opacity-60 transition duration-500 {{ $applicant->fname == null ? '' : 'cursor-not-allowed' }}" placeholder="John" @if ($applicant->fname != null) value="{{ $applicant->fname }}" disabled @endif />
+                            <input name="fname" class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full {{ $errors->has('fname') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-blue-500' }} bg-gray-800 bg-opacity-60 transition duration-500 {{ $applicant->fname == null ? '' : 'cursor-not-allowed' }}" placeholder="John" @if ($applicant->fname != null) value="{{ $applicant->fname }}" disabled @endif />
                         </div>
                         <div class="w-full lg:w-full mt-1 lg:mt-0">
                             <span class="text-xs lg:flex items-center {{ $errors->has('lname') ? 'text-red-500' : '' }}">
@@ -78,7 +78,7 @@
                                 @endif
                                 last name
                             </span>
-                            <input name="lname" class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full {{ $errors->has('lname') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-800 bg-opacity-60 transition duration-500 {{ $applicant->lname == null ? '' : 'cursor-not-allowed' }}" placeholder="Doe" @if ($applicant->lname != null) value="{{ $applicant->lname }}" disabled @endif />
+                            <input name="lname" class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full {{ $errors->has('lname') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-blue-500' }} bg-gray-800 bg-opacity-60 transition duration-500 {{ $applicant->lname == null ? '' : 'cursor-not-allowed' }}" placeholder="Doe" @if ($applicant->lname != null) value="{{ $applicant->lname }}" disabled @endif />
                         </div>
                     </div>
                     <div class="mt-2 w-full">
@@ -103,7 +103,7 @@
                                 </svg>
                                 date of birth
                             </span>
-                            <input name="dob" class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full {{ $errors->has('dob') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-800 bg-opacity-60 transition duration-500" placeholder="yyyy-mm-dd" value="{{ $applicant->dob }}" />
+                            <input name="dob" class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full {{ $errors->has('dob') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-blue-500' }} bg-gray-800 bg-opacity-60 transition duration-500" placeholder="yyyy-mm-dd" value="{{ $applicant->dob }}" />
                         </div>
                         <div class="w-full lg:w-full mt-1 lg:mt-0">
                             <span class="text-xs lg:flex items-center {{ $errors->has('country') ? 'text-red-500' : '' }}">
@@ -121,7 +121,7 @@
                                 @endif
                                 nationality
                             </span>
-                            <select name="country" class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full {{ $errors->has('country') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-800 bg-opacity-60 transition duration-500 {{ $applicant->country == null ? '' : 'cursor-not-allowed' }}" @if ($applicant->country != null) disabled @endif>
+                            <select name="country" class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full {{ $errors->has('country') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-blue-500' }} bg-gray-800 bg-opacity-60 transition duration-500 {{ $applicant->country == null ? '' : 'cursor-not-allowed' }}" @if ($applicant->country != null) disabled @endif>
                                 <option hidden>[select]</option>
                                 <option {{ $applicant->country == "AF" ? "selected" : "" }} value="AF">Afghanistan</option>
                                 <option {{ $applicant->country == "AX" ? "selected" : "" }} value="AX">Åland Islands</option>

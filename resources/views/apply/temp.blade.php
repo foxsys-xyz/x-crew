@@ -64,7 +64,7 @@
                                 </svg>
                                 email
                             </span>
-                            <input type="email" name="email" class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full {{ $errors->has('email') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-800 bg-opacity-60 transition duration-500" placeholder="john@doe.com" />
+                            <input type="email" name="email" class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full {{ $errors->has('email') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-blue-500' }} bg-gray-800 bg-opacity-60 transition duration-500" placeholder="john@doe.com" />
                         </form>
                     </div>
                 </div>
