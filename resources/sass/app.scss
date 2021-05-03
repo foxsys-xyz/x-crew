@@ -21,15 +21,15 @@
 }
 
 *::-webkit-scrollbar-track {
-    @apply rounded-full bg-gray-100;
+    @apply rounded-full bg-black;
 }
 
 *::-webkit-scrollbar {
-    @apply w-1 bg-gray-100;
+    @apply w-1 bg-black;
 }
 
 *::-webkit-scrollbar-thumb {
-    @apply rounded-full bg-gray-300 hover:bg-gray-400;
+    @apply rounded-full bg-black hover:bg-gray-900 bg-opacity-80;
 }
 
 /*

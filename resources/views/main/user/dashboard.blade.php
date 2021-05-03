@@ -2,18 +2,18 @@
 
 @section('content')
  
-    <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-gray-100">
+    <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-black text-white">
 
         @include('layouts.cloud.sidebar')
 
         <div class="flex-1 flex flex-col overflow-hidden">
-            <div class="bg-white overflow-y-auto">
+            <div class="bg-gray-900 bg-opacity-80 overflow-y-auto">
 
                 @include('layouts.cloud.header')
 
-                <main class="flex-1 overflow-x-hidden bg-gray-100 rounded-tl-3xl rounded-bl-3xl min-h-screen">
+                <main class="flex-1 overflow-x-hidden bg-black rounded-tl-3xl rounded-bl-3xl min-h-screen">
                     <div class="mx-auto px-8 py-8">
-                        <h4 class="text-gray-700 text-2xl leading-3 font-medium inline-flex items-center">
+                        <h4 class="text-2xl leading-3 font-medium inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-smart-home inline-block w-8 mr-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <path d="M19 8.71l-5.333 -4.148a2.666 2.666 0 0 0 -3.274 0l-5.334 4.148a2.665 2.665 0 0 0 -1.029 2.105v7.2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-7.2c0 -.823 -.38 -1.6 -1.03 -2.105" />
@@ -21,13 +21,13 @@
                             </svg>
                             Dashboard
                         </h4>
-                        <span class="flex leading-3 text-gray-500 text-xs">welcome back, here is your airline dashboard.</span>
+                        <span class="flex leading-3 text-xs">welcome back, here is your airline dashboard.</span>
 
                         <div class="mt-8">
                             <div class="flex flex-wrap -mx-3">
                                 <div class="w-full px-3 sm:w-1/2 lg:w-1/3">
-                                    <div class="flex items-center p-6 rounded-3xl bg-white shadow-lg">
-                                        <div class="p-3 rounded-xl bg-indigo-600 text-white">
+                                    <div class="flex items-center p-6 bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl">
+                                        <div class="p-3 rounded-xl bg-indigo-600 shadow-xl">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-license inline-block w-6 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                                 <path d="M15 21h-9a3 3 0 0 1 -3 -3v-1h10v2a2 2 0 0 0 4 0v-14a2 2 0 1 1 2 2h-2m2 -4h-11a3 3 0 0 0 -3 3v11" />
@@ -37,15 +37,15 @@
                                         </div>
         
                                         <div class="mx-5">
-                                            <h4 class="text-2xl text-gray-700">2</h4>
-                                            <div class="text-gray-500">PIREPs</div>
+                                            <h4 class="text-2xl">2</h4>
+                                            <div>PIREPs</div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="w-full mt-6 px-3 sm:w-1/2 lg:w-1/3 sm:mt-0">
-                                    <div class="flex items-center p-6 rounded-3xl bg-white shadow-lg">
-                                        <div class="p-3 rounded-xl bg-gray-600 text-white">
+                                    <div class="flex items-center p-6 bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl">
+                                        <div class="p-3 rounded-xl bg-gray-600 shadow-xl">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock inline-block w-6 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                                 <circle cx="12" cy="12" r="9" />
@@ -54,15 +54,15 @@
                                         </div>
         
                                         <div class="mx-5">
-                                            <h4 class="text-2xl text-gray-700">03:21</h4>
-                                            <div class="text-gray-500">Chrono</div>
+                                            <h4 class="text-2xl">03:21</h4>
+                                            <div>Chrono</div>
                                         </div>
                                     </div>
                                 </div>
         
                                 <div class="w-full mt-6 px-3 sm:w-1/2 lg:w-1/3 lg:mt-0">
-                                    <div class="flex items-center p-6 rounded-3xl bg-white shadow-lg">
-                                        <div class="p-3 rounded-xl bg-yellow-600 text-white">
+                                    <div class="flex items-center p-6 bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl">
+                                        <div class="p-3 rounded-xl bg-yellow-600 shadow-xl">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane-arrival inline-block w-6 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                                 <path d="M15 12h5a2 2 0 0 1 0 4h-15l-3 -6h3l2 2h3l-2 -7h3z" transform="rotate(15 12 12) translate(0 -1)" />
@@ -71,15 +71,15 @@
                                         </div>
         
                                         <div class="mx-5">
-                                            <h4 class="text-2xl text-gray-700">-221</h4>
-                                            <div class="text-gray-500">Average</div>
+                                            <h4 class="text-2xl">-221</h4>
+                                            <div>Average</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="w-full lg:w-3/5 mt-8 bg-white rounded-3xl p-6 shadow-lg">
-                                <h5 class="text-gray-700 leading-3 font-medium inline-flex items-center">
+                            <div class="w-full lg:w-3/5 mt-8 p-6 bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl">
+                                <h5 class="leading-3 font-medium inline-flex items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="animate-spin icon icon-tabler icon-tabler-forbid-2 inline-block w-5 mr-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                         <circle cx="12" cy="12" r="9" />
@@ -87,9 +87,9 @@
                                     </svg>
                                     Company [ ACARS ] Uplink
                                 </h5>
-                                <span class="flex text-gray-500 text-xs">11 aircraft stations online</span>
+                                <span class="flex text-xs">11 aircraft stations online</span>
 
-                                <div class="mt-6 rounded-xl rounded-br-none z-10" id="mapid" style="height: 520px;"></div>
+                                <div class="mt-6 rounded-xl rounded-br-none z-10 shadow-xl" id="mapid" style="height: 520px;"></div>
                             </div>
                         </div>
                     </div>

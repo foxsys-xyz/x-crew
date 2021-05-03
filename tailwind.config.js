@@ -1,10 +1,7 @@
 const colors = require('tailwindcss/colors');
 
 module.exports = {
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
-  },
+  mode: 'jit',
   purge: [
     './storage/framework/views/*.php',
     './resources/**/*.blade.php',

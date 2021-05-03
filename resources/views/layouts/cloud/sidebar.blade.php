@@ -3,11 +3,11 @@
 
     <div :class="sidebarOpen ? 'block' : 'hidden'" @click="sidebarOpen = false" class="fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden"></div>
         
-    <div :class="sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'" class="fixed z-30 inset-y-0 left-0 w-64 transition duration-300 transform bg-white overflow-y-auto lg:translate-x-0 lg:static lg:inset-0">
+    <div :class="sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'" class="fixed z-30 inset-y-0 left-0 w-64 transition duration-300 transform bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg lg:backdrop-filter-none overflow-y-auto lg:translate-x-0 lg:static lg:inset-0">
         <div class="mx-12 mt-12">
             <img class="w-24 rounded-3xl" src="{{ Auth::user()->avatar }}" />
             <div class="leading-5 mt-8">
-                <span class="text-black text-lg inline-flex items-center">
+                <span class="text-lg inline-flex items-center">
                     {{ Auth::user()->username }}
 
                     @if (Auth::user()->rwp == true)
@@ -19,7 +19,7 @@
                     @endif
 
                     @if (Auth::user()->staff == true)
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-drone inline-block w-5 {{ Auth::user()->rwp != true ? 'ml-3' : 'ml-1' }} text-green-500 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-drone inline-block w-5 {{ Auth::user()->rwp != true ? 'ml-3' : 'ml-2' }} text-green-500 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M10 10h4v4h-4z"></path>
                             <line x1="10" y1="10" x2="6.5" y2="6.5"></line>
@@ -33,12 +33,12 @@
                         </svg>
                     @endif
                 </span> <br />
-                <span class="text-xs text-gray-500">Senior Training Captain</span>
+                <span class="text-xs">Senior Training Captain</span>
             </div>
         </div>
 
         <nav class="mt-6 mx-8">    
-            <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
+            <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm hover:bg-gray-800 hover:bg-opacity-60"
                 href="{{ route('dashboard') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-smart-home inline-block w-6 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -49,7 +49,7 @@
                 <span class="mx-3">Dashboard</span>
             </a>
 
-            <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
+            <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm hover:bg-gray-800 hover:bg-opacity-60"
                 href="{{ route('cfcdc') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane inline-block w-6 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z"/>
@@ -59,7 +59,7 @@
                 <span class="mx-3">CFCDC</span>
             </a>
 
-            <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
+            <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm hover:bg-gray-800 hover:bg-opacity-60"
                 href="#">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar inline-block w-6 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -74,7 +74,7 @@
                 <span class="mx-3">Schedule</span>
             </a>
 
-            <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
+            <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm hover:bg-gray-800 hover:bg-opacity-60"
                 href="#">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-server inline-block w-6 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -87,7 +87,7 @@
                 <span class="mx-3">Resources</span>
             </a>
 
-            <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
+            <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm hover:bg-gray-800 hover:bg-opacity-60"
                 href="#">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-lifebuoy inline-block w-6 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -104,9 +104,7 @@
 
             @if (Auth::user()->staff == true)
 
-                <div class="border border-gray-200 border-t-1 my-6 mx-4"></div>
-
-                <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
+                <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm hover:bg-gray-800 hover:bg-opacity-60"
                     href="{{ route('staff.dashboard') }}" target="_blank">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-drone inline-block w-6 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -124,7 +122,7 @@
                     <span class="mx-3">Staff Access</span>
                 </a>
 
-                <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25"
+                <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm hover:bg-gray-800 hover:bg-opacity-60"
                     href="#">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-inbox inline-block w-6 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>

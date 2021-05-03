@@ -1,12 +1,14 @@
 
 <!-- Application Header -->
 
-    <header class="flex justify-between items-center py-4 px-8 lg:pl-0 bg-white">
+    <header class="flex justify-between items-center py-4 px-8 lg:pl-0">
         <div class="flex items-center">
-            <button @click="sidebarOpen = true" class="text-gray-500 focus:outline-none lg:hidden">
-                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4 6H20M4 12H20M4 18H11" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round"></path>
+            <button @click="sidebarOpen = true" class="focus:outline-none lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-align-left w-6" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <line x1="4" y1="6" x2="20" y2="6"></line>
+                    <line x1="4" y1="12" x2="14" y2="12"></line>
+                    <line x1="4" y1="18" x2="18" y2="18"></line>
                 </svg>
             </button>
 
@@ -17,11 +19,14 @@
             
             <div x-data="{ notificationOpen: false }" class="relative">
                 <button @click="notificationOpen = ! notificationOpen"
-                    class="flex mx-4 text-gray-600 focus:outline-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-notification inline-block w-6 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M10 6h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
-                        <circle cx="17" cy="7" r="3" />
+                    class="flex mx-4 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-access-point inline-block w-6" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <line x1="12" y1="12" x2="12" y2="12.01"></line>
+                        <path d="M14.828 9.172a4 4 0 0 1 0 5.656"></path>
+                        <path d="M17.657 6.343a8 8 0 0 1 0 11.314"></path>
+                        <path d="M9.168 14.828a4 4 0 0 1 0 -5.656"></path>
+                        <path d="M6.337 17.657a8 8 0 0 1 0 -11.314"></path>
                     </svg>
                 </button>
 
@@ -35,44 +40,30 @@
                     x-transition:leave="transition ease-in duration-75"
                     x-transition:leave-start="transform opacity-100 scale-100"
                     x-transition:leave-end="transform opacity-0 scale-95"
-                    class="absolute z-30 right-0 mt-8 w-80 bg-white rounded-lg shadow-xl overflow-hidden"
+                    class="absolute z-30 right-0 mt-8 w-80 p-3 bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl backdrop-filter backdrop-blur-sm"
                     style="width: 20rem; display: none;">
                     <a href="#"
-                        class="flex items-center px-4 py-3 text-gray-600 hover:text-white hover:bg-indigo-600 -mx-2">
-                        <img class="h-8 w-8 rounded-full object-cover mx-1"
-                            src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"
-                            alt="avatar">
+                        class="transition duration-500 flex items-center px-4 py-2 rounded-full text-sm hover:bg-gray-800 hover:bg-opacity-60">
                         <p class="text-sm mx-2">
-                            <span class="font-bold" href="#">Sara Salah</span> replied on the <span
-                                class="font-bold text-indigo-400" href="#">Upload Image</span> artical . 2m
+                            <span class="font-bold" href="#">Sara Salah</span> replied on the
                         </p>
                     </a>
                     <a href="#"
-                        class="flex items-center px-4 py-3 text-gray-600 hover:text-white hover:bg-indigo-600 -mx-2">
-                        <img class="h-8 w-8 rounded-full object-cover mx-1"
-                            src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"
-                            alt="avatar">
+                        class="transition duration-500 flex items-center px-4 py-2 rounded-full text-sm hover:bg-gray-800 hover:bg-opacity-60">
                         <p class="text-sm mx-2">
-                            <span class="font-bold" href="#">Slick Net</span> start following you . 45m
+                            <span class="font-bold" href="#">Slick Net</span> start
                         </p>
                     </a>
                     <a href="#"
-                        class="flex items-center px-4 py-3 text-gray-600 hover:text-white hover:bg-indigo-600 -mx-2">
-                        <img class="h-8 w-8 rounded-full object-cover mx-1"
-                            src="https://images.unsplash.com/photo-1450297350677-623de575f31c?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=334&amp;q=80"
-                            alt="avatar">
+                        class="transition duration-500 flex items-center px-4 py-2 rounded-full text-sm hover:bg-gray-800 hover:bg-opacity-60">
                         <p class="text-sm mx-2">
-                            <span class="font-bold" href="#">Jane Doe</span> Like Your reply on <span
-                                class="font-bold text-indigo-400" href="#">Test with TDD</span> artical . 1h
+                            <span class="font-bold" href="#">Jane Doe</span> Like Your reply on
                         </p>
                     </a>
                     <a href="#"
-                        class="flex items-center px-4 py-3 text-gray-600 hover:text-white hover:bg-indigo-600 -mx-2">
-                        <img class="h-8 w-8 rounded-full object-cover mx-1"
-                            src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=398&amp;q=80"
-                            alt="avatar">
+                        class="transition duration-500 flex items-center px-4 py-2 rounded-full text-sm hover:bg-gray-800 hover:bg-opacity-60">
                         <p class="text-sm mx-2">
-                            <span class="font-bold" href="#">Abigail Bennett</span> start following you . 3h
+                            <span class="font-bold" href="#">Abigail Bennett</span> start
                         </p>
                     </a>
                 </div>
@@ -96,7 +87,7 @@
                     x-transition:leave="transition ease-in duration-75"
                     x-transition:leave-start="transform opacity-100 scale-100"
                     x-transition:leave-end="transform opacity-0 scale-95"
-                    class="absolute z-30 right-0 mt-8 w-64 bg-white rounded-3xl overflow-hidden shadow-lg p-3"
+                    class="absolute z-30 right-0 mt-8 w-64 p-3 bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl backdrop-filter backdrop-blur-sm"
                     style="display: none;">
 
                     <h5 class="font-semibold px-4 pt-2 flex items-center">
@@ -111,7 +102,7 @@
                         @endif
 
                         @if (Auth::user()->staff == true)
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-drone inline-block w-5 {{ Auth::user()->rwp != true ? 'ml-3' : 'ml-1' }} text-green-500 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-drone inline-block w-5 {{ Auth::user()->rwp != true ? 'ml-3' : 'ml-2' }} text-green-500 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M10 10h4v4h-4z"></path>
                                 <line x1="10" y1="10" x2="6.5" y2="6.5"></line>
@@ -127,12 +118,12 @@
                     </h5>
 
                     <div class="p-4 leading-4">
-                        <span class="text-xs text-gray-500">[ {{ Auth::user()->username }} ]</span> <br />
-                        <span class="text-xs text-gray-500">Senior Training Captain</span>
+                        <span class="text-xs">[ {{ Auth::user()->username }} ]</span> <br />
+                        <span class="text-xs">Senior Training Captain</span>
                     </div>
 
                     <a href="{{ route('profile') }}"
-                        class="transition duration-500 flex items-center px-4 py-2 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25">
+                        class="transition duration-500 flex items-center px-4 py-2 rounded-full text-sm hover:bg-gray-800 hover:bg-opacity-60">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user inline-block w-5 mr-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <circle cx="12" cy="7" r="4" />
@@ -142,7 +133,7 @@
                     </a>
 
                     <a href="{{ route('cfcdc') }}"
-                        class="transition duration-500 flex items-center px-4 py-2 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25">
+                        class="transition duration-500 flex items-center px-4 py-2 rounded-full text-sm hover:bg-gray-800 hover:bg-opacity-60">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane inline-block w-5 mr-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <path d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2-4l-2 -4h3l2 2h4l-2 -7h3z" />
@@ -157,7 +148,7 @@
                     </form>
                     
                     <a x-on:click="document.getElementById('logout').submit();"
-                        class="transition duration-500 cursor-pointer flex items-center px-4 py-2 rounded-full text-sm text-gray-700 hover:bg-gray-300 hover:bg-opacity-25">
+                        class="transition duration-500 cursor-pointer flex items-center px-4 py-2 rounded-full text-sm hover:bg-gray-800 hover:bg-opacity-60">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout inline-block w-5 mr-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
