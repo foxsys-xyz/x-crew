@@ -42,7 +42,7 @@
                             </svg>
                             uuid
                         </span>
-                        <input class="w-full mt-2 outline-none px-4 py-2 rounded-full bg-gray-800 opacity-60 cursor-not-allowed" value="{{ $uuid }}" disabled />
+                        <input class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full bg-gray-800 opacity-60 cursor-not-allowed" value="{{ $uuid }}" disabled />
                     </div>
                 </div>
                 <div class="mt-4 lg:flex items-center lg:float-right lg:gap-2">

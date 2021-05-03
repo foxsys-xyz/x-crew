@@ -46,7 +46,7 @@
                                 </svg>
                                 email
                             </span>
-                            <input type="email" class="w-full mt-2 outline-none px-4 py-2 rounded-full bg-gray-800 opacity-60 cursor-not-allowed" value="{{ $applicant->email }}" disabled />
+                            <input type="email" class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full bg-gray-800 opacity-60 cursor-not-allowed" value="{{ $applicant->email }}" disabled />
                         </form>
                     </div>
                 </div>
