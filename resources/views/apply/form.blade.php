@@ -2,17 +2,17 @@
 
 @section('content')
 
-    <div class="h-screen">
+    <div class="h-screen bg-black text-white">
 
         <div class="hidden lg:flex items-center absolute bottom-0 left-0 px-10 py-5 text-xs">
-            <img class="w-4 mr-3" src="{{ asset('img/foxsys-xyz [Icon] [Light Back].png') }}" />
-            <span class="text-xs text-gray-500">foxsys-xyz, {{ date('Y') }}. all rights reserved.</span>
+            <img class="w-4 mr-3" src="{{ asset('img/foxsys-xyz [Icon] [Dark Back].png') }}" />
+            <span class="text-xs">foxsys-xyz, {{ date('Y') }}. all rights reserved.</span>
         </div>
 
         <div class="hidden lg:flex items-center absolute bottom-0 right-0 px-10 py-5 text-xs">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bolt inline-block w-4 mr-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                <polyline points="13 3 13 10 19 10 11 21 11 14 5 14 13 3" />
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folder inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2"></path>
             </svg>
             {{ $applicant->uuid }} {{ $applicant->vatsim != null ? '[ VATSIM Verified ]' : '[ Manual ]' }}
         </div>
@@ -21,11 +21,11 @@
 
         @if ($errors->any())
 
-            <div class="lg:flex justify-center absolute right-0 left-0 lg:top-0 text-center px-10 py-5 text-xs text-white bg-red-500">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ban inline-block w-4 mr-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <circle cx="12" cy="12" r="9" />
-                    <line x1="5.7" y1="5.7" x2="18.3" y2="18.3" />
+            <div class="lg:flex justify-center absolute right-0 left-0 lg:top-0 text-center px-10 py-5 text-xs bg-red-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-minus inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <line x1="9" y1="12" x2="15" y2="12"></line>
                 </svg>
                 strange, an error. maybe retry entering the details correctly?
             </div>
@@ -33,7 +33,7 @@
         @endif
 
         <div class="container h-full mx-auto flex justify-center items-center">
-            <div class="p-12 lg:p-0 w-full lg:w-2/5">
+            <div class="m-4 p-8 w-full lg:w-1/2 bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl">
                 
                 @include('layouts.sso.application.header')
 
@@ -47,85 +47,81 @@
                         <div class="w-full lg:w-full mt-1 lg:mt-0">
                             <span class="text-xs lg:flex items-center {{ $errors->has('fname') ? 'text-red-500' : '' }}">
                                 @if ($applicant->fname == null)
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <line x1="7" y1="7" x2="17" y2="17" />
-                                        <polyline points="17 8 17 17 8 17" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <line x1="7" y1="7" x2="17" y2="17"></line>
+                                        <polyline points="17 8 17 17 8 17"></polyline>
                                     </svg>
                                 @else
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-checks inline-block w-4 mr-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <path d="M7 12l5 5l10 -10" />
-                                        <path d="M2 12l5 5m5 -5l5 -5" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M5 12l5 5l10 -10"></path>
                                     </svg>
                                 @endif
                                 first name
                             </span>
-                            <input name="fname" class="w-full mt-2 outline-none px-4 py-2 rounded-full {{ $errors->has('fname') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-100 transition duration-500 {{ $applicant->fname == null ? '' : 'cursor-not-allowed' }}" placeholder="John" @if ($applicant->fname != null) value="{{ $applicant->fname }}" disabled @endif />
+                            <input name="fname" class="w-full mt-2 outline-none px-4 py-2 rounded-full {{ $errors->has('fname') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-800 bg-opacity-60 transition duration-500 {{ $applicant->fname == null ? '' : 'cursor-not-allowed' }}" placeholder="John" @if ($applicant->fname != null) value="{{ $applicant->fname }}" disabled @endif />
                         </div>
                         <div class="w-full lg:w-full mt-1 lg:mt-0">
                             <span class="text-xs lg:flex items-center {{ $errors->has('lname') ? 'text-red-500' : '' }}">
                                 @if ($applicant->lname == null)
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <line x1="7" y1="7" x2="17" y2="17" />
-                                        <polyline points="17 8 17 17 8 17" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <line x1="7" y1="7" x2="17" y2="17"></line>
+                                        <polyline points="17 8 17 17 8 17"></polyline>
                                     </svg>
                                 @else
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-checks inline-block w-4 mr-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <path d="M7 12l5 5l10 -10" />
-                                        <path d="M2 12l5 5m5 -5l5 -5" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M5 12l5 5l10 -10"></path>
                                     </svg>
                                 @endif
                                 last name
                             </span>
-                            <input name="lname" class="w-full mt-2 outline-none px-4 py-2 rounded-full {{ $errors->has('lname') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-100 transition duration-500 {{ $applicant->lname == null ? '' : 'cursor-not-allowed' }}" placeholder="Doe" @if ($applicant->lname != null) value="{{ $applicant->lname }}" disabled @endif />
+                            <input name="lname" class="w-full mt-2 outline-none px-4 py-2 rounded-full {{ $errors->has('lname') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-800 bg-opacity-60 transition duration-500 {{ $applicant->lname == null ? '' : 'cursor-not-allowed' }}" placeholder="Doe" @if ($applicant->lname != null) value="{{ $applicant->lname }}" disabled @endif />
                         </div>
                     </div>
                     <div class="mt-2 w-full">
                         <div class="w-full lg:w-full mt-1 lg:mt-0">
                             <span class="text-xs lg:flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-checks inline-block w-4 mr-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                    <path d="M7 12l5 5l10 -10" />
-                                    <path d="M2 12l5 5m5 -5l5 -5" />
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M5 12l5 5l10 -10"></path>
                                 </svg>
                                 email
                             </span>
-                            <input type="email" class="w-full mt-2 outline-none px-4 py-2 rounded-full bg-gray-100 cursor-not-allowed" value="{{ $applicant->email }}" disabled />
+                            <input type="email" class="w-full mt-2 outline-none px-4 py-2 rounded-full bg-gray-800 opacity-60 cursor-not-allowed" value="{{ $applicant->email }}" disabled />
                         </div>
                     </div>
                     <div class="mt-2 lg:flex w-full gap-2">
                         <div class="w-full lg:w-full mt-1 lg:mt-0">
                             <span class="text-xs lg:flex items-center {{ $errors->has('dob') ? 'text-red-500' : '' }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                    <line x1="7" y1="7" x2="17" y2="17" />
-                                    <polyline points="17 8 17 17 8 17" />
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <line x1="7" y1="7" x2="17" y2="17"></line>
+                                    <polyline points="17 8 17 17 8 17"></polyline>
                                 </svg>
                                 date of birth
                             </span>
-                            <input name="dob" class="w-full mt-2 outline-none px-4 py-2 rounded-full {{ $errors->has('dob') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-100 transition duration-500" placeholder="yyyy-mm-dd" value="{{ $applicant->dob }}" />
+                            <input name="dob" class="w-full mt-2 outline-none px-4 py-2 rounded-full {{ $errors->has('dob') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-800 bg-opacity-60 transition duration-500" placeholder="yyyy-mm-dd" value="{{ $applicant->dob }}" />
                         </div>
                         <div class="w-full lg:w-full mt-1 lg:mt-0">
                             <span class="text-xs lg:flex items-center {{ $errors->has('country') ? 'text-red-500' : '' }}">
                                 @if ($applicant->country == null)
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <line x1="7" y1="7" x2="17" y2="17" />
-                                        <polyline points="17 8 17 17 8 17" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <line x1="7" y1="7" x2="17" y2="17"></line>
+                                        <polyline points="17 8 17 17 8 17"></polyline>
                                     </svg>
                                 @else
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-checks inline-block w-4 mr-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                        <path d="M7 12l5 5l10 -10" />
-                                        <path d="M2 12l5 5m5 -5l5 -5" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M5 12l5 5l10 -10"></path>
                                     </svg>
                                 @endif
                                 nationality
                             </span>
-                            <select name="country" class="w-full mt-2 outline-none px-4 py-2 rounded-full {{ $errors->has('country') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-100 transition duration-500 {{ $applicant->country == null ? '' : 'cursor-not-allowed' }}" @if ($applicant->country != null) disabled @endif>
+                            <select name="country" class="w-full mt-2 outline-none px-4 py-2 rounded-full {{ $errors->has('country') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-800 bg-opacity-60 transition duration-500 {{ $applicant->country == null ? '' : 'cursor-not-allowed' }}" @if ($applicant->country != null) disabled @endif>
                                 <option hidden>[select]</option>
                                 <option {{ $applicant->country == "AF" ? "selected" : "" }} value="AF">Afghanistan</option>
                                 <option {{ $applicant->country == "AX" ? "selected" : "" }} value="AX">Åland Islands</option>
@@ -381,22 +377,24 @@
                     </div>
                 </form>
                 <div class="lg:flex items-center mt-4 text-xs">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="animate-pulse icon icon-tabler icon-tabler-alert-circle inline-block w-4 mr-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <circle cx="12" cy="12" r="9" />
-                        <line x1="12" y1="8" x2="12" y2="12" />
-                        <line x1="12" y1="16" x2="12.01" y2="16" />
+                    <svg xmlns="http://www.w3.org/2000/svg" class="animate-pulse icon icon-tabler icon-tabler-urgent inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M8 16v-4a4 4 0 0 1 8 0v4"></path>
+                        <path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7"></path>
+                        <rect x="6" y="16" width="12" height="4" rx="1"></rect>
                     </svg>
                     by continuing you agree to our&nbsp;
-                    <a class="text-indigo-500" href="{{ route('apply.privacy') }}" target="_blank">privacy policy</a>.
+                    <a class="text-blue-500" href="{{ route('apply.privacy') }}" target="_blank">privacy policy</a>.
                 </div>
                 <div class="mt-4 lg:flex lg:float-right lg:gap-2">
                     <div x-data class="lg:mt-0 mt-3 w-full lg:w-auto">
-                        <button x-on:click="document.getElementById('finalize-application').submit();" class="text-sm justify-center lg:text-base w-full lg:w-auto flex items-center focus:outline-none px-4 py-2 rounded-full focus:shadow-outline bg-indigo-500 hover:bg-indigo-600 text-white transition duration-500" placeholder="username">
+                        <button x-on:click="document.getElementById('finalize-application').submit();" class="text-sm justify-center lg:text-base w-full lg:w-auto flex items-center focus:outline-none px-4 py-2 rounded-full focus:shadow-outline bg-blue-600 hover:bg-blue-700 text-white transition duration-500" placeholder="username">
                             submit
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-thumb-up inline-block w-6 ml-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M7 11v8a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1v-7a1 1 0 0 1 1 -1h3a4 4 0 0 0 4 -4v-1a2 2 0 0 1 4 0v5h3a2 2 0 0 1 2 2l-1 5a2 3 0 0 1 -2 2h-7a3 3 0 0 1 -3 -3" />
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-right inline-block w-6 ml-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <line x1="13" y1="18" x2="19" y2="12"></line>
+                                <line x1="13" y1="6" x2="19" y2="12"></line>
                             </svg>
                         </button>
                     </div>

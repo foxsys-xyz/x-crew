@@ -2,12 +2,12 @@
 <!-- Application Header -->
 
     <img class="h-5" src="{{ asset('img/va_logo.png') }}" />
-    <div class="lg:flex items-center mt-4">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane inline-block w-6 mr-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z"/>
-            <path d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2-4l-2 -4h3l2 2h4l-2 -7h3z" />
-        </svg>Human Resources Operations Center
+    <div class="lg:flex items-center mt-4 mb-12">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-paperclip inline-block w-6 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M15 7l-6.5 6.5a1.5 1.5 0 0 0 3 3l6.5 -6.5a3 3 0 0 0 -6 -6l-6.5 6.5a4.5 4.5 0 0 0 9 9l6.5 -6.5"></path>
+        </svg>
+        Human Resources Operations Center
     </div>
-    <div class="border border-gray-200 border-t-1 w-1/3 mt-4"></div>
 
 <!-- Application Header -->
