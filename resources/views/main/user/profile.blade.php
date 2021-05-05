@@ -359,9 +359,6 @@
                         </div>
                     </div>
 
-                    <!-- Trigger for Modal -->
-                    <button type="button" @click="showModal = true">Open Modal</button>
-
                     <!-- Modal -->
                     <div class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true" x-show="showModal">
                         <div class="flex items-center justify-center h-full pt-4 px-4 pb-20 text-center sm:block sm:p-0">

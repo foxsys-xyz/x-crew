@@ -25,7 +25,7 @@ class ProfileController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //
     }
     
     /**
@@ -43,7 +43,7 @@ class ProfileController extends Controller
      */
     public function updateProfile(Request $request)
     {
-        $this->validate($request, [
+        $request->validate([
             'email' => 'email|required',
             'avatar' => 'image',
         ]);
@@ -80,7 +80,7 @@ class ProfileController extends Controller
      */
     public function updatePassword(Request $request)
     {
-        $this->validate($request, [
+        $request->validate([
             'oldpass' => 'required',
             'newpass' => 'required|confirmed',
             'newpass_confirmation' => 'required'
@@ -88,7 +88,7 @@ class ProfileController extends Controller
 
         $user = User::find(Auth::user()->id);
 
-        if (!Hash::check(request('oldpass'), $user->password)) {
+        if (! Hash::check(request('oldpass'), $user->password)) {
             return back()->with('error', 'hmm... the old password seems incorrect.');
         }
 

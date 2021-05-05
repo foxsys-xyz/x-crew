@@ -56,11 +56,11 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     /**
-     * The attributes that should be mutated to dates.
+     * The attributes that should be mutated to casts.
      *
      * @var array
      */
-    protected $dates = [
+    protected $casts = [
         'dob',
     ];
 

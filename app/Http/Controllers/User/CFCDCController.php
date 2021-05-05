@@ -16,6 +16,8 @@ use App\Models\Booking;
 use App\Models\Schedule;
 use App\Models\Aircraft;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Crypt;
 
 class CFCDCController extends Controller
 {
@@ -26,7 +28,7 @@ class CFCDCController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //
     }
 
     /**
@@ -66,14 +68,14 @@ class CFCDCController extends Controller
             $aircraft = null;
         }
 
-        return view('main.user.cfcdc.center', compact(
-            'lastrep',
-            'currentloc',
-            'weather',
-            'booking',
-            'schedule',
-            'aircraft'
-        ));
+        return view('main.user.cfcdc.center', [
+            'lastrep' => $lastrep,
+            'currentloc' => $currentloc,
+            'weather' => $weather,
+            'booking' => $booking,
+            'schedule' => $schedule,
+            'aircraft' => $aircraft
+        ]);
     }
 
     /**
@@ -82,7 +84,7 @@ class CFCDCController extends Controller
      */
     public function search(Request $request)
     {
-        $this->validate($request, [
+        $request->validate([
             'icao' => 'required'
         ]);
 
@@ -110,11 +112,11 @@ class CFCDCController extends Controller
             $currentloc = Airport::where('icao', $lastrep->arrival)->get();
         }
 
-        return view('main.user.cfcdc.search', compact(
-            'schedules',
-            'currentloc',
-            'lastrep'
-        ));
+        return view('main.user.cfcdc.search', [
+            'schedules' => $schedules,
+            'currentloc' => $currentloc,
+            'lastrep' => $lastrep
+        ]);
     }
 
     /**
@@ -139,19 +141,19 @@ class CFCDCController extends Controller
 
         $aircrafts = Aircraft::where('icao', $schedule->aircraft)->where('location', $currentloc->icao)->where('state', 'CLD/IDL')->get();
 
-        return view('main.user.cfcdc.prebook', compact(
-            'schedule',
-            'currentloc',
-            'departure',
-            'arrival',
-            'aircrafts'
-        ));
+        return view('main.user.cfcdc.prebook', [
+            'schedule' => $schedule,
+            'currentloc' => $currentloc,
+            'departure' => $departure,
+            'arrival' => $arrival,
+            'aircrafts' => $aircrafts
+        ]);
     }
 
     // Confirm the Booking
     public function booking_confirm(Request $request, $id)
     {
-        $this->validate($request, [
+        $request->validate([
             'aircraft' => 'required'
         ]);
 
@@ -206,7 +208,7 @@ class CFCDCController extends Controller
 
     public function preflight()
     {
-        $booking = Session::get('booking');
+        $booking = $request->session()->get('booking');
 
         if ($booking == null) {
             return redirect('/cfcdc')->with('error', 'Pre Flight Data was not requested correctly. Make sure you do it via CFCDC.');
@@ -234,18 +236,18 @@ class CFCDCController extends Controller
 
         $depm = $deptime->minute;
 
-        return view('user.ops.preflight', compact(
-            'schedule', 
-            'aircraft', 
-            'departure', 
-            'arrival', 
-            'departure_runways', 
-            'arrival_runways', 
-            'departure_frequencies', 
-            'arrival_frequencies', 
-            'deph', 
-            'depm'
-        ));
+        return view('user.ops.preflight', [
+            'schedule' => $schedule, 
+            'aircraft' => $aircraft, 
+            'departure' => $departure, 
+            'arrival' => $arrival, 
+            'departure_runways' => $departure_runways, 
+            'arrival_runways' => $arrival_runways, 
+            'departure_frequencies' => $departure_frequencies, 
+            'arrival_frequencies' => $arrival_frequencies, 
+            'deph' => $deph, 
+            'depm' => $depm
+        ]);
     }
 
     public function process_simbrief()
@@ -283,21 +285,21 @@ class CFCDCController extends Controller
         $xml = simplexml_load_file($url);
 
         $depht = $xml->api_params->dephour;
-        $ho = new DateTime("@$depht");
+        $ho = new DateTime("@{$depht}");
         $dephour = $ho->format('H');
 
         $depmt = $xml->api_params->depmin;
-        $mi = new DateTime("@$depmt");
+        $mi = new DateTime("@{$depmt}");
         $depmin = $mi->format('i');
 
         $deptime = Carbon::createFromFormat('Y-m-d H:i:s', '2005-12-05 ' . $dephour . ':' . $depmin . ':00');
 
         $durht = $xml->api_params->stehour;
-        $dho = new DateTime("@$durht");
+        $dho = new DateTime("@{$durht}");
         $durhour = $dho->format('H');
 
         $durmt = $xml->api_params->stemin;
-        $dmi = new DateTime("@$durmt");
+        $dmi = new DateTime("@{$durmt}");
         $durmin = $dmi->format('i');
 
         $duration = Carbon::createFromFormat('H:i:s', $durhour . ':' . $durmin . ':00');
@@ -312,6 +314,8 @@ class CFCDCController extends Controller
 
         $this->updateBooking($deptime, $duration, $arrtime);
 
-        return view('user.ops.briefing', compact('xml'));
+        return view('user.ops.briefing', [
+            'xml' => $xml
+        ]);
     }
 }

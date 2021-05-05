@@ -14,12 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/connect/with/vatsim', 'Auth\VATSIM\ConnectController@connectWithVATSIM')
+Route::post('connect/with/vatsim', 'Auth\VATSIM\ConnectController@connectWithVATSIM')
         ->withoutMiddleware('api')
         ->middleware('web')
         ->name('connect.with.vatsim');
 
-Route::get('/verify/with/vatsim', 'Auth\VATSIM\ConnectController@connectWithVATSIM')
+Route::get('verify/with/vatsim', 'Auth\VATSIM\ConnectController@connectWithVATSIM')
         ->withoutMiddleware('api')
         ->middleware('web')
         ->name('verify.with.vatsim');
