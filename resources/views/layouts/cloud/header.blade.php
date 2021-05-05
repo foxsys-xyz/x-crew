@@ -94,25 +94,17 @@
                         {{ Auth::user()->fname . ' ' . Auth::user()->lname }}
 
                         @if (Auth::user()->rwp == true)
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check inline-block w-5 ml-3 text-indigo-500 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <circle cx="12" cy="12" r="9" />
-                                <path d="M9 12l2 2l4 -4" />
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check text-blue-500 inline-block w-5 ml-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <circle cx="12" cy="12" r="9"></circle>
+                                <path d="M9 12l2 2l4 -4"></path>
                             </svg>
                         @endif
 
                         @if (Auth::user()->staff == true)
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-drone inline-block w-5 {{ Auth::user()->rwp != true ? 'ml-3' : 'ml-2' }} text-green-500 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-crown text-yellow-400 inline-block w-5 {{ Auth::user()->rwp != true ? 'ml-3' : 'ml-2' }}" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                <path d="M10 10h4v4h-4z"></path>
-                                <line x1="10" y1="10" x2="6.5" y2="6.5"></line>
-                                <path d="M9.96 6a3.5 3.5 0 1 0 -3.96 3.96"></path>
-                                <path d="M14 10l3.5 -3.5"></path>
-                                <path d="M18 9.96a3.5 3.5 0 1 0 -3.96 -3.96"></path>
-                                <line x1="14" y1="14" x2="17.5" y2="17.5"></line>
-                                <path d="M14.04 18a3.5 3.5 0 1 0 3.96 -3.96"></path>
-                                <line x1="10" y1="14" x2="6.5" y2="17.5"></line>
-                                <path d="M6 14.04a3.5 3.5 0 1 0 3.96 3.96"></path>
+                                <path d="M12 6l4 6l5 -4l-2 10h-14l-2 -10l5 4z"></path>
                             </svg>
                         @endif
                     </h5>
@@ -124,19 +116,19 @@
 
                     <a href="{{ route('profile') }}"
                         class="transition duration-500 flex items-center px-4 py-2 rounded-full text-sm hover:bg-gray-800 hover:bg-opacity-60">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user inline-block w-5 mr-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <circle cx="12" cy="7" r="4" />
-                            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
                         </svg>
                         Profile
                     </a>
 
                     <a href="{{ route('cfcdc') }}"
                         class="transition duration-500 flex items-center px-4 py-2 rounded-full text-sm hover:bg-gray-800 hover:bg-opacity-60">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane inline-block w-5 mr-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2-4l-2 -4h3l2 2h4l-2 -7h3z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2 -4l-2 -4h3l2 2h4l-2 -7h3z"></path>
                         </svg>
                         CFCDC
                     </a>
@@ -149,10 +141,10 @@
                     
                     <a x-on:click="document.getElementById('logout').submit();"
                         class="transition duration-500 cursor-pointer flex items-center px-4 py-2 rounded-full text-sm hover:bg-gray-800 hover:bg-opacity-60">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout inline-block w-5 mr-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
-                            <path d="M7 12h14l-3 -3m0 6l3 -3" />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
+                            <path d="M7 12h14l-3 -3m0 6l3 -3"></path>
                         </svg>
                         Logout
                     </a>

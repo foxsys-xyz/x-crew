@@ -67,8 +67,8 @@
                         <div class="mt-8">
                             <div class="lg:flex w-full gap-8">
                                 <div class="w-full lg:w-1/3">
-                                    <div class="bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl">
-                                        <div class="h-40 bg-cover bg-center" style="background-image: url(https://images.unsplash.com/photo-1587408811730-1a978e6c407d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80);"></div>
+                                    <div class="bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl overflow-hidden">
+                                        <div class="h-40 bg-cover bg-center" style="background-image: url('https://wallpapercave.com/wp/wp2471512.jpg');"></div>
                                         <div class="flex justify-left ml-6 -mt-8">
                                             <img src="{{ Auth::user()->avatar }}" class="w-24 rounded-3xl -mt-4">		
                                         </div>
