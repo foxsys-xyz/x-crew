@@ -56,7 +56,7 @@
                                 </svg>
                                 username
                             </span>
-                            <input name="username" class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full {{ $errors->has('username') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-blue-500' }} bg-gray-800 bg-opacity-60 transition duration-500" placeholder="{{ config(app.va_icao) }}1234" value="{{ old('username') }}" />
+                            <input name="username" class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full {{ $errors->has('username') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-blue-500' }} bg-gray-800 bg-opacity-60 transition duration-500" placeholder="{{ config('app.va_icao') }}1234" value="{{ old('username') }}" />
                         </div>
                         <div class="w-full lg:w-full mt-1 lg:mt-0">
                             <span class="text-xs lg:flex items-center {{ $errors->has('password') ? 'text-red-500' : '' }}">
