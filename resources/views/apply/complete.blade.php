@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.guest')
 
 @section('content')
 
@@ -50,7 +50,7 @@
                         <div class="lg:flex items-center" id="time"></div>
                     </div>
                     <div x-data class="lg:mt-0 mt-3 w-full lg:w-auto">
-                        <button name="manual" x-on:click="window.location.replace('{{ route('login') }}');" class="text-sm justify-center lg:text-base w-full lg:w-auto flex items-center focus:outline-none px-4 py-2 rounded-full focus:shadow-outline bg-indigo-600 text-white transition duration-500 " placeholder="username">
+                        <button name="manual" x-on:click="window.location.replace('{{ route('login') }}');" class="text-sm justify-center lg:text-base w-full lg:w-auto flex items-center focus:outline-none px-4 py-2 rounded-full focus:shadow-outline bg-indigo-600 transition duration-500 " placeholder="username">
                             manual
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-compass inline-block w-6 ml-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>

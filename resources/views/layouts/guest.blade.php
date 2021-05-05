@@ -29,25 +29,8 @@
     </head>
 
     <body class="font-mono">
-        <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-black text-white">
 
-            @include('layouts.cloud.sidebar')
+        @yield('content')
 
-            <div class="flex-1 flex flex-col overflow-hidden">
-                <div class="bg-gray-900 bg-opacity-80 overflow-y-auto">
-
-                    @include('layouts.cloud.header')
-
-                    <main class="flex-1 overflow-x-hidden bg-black rounded-tl-3xl rounded-bl-3xl min-h-screen">
-
-                        @yield('content')
-                    
-                    </main>
-                
-                    @include('layouts.cloud.footer')
-
-                </div>
-            </div>
-        </div>
     </body>
 </html>

@@ -25,7 +25,7 @@
                         </svg>
                     @endif
                 </span> <br />
-                <span class="text-xs">Senior Training Captain</span>
+                <span class="text-gray-400 text-xs">Senior Training Captain</span>
             </div>
         </div>
 

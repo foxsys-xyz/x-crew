@@ -242,8 +242,7 @@ class RegisterController extends Controller
         }
 
         $applicant->fill([
-            'email_verified_at' => now(),
-            'verification_token' => null
+            'email_verified_at' => now()
         ])->save();
 
         return redirect()->route('apply.form', ['uuid' => $applicant->uuid]);
@@ -314,7 +313,8 @@ class RegisterController extends Controller
                 'lname' => request('lname'),
                 'dob' => request('dob'),
                 'country' => request('country'),
-                'status' => 'C'
+                'status' => 'C',
+                'verification_token' => null
             ])->save();
         }
 

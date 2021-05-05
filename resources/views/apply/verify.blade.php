@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.guest')
 
 @section('content')
 
@@ -55,7 +55,7 @@
                         <div class="lg:flex items-center " id="verifyTime"></div>
                     </div>
                     <div x-data class="lg:mt-0 mt-3 w-full lg:w-auto">
-                        <button name="resend" x-on:click="document.getElementById('resend-email').submit();" class="text-sm justify-center lg:text-base w-full lg:w-auto flex items-center focus:outline-none px-4 py-2 rounded-full focus:shadow-outline bg-blue-600 text-white transition duration-500 " placeholder="username">
+                        <button name="resend" x-on:click="document.getElementById('resend-email').submit();" class="text-sm justify-center lg:text-base w-full lg:w-auto flex items-center focus:outline-none px-4 py-2 rounded-full focus:shadow-outline bg-blue-600 transition duration-500 " placeholder="username">
                             resend
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rotate inline-block w-6 ml-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>

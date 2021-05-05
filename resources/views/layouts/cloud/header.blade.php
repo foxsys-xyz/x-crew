@@ -109,7 +109,7 @@
                         @endif
                     </h5>
 
-                    <div class="p-4 leading-4">
+                    <div class="text-gray-400 p-4 leading-4">
                         <span class="text-xs">[ {{ Auth::user()->username }} ]</span> <br />
                         <span class="text-xs">Senior Training Captain</span>
                     </div>
