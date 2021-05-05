@@ -1,9 +1,10 @@
 {
     "preset": "laravel",
     "disabled": [
-        "ConcatenationSpacing",
         "AlphabeticalImports",
-        "TrailingCommasOnArrays"
+        "TrailingCommasOnArrays",
+        "ClassThingsOrder",
+        "ConcatenationNoSpacing"
     ],
     "excluded": []
 }

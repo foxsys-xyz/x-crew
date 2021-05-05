@@ -58,7 +58,7 @@ class CompleteAP extends Notification implements ShouldQueue
                         This can be used in reference with the staff when there is some issue with your application.
                     ')
                     ->line('UUID: **' . $this->applicant->uuid . '**')
-                    ->line('We sincerely thank you for taking interest in applying. If you possess any queries, please contact us at [' . env('VA_EMAIL') . '].');   
+                    ->line('We sincerely thank you for taking interest in applying. If you possess any queries, please contact us at [' . config('app.va_email') . '].');   
     }
 
     /**

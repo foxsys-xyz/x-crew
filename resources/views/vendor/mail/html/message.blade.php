@@ -21,7 +21,7 @@
     {{-- Footer --}}
     @slot('footer')
         @component('mail::footer')
-            © {{ date('Y') }} {{ env('VA_NAME') }}.
+            © {{ date('Y') }} {{ config('app.va_name') }}.
         @endcomponent
     @endslot
 @endcomponent

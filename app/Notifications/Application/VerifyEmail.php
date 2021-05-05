@@ -57,7 +57,7 @@ class VerifyEmail extends Notification implements ShouldQueue
                     ')
                     ->line('UUID: **' . $this->applicant->uuid . '**')
                     ->action('Verify Email 🚀', $this->verifyUrl)
-                    ->line('In case you haven\'t requested this operation, please ignore this email. If you possess any queries, please contact us at [' . env('VA_EMAIL') . '].');   
+                    ->line('In case you haven\'t requested this operation, please ignore this email. If you possess any queries, please contact us at [' . config('app.va_email') . '].');   
     }
 
     /**

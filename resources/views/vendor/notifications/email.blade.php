@@ -44,7 +44,7 @@
 {{ $salutation }}
 @else
 @lang('Blue Skies'),<br>
-{{ env('VA_NAME') }}
+{{ config('app.va_name') }}
 @endif
 
 {{-- Subcopy --}}

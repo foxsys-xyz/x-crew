@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::domain('apply.' . env('APP_URL'))->group(function () {
+Route::domain('apply.' . config('app.url'))->group(function () {
     Route::get('start', 'Auth\RegisterController@showRegistrationForm')->name('apply.start');
     Route::get('authenticated', 'User\DashboardController@confirmAuthentication')->name('apply.authenticated');
     Route::get('!t/{uuid}', 'Auth\RegisterController@showTemporaryForm')->name('apply.temp');
@@ -37,7 +37,7 @@ Route::domain('apply.' . env('APP_URL'))->group(function () {
     })->name('apply.privacy');
 });
 
-Route::domain('auth.' . env('APP_URL'))->group(function () {
+Route::domain('auth.' . config('app.url'))->group(function () {
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
     Route::post('login', 'Auth\LoginController@login')->name('login.check');
 
@@ -52,7 +52,7 @@ Route::domain('auth.' . env('APP_URL'))->group(function () {
     Route::post('logout', 'Auth\LoginController@logout')->middleware('auth')->name('logout');
 });
 
-Route::middleware('auth')->domain('cloud.' . env('APP_URL'))->group(function () {
+Route::middleware('auth')->domain('cloud.' . config('app.url'))->group(function () {
     Route::get('dashboard', 'User\DashboardController@index')->name('dashboard');
 
     /**
@@ -80,7 +80,7 @@ Route::middleware('auth')->domain('cloud.' . env('APP_URL'))->group(function () 
     Route::get('cfcdc/!br/{encrypt}', 'User\CFCDCController@briefing')->name('cfcdc.briefing');
 });
 
-Route::middleware(['auth', 'staff'])->domain('staff.' . env('APP_URL'))->group(function () {
+Route::middleware(['auth', 'staff'])->domain('staff.' . config('app.url'))->group(function () {
     Route::get('dashboard', 'Staff\DashboardController@index')->name('staff.dashboard');
 
     /**

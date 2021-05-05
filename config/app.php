@@ -125,6 +125,23 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Virtual Airline Details
+    |--------------------------------------------------------------------------
+    |
+    | The details are used within the application to call out the details
+    | of the virtual airline. These are provided by the client and must not
+    | be called directly from the env! Please make sure to do this.
+    |
+    */
+
+    'va_name' => env('VA_NAME'),
+
+    'va_icao' => env('VA_ICAO'),
+
+    'va_email' => env('VA_ICAO'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------
     |
