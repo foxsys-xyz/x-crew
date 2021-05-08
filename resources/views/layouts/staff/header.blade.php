@@ -1,7 +1,7 @@
 
 <!-- Application Header -->
 
-    <header class="flex justify-between items-center py-6 px-8 bg-white mx-6 mt-6 lg:ml-0 rounded-3xl">
+    <header class="flex justify-between items-center py-6 px-8 bg-gray-900 bg-opacity-80 mx-6 mt-6 lg:ml-0 rounded-3xl">
         <div class="flex items-center">
             <button @click="sidebarOpen = true" class="text-gray-500 focus:outline-none lg:hidden">
                 <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

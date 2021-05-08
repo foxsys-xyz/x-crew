@@ -3,20 +3,20 @@
 @section('content')
  
     <div class="mx-auto px-8 py-8">
-        <h4 class="text-gray-700 text-2xl leading-3 font-medium inline-flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane inline-block w-8 mr-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                <path d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2 -4l-2 -4h3l2 2h4l-2 -7h3z" />
+        <h4 class="text-2xl leading-3 font-medium inline-flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane inline-block w-8 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2 -4l-2 -4h3l2 2h4l-2 -7h3z"></path>
             </svg>
             CFCDC
         </h4>
-        <span class="flex leading-3 text-gray-500 text-xs">the central flight crew data center, for all.</span>
+        <span class="text-gray-400 flex leading-3 text-xs">the central flight crew data center, for all.</span>
 
         <div class="mt-8">
             <div class="lg:flex w-full gap-8">
                 <div class="w-full lg:w-3/5">
-                    <div class="rounded-3xl bg-white shadow-lg p-6 overflow-y-auto">
-                        <table id="search" class="pb-6">
+                    <div class="bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl p-6 overflow-y-auto">
+                        <table id="search" class="w-full">
                             <thead>
                                 <tr>
                                     <th class="text-left" data-priority="1">Airline</th>
@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div class="w-full lg:w-2/5 mt-8 lg:mt-0">
-                    <div class="rounded-3xl bg-white shadow-lg p-6 h-96">
+                    <div class="bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl p-6 h-96">
                         
                     </div>
                 </div>
@@ -64,7 +64,14 @@
 
     <script>
         $(document).ready( function () {
-            $('#search').DataTable();
+            $('#search').DataTable({
+                'language': {
+                    'paginate': {
+                        'previous': '&lt;',
+                        'next': '&gt;'
+                    }
+                }
+            });
         } );
     </script>
 

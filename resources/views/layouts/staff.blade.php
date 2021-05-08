@@ -16,6 +16,10 @@
         <!-- JS -->
         <script src="{{ mix('/js/app.js') }}"></script>
 
+        <!-- Lealet Maps -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
         <!-- Styles -->
         <link href="{{ mix('/css/app.css') }}" rel="stylesheet" type="text/css" />
 
@@ -25,8 +29,25 @@
     </head>
 
     <body class="font-mono">
+        <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-black text-white">
+            
+            @include('layouts.staff.sidebar')
+            
+            <div class="flex-1 flex flex-col overflow-hidden">
+                <div class="overflow-y-auto">
 
-        @yield('content')
+                    @include('layouts.staff.header')
 
+                    <main class="flex-1 overflow-x-hidden bg-black rounded-tl-3xl rounded-bl-3xl lg:rounded-none min-h-screen">
+
+                        @yield('content')
+                    
+                    </main>
+                
+                    @include('layouts.staff.footer')
+
+                </div>
+            </div>
+        </div>
     </body>
 </html>
