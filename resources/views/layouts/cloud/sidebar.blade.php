@@ -3,7 +3,7 @@
 
     <div :class="sidebarOpen ? 'block' : 'hidden'" @click="sidebarOpen = false" class="fixed z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden"></div>
         
-    <div :class="sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'" class="fixed z-30 inset-y-0 left-0 w-64 transition duration-300 transform bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg lg:backdrop-filter-none overflow-y-auto lg:translate-x-0 lg:static lg:inset-0">
+    <div :class="sidebarOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'" class="fixed z-30 inset-y-0 left-0 w-64 transition duration-300 transform bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-sm rounded-tr-3xl lg:rounded-none lg:backdrop-filter-none overflow-y-auto lg:translate-x-0 lg:static lg:inset-0">
         <div class="mx-12 mt-12">
             <img class="w-24 rounded-3xl" src="{{ Auth::user()->avatar }}" />
             <div class="leading-5 mt-8">
@@ -96,7 +96,7 @@
 
             @if (Auth::user()->staff == true)
 
-                <div class="ml-4 w-28 border border-gray-400 my-6"></div>
+                <div class="ml-4 w-28 border border-white rounded-full my-6"></div>
 
                 <a class="transition duration-500 flex items-center py-3 px-4 rounded-full text-sm hover:bg-gray-800 hover:bg-opacity-60"
                     href="{{ route('staff.dashboard') }}" target="_blank">

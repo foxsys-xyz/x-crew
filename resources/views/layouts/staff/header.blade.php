@@ -1,30 +1,113 @@
 
 <!-- Application Header -->
 
-    <header class="flex justify-between items-center py-6 px-8 bg-gray-900 bg-opacity-80 mx-6 mt-6 lg:ml-0 rounded-3xl">
+    <header class="flex justify-between items-center py-4 px-8 lg:pl-0">
         <div class="flex items-center">
-            <button @click="sidebarOpen = true" class="text-gray-500 focus:outline-none lg:hidden">
-                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4 6H20M4 12H20M4 18H11" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round"></path>
+            <button @click="sidebarOpen = true" class="focus:outline-none lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-align-left w-6" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <line x1="4" y1="6" x2="20" y2="6"></line>
+                    <line x1="4" y1="12" x2="14" y2="12"></line>
+                    <line x1="4" y1="18" x2="18" y2="18"></line>
                 </svg>
             </button>
 
-            <span class="lg:block pull-left hidden text-sm"><img src="{{ asset('img/va_logo.png') }}" class="h-5" /></span>
+            <span class="lg:block pull-left hidden text-sm"><img src="{{ asset('img/va_logo.png') }}" class="h-5 mr-4" /></span>
         </div>
-        
-        <p class="flex items-center text-xs">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-satellite inline-block w-5 mr-3 stroke-current" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M3.707 6.293l2.586 -2.586a1 1 0 0 1 1.414 0l5.586 5.586a1 1 0 0 1 0 1.414l-2.586 2.586a1 1 0 0 1 -1.414 0l-5.586 -5.586a1 1 0 0 1 0 -1.414z"></path>
-                <path d="M6 10l-3 3l3 3l3 -3"></path>
-                <path d="M10 6l3 -3l3 3l-3 3"></path>
-                <line x1="12" y1="12" x2="13.5" y2="13.5"></line>
-                <path d="M14.5 17a2.5 2.5 0 0 0 2.5 -2.5"></path>
-                <path d="M15 21a6 6 0 0 0 6 -6"></path>
-            </svg>
-            11 Stations Active
-        </p>
+
+        <div class="flex items-center">
+            <div class="flex items-center mx-4 text-xs">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chart-arcs inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <circle cx="12" cy="12" r="1"></circle>
+                    <path d="M16.924 11.132a5 5 0 1 0 -4.056 5.792"></path>
+                    <path d="M3 12a9 9 0 1 0 9 -9"></path>
+                </svg>
+                11 stations active
+            </div>
+
+            <div x-data="{ dropdownOpen: false }" class="relative">
+                <button @click="dropdownOpen = ! dropdownOpen"
+                    class="relative block w-8 rounded-full overflow-hidden focus:outline-none">
+                    <img class="h-full w-full object-cover"
+                        src="{{ Auth::user()->avatar }}"
+                        alt="Your avatar">
+                </button>
+
+                <div x-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0 h-full w-full z-10"
+                style="display: none;"></div>
+
+                <div x-show="dropdownOpen" 
+                    x-transition:enter="transition ease-out duration-100"
+                    x-transition:enter-start="transform opacity-0 scale-95"
+                    x-transition:enter-end="transform opacity-100 scale-100"
+                    x-transition:leave="transition ease-in duration-75"
+                    x-transition:leave-start="transform opacity-100 scale-100"
+                    x-transition:leave-end="transform opacity-0 scale-95"
+                    class="absolute z-30 right-0 mt-8 w-64 p-3 bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl backdrop-filter backdrop-blur-sm"
+                    style="display: none;">
+
+                    <h5 class="font-semibold px-4 pt-2 flex items-center">
+                        {{ Auth::user()->fname . ' ' . Auth::user()->lname }}
+
+                        @if (Auth::user()->rwp == true)
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check text-blue-500 inline-block w-5 ml-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <circle cx="12" cy="12" r="9"></circle>
+                                <path d="M9 12l2 2l4 -4"></path>
+                            </svg>
+                        @endif
+
+                        @if (Auth::user()->staff == true)
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-crown text-yellow-400 inline-block w-5 {{ Auth::user()->rwp != true ? 'ml-3' : 'ml-2' }}" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M12 6l4 6l5 -4l-2 10h-14l-2 -10l5 4z"></path>
+                            </svg>
+                        @endif
+                    </h5>
+
+                    <div class="text-gray-400 p-4 leading-4">
+                        <span class="text-xs">[ {{ Auth::user()->username }} ]</span> <br />
+                        <span class="text-xs">Human Resources Manager</span>
+                    </div>
+
+                    <a href="{{ route('profile') }}"
+                        class="transition duration-500 flex items-center px-4 py-2 rounded-full text-sm hover:bg-gray-800 hover:bg-opacity-60">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+                        </svg>
+                        Profile
+                    </a>
+
+                    <a href="{{ route('cfcdc') }}"
+                        class="transition duration-500 flex items-center px-4 py-2 rounded-full text-sm hover:bg-gray-800 hover:bg-opacity-60">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2 -4l-2 -4h3l2 2h4l-2 -7h3z"></path>
+                        </svg>
+                        CFCDC
+                    </a>
+
+                    <form id="logout" action="{{ route('logout') }}" method="post">
+
+                        @csrf
+
+                    </form>
+                    
+                    <a x-on:click="document.getElementById('logout').submit();"
+                        class="transition duration-500 cursor-pointer flex items-center px-4 py-2 rounded-full text-sm hover:bg-gray-800 hover:bg-opacity-60">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>
+                            <path d="M7 12h14l-3 -3m0 6l3 -3"></path>
+                        </svg>
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </div>
     </header>
 
 <!-- Application Header End -->
