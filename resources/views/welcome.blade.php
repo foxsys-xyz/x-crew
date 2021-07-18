@@ -2,10 +2,8 @@
 
 @section('content')
 
-    <div class="h-screen flex justify-center items-center">
-        <div class="w-64">
-            <img class="select-none" src="{{ asset('img/foxsys-xyz [Text] [Light Back].png') }}" />
-        </div>
+    <div class="h-screen flex justify-center items-center bg-black">
+        <img class="select-none h-64" src="{{ asset('img/Logo [Dark Background].svg') }}" />
     </div>
 
 @endsection

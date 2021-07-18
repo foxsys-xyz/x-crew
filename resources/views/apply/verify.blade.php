@@ -5,7 +5,7 @@
     <div class="h-screen bg-black text-white">
 
         <div class="hidden lg:flex items-center absolute bottom-0 left-0 px-10 py-5 text-xs">
-            <img class="w-4 mr-3" src="{{ asset('img/foxsys-xyz [Icon] [Dark Back].png') }}" />
+            <img class="w-4 mr-3" src="{{ asset('img/Logo [Dark Background].svg') }}" />
             <span class="text-xs">foxsys-xyz, {{ date('Y') }}. all rights reserved.</span>
         </div>
 

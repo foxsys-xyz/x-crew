@@ -17,7 +17,7 @@
 
     <div class="h-screen flex justify-center items-center">
         <div class="w-64">
-            <img class="select-none" src="{{ asset('img/foxsys-xyz [Text] [Light Back].png') }}" />
+            <img class="select-none" src="{{ asset('img/Logo [Dark Background].svg') }}" />
         </div>
     </div>
 

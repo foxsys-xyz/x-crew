@@ -7,7 +7,7 @@
 
                     @php
 
-                        $imgUrl = asset('img/foxsys-xyz [Icon] [Light Back].png');
+                        $imgUrl = asset('img/Logo [Dark Background].svg');
 
                     @endphp
 

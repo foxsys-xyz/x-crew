@@ -11,7 +11,7 @@
         <title>{{ config('app.va_name') }} // {{ config('app.name') }}</title>
 
         <!-- foxsys-xyz Favicon -->
-        <link rel="icon" type="image/png" href="/img/foxsys-xyz [Icon] [Light Back].png">
+        <link rel="icon" type="image/png" href="/img/Logo [Dark Background].svg">
 
         <!-- JS -->
         <script src="{{ mix('/js/app.js') }}"></script>
