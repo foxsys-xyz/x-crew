@@ -1,4 +1,4 @@
-<br/><br/>
+<br/>
 
 <img align="left" src="./public/img/Logo [Dark Background].svg" width="64" />
 
