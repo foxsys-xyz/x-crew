@@ -1,6 +1,6 @@
-<img align="left" src="https://github.com/foxsys-xyz/foxsys-xyz/blob/master/public/img/foxsys-xyz%20%5BIcon%5D%20%5BLight%20Back%5D.png" width="152" />
+<img align="left" src="./public/img/Logo [Dark Background].svg" width="96" />
 
-<br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/>
 
 ## foxsys-xyz \\ x-crew
 The main foxsys-xyz application. Still a work in progress.
