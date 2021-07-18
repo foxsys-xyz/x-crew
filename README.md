@@ -1,6 +1,8 @@
-<img align="left" src="./public/img/Logo [Dark Background].svg" width="96" />
+<br/><br/>
 
-<br/><br/><br/><br/><br/>
+<img align="left" src="./public/img/Logo [Dark Background].svg" width="64" />
+
+<br/><br/><br/><br/>
 
 ## foxsys-xyz \\ x-crew
 The main foxsys-xyz application. Still a work in progress.
