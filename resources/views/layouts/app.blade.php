@@ -28,7 +28,7 @@
 
     </head>
 
-    <body class="font-mono">
+    <body class="font-mono tracking-wider">
         <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-black text-white">
 
             @include('layouts.cloud.sidebar')

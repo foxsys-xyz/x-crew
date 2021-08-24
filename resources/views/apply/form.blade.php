@@ -33,7 +33,7 @@
         @endif
 
         <div class="container h-full mx-auto flex justify-center items-center">
-            <div class="m-4 p-8 w-full lg:w-1/2 bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl">
+            <x-card class="m-4 lg:m-0 w-full lg:w-2/3 text-white">
                 
                 @include('layouts.sso.application.header')
 
@@ -45,40 +45,50 @@
 
                     <div class="mt-4 lg:flex w-full gap-2">
                         <div class="w-full lg:w-full mt-1 lg:mt-0">
-                            <span class="text-xs lg:flex items-center {{ $errors->has('fname') ? 'text-red-500' : '' }}">
-                                @if ($applicant->fname == null)
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <line x1="7" y1="7" x2="17" y2="17"></line>
-                                        <polyline points="17 8 17 17 8 17"></polyline>
-                                    </svg>
-                                @else
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M5 12l5 5l10 -10"></path>
-                                    </svg>
-                                @endif
-                                first name
-                            </span>
-                            <input name="fname" class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full {{ $errors->has('fname') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-blue-500' }} bg-gray-800 bg-opacity-60 transition duration-500 {{ $applicant->fname == null ? '' : 'cursor-not-allowed' }}" placeholder="John" @if ($applicant->fname != null) value="{{ $applicant->fname }}" disabled @endif />
+                            <div class="{{ $errors->has('fname') ? 'text-red-500' : '' }}">
+                                <x-forms.label :for="__('fname')">
+                                    @if ($applicant->fname == null)
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <line x1="7" y1="7" x2="17" y2="17"></line>
+                                            <polyline points="17 8 17 17 8 17"></polyline>
+                                        </svg>
+                                    @else
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M5 12l5 5l10 -10"></path>
+                                        </svg>
+                                    @endif
+                                </x-forms.label>
+                            </div>
+                            @if ($applicant->fname != null)
+                                <x-forms.input class="mt-2 cursor-not-allowed" :value="$applicant->fname" disabled />
+                            @else
+                                <x-forms.input name="fname" class="mt-2 {{ $errors->has('fname') ? 'focus:ring-red-500' : 'focus:ring-blue-500' }}" placeholder="John" />
+                            @endif
                         </div>
                         <div class="w-full lg:w-full mt-1 lg:mt-0">
-                            <span class="text-xs lg:flex items-center {{ $errors->has('lname') ? 'text-red-500' : '' }}">
-                                @if ($applicant->lname == null)
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <line x1="7" y1="7" x2="17" y2="17"></line>
-                                        <polyline points="17 8 17 17 8 17"></polyline>
-                                    </svg>
-                                @else
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M5 12l5 5l10 -10"></path>
-                                    </svg>
-                                @endif
-                                last name
-                            </span>
-                            <input name="lname" class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full {{ $errors->has('lname') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-blue-500' }} bg-gray-800 bg-opacity-60 transition duration-500 {{ $applicant->lname == null ? '' : 'cursor-not-allowed' }}" placeholder="Doe" @if ($applicant->lname != null) value="{{ $applicant->lname }}" disabled @endif />
+                            <div class="{{ $errors->has('lname') ? 'text-red-500' : '' }}">
+                                <x-forms.label :for="__('lname')">
+                                    @if ($applicant->fname == null)
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <line x1="7" y1="7" x2="17" y2="17"></line>
+                                            <polyline points="17 8 17 17 8 17"></polyline>
+                                        </svg>
+                                    @else
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M5 12l5 5l10 -10"></path>
+                                        </svg>
+                                    @endif
+                                </x-forms.label>
+                            </div>
+                            @if ($applicant->fname != null)
+                                <x-forms.input class="mt-2 cursor-not-allowed" :value="$applicant->lname" disabled />
+                            @else
+                                <x-forms.input name="lname" class="mt-2 {{ $errors->has('lname') ? 'focus:ring-red-500' : 'focus:ring-blue-500' }}" placeholder="Doe" />
+                            @endif
                         </div>
                     </div>
                     <div class="mt-2 w-full">
@@ -90,7 +100,7 @@
                                 </svg>
                                 email
                             </span>
-                            <input type="email" class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full bg-gray-800 opacity-60 cursor-not-allowed" value="{{ $applicant->email }}" disabled />
+                            <x-forms.input type="email" class="mt-2 cursor-not-allowed" value="{{ $applicant->email }}" disabled />
                         </div>
                     </div>
                     <div class="mt-2 lg:flex w-full gap-2">
@@ -103,7 +113,7 @@
                                 </svg>
                                 date of birth
                             </span>
-                            <input name="dob" class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full {{ $errors->has('dob') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-blue-500' }} bg-gray-800 bg-opacity-60 transition duration-500" placeholder="yyyy-mm-dd" value="{{ $applicant->dob }}" />
+                            <x-forms.input name="dob" class="mt-2 {{ $errors->has('dob') ? 'focus:ring-red-500' : 'focus:ring-blue-500' }}" placeholder="yyyy-mm-dd" value="{{ $applicant->dob }}" />
                         </div>
                         <div class="w-full lg:w-full mt-1 lg:mt-0">
                             <span class="text-xs lg:flex items-center {{ $errors->has('country') ? 'text-red-500' : '' }}">
@@ -399,7 +409,7 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </x-card>
         </div>
     </div>
 

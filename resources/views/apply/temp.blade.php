@@ -44,7 +44,7 @@
         @endif
 
         <div class="container h-full mx-auto flex justify-center items-center">
-            <div class="m-4 p-8 w-full lg:w-1/2 bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl">
+            <x-card class="m-4 lg:m-0 w-full lg:w-2/3">
                 
                 @include('layouts.sso.application.header')
 
@@ -56,15 +56,16 @@
 
                             <input type="hidden" name="uuid" value="{{ $uuid }}" />
 
-                            <span class="text-xs lg:flex items-center {{ $errors->has('email') ? 'text-red-500' : '' }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <line x1="7" y1="7" x2="17" y2="17"></line>
-                                    <polyline points="17 8 17 17 8 17"></polyline>
-                                </svg>
-                                email
-                            </span>
-                            <input type="email" name="email" class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full {{ $errors->has('email') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-blue-500' }} bg-gray-800 bg-opacity-60 transition duration-500" placeholder="john@doe.com" />
+                            <div class="{{ $errors->has('email') ? 'text-red-500' : '' }}">
+                                <x-forms.label :for="__('email')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <line x1="7" y1="7" x2="17" y2="17"></line>
+                                        <polyline points="17 8 17 17 8 17"></polyline>
+                                    </svg>
+                                </x-forms.label>
+                            </div>
+                            <x-forms.input name="email" type="email" class="mt-2 {{ $errors->has('email') ? 'focus:ring-red-500' : 'focus:ring-blue-500' }}" placeholder="john@doe.com" />
                         </form>
                     </div>
                 </div>
@@ -100,7 +101,7 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </x-card>
         </div>
     </div>
 

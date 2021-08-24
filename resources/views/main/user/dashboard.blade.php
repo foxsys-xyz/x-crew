@@ -16,7 +16,7 @@
         <div class="mt-8">
             <div class="flex flex-wrap -mx-3">
                 <div class="w-full px-3 sm:w-1/2 lg:w-1/3">
-                    <div class="flex items-center p-6 bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl">
+                    <x-card class="flex items-center">
                         <div class="p-3 rounded-xl bg-indigo-600 shadow-xl">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-license inline-block w-6" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -30,11 +30,11 @@
                             <h4 class="text-2xl">2</h4>
                             <div class="text-gray-400">PIREPs</div>
                         </div>
-                    </div>
+                    </x-card>
                 </div>
 
                 <div class="w-full mt-6 px-3 sm:w-1/2 lg:w-1/3 sm:mt-0">
-                    <div class="flex items-center p-6 bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl">
+                    <x-card class="flex items-center">
                         <div class="p-3 rounded-xl bg-gray-600 shadow-xl">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock inline-block w-6" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -47,11 +47,11 @@
                             <h4 class="text-2xl">03:21</h4>
                             <div class="text-gray-400">Chrono</div>
                         </div>
-                    </div>
+                    </x-card>
                 </div>
 
                 <div class="w-full mt-6 px-3 sm:w-1/2 lg:w-1/3 lg:mt-0">
-                    <div class="flex items-center p-6 bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl">
+                    <x-card class="flex items-center">
                         <div class="p-3 rounded-xl bg-yellow-600 shadow-xl">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane-arrival inline-block w-6" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -64,12 +64,12 @@
                             <h4 class="text-2xl">-221</h4>
                             <div class="text-gray-400">Average</div>
                         </div>
-                    </div>
+                    </x-card>
                 </div>
             </div>
 
             <div class="lg:flex mt-8 gap-8">
-                <div class="w-full lg:w-3/5 p-6 bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl">
+                <x-card class="w-full lg:w-3/5">
                     <h5 class="leading-3 font-medium inline-flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chart-arcs inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -82,10 +82,10 @@
                     <span class="text-gray-400 flex text-xs">11 aircraft stations online</span>
 
                     <div class="mt-6 rounded-xl rounded-br-none z-10 shadow-xl" id="mapid" style="height: 520px;"></div>
-                </div>
+                </x-card>
                 
                 <div class="w-full lg:w-2/5 mt-8 lg:mt-0">
-                    <div class="bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl p-6">
+                    <x-card>
                         <h5 class="leading-3 font-medium inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-license inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -98,7 +98,7 @@
                         <span class="text-gray-400 flex text-xs">amount of PIREPs filed per month</span>
 
                         <canvas class="mt-6" id="myChart"></canvas>
-                    </div>
+                    </x-card>
                 </div>
             </div>
         </div>

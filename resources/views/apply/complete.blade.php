@@ -29,7 +29,7 @@
         </div>
 
         <div class="container h-full mx-auto flex justify-center items-center">
-            <div class="m-4 p-8 w-full lg:w-1/2 bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl">
+            <x-card class="m-4 lg:m-0 w-full lg:w-2/3 text-white">
                 
                 @include('layouts.sso.application.header')
 
@@ -42,7 +42,7 @@
                             </svg>
                             uuid
                         </span>
-                        <input class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full bg-gray-800 opacity-60 cursor-not-allowed" value="{{ $uuid }}" disabled />
+                        <x-forms.input class="mt-2 opacity-60 cursor-not-allowed" value="{{ $uuid }}" disabled />
                     </div>
                 </div>
                 <div class="mt-4 lg:flex items-center lg:float-right lg:gap-2">
@@ -64,7 +64,7 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </x-card>
         </div>
     </div>
 
@@ -82,7 +82,7 @@
             function completeCountdown() {
                 if (completeTimeLeft == -1) {
                     clearTimeout(completeTimerId);
-                    window.location.replace('{{ route('login') }}');
+                    window.location.replace(`{{ route('login') }}`);
                     completeBtn.disabled = false;
                     completeBtn.classList.remove('cursor-not-allowed');
                     completeBtn.classList.remove('opacity-75');

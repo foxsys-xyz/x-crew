@@ -30,57 +30,50 @@
         <div class="mt-8">
             <div class="lg:flex w-full gap-8">
                 <div class="w-full lg:w-3/5">
-                    <div class="bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl overflow-hidden">
-                        <div class="h-80">
-                            <div class="h-full bg-cover bg-center flex items-center" style="background-image: url('{{ asset('/img/bg/cfcdc [1].png') }}');">
-                                <div class="p-6">
-                                    <h1 class="text-3xl flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud inline-block w-10 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-12"></path>
-                                        </svg>
-                                        {{ $weather->station_id }} <span class="text-sm ml-3 -mb-2">[{{ $currentloc->iata }}]</span>
-                                    </h1>
-                                    <p class="text-sm">{{ $currentloc->airport_name }}, {{ $currentloc->city_name }}.</p>
-                                    <p class="my-4 max-w-md">{{ $weather->raw_text }}</p>
-                                    <p class="text-xs">weather by aviationweather.gov</p>
-                                </div>                                            
+                    <x-card class="overflow-hidden">
+                        <h1 class="text-3xl flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud inline-block w-10 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-12"></path>
+                            </svg>
+                            {{ $weather->station_id }} <span class="text-sm ml-3 -mb-2">[{{ $currentloc->iata }}]</span>
+                        </h1>
+                        <p class="text-sm">{{ $currentloc->airport_name }}, {{ $currentloc->city_name }}.</p>
+                        <p class="my-4 max-w-md">{{ $weather->raw_text }}</p>
+                        <p class="text-xs">weather by aviationweather.gov</p>
+
+                        <form class="pt-6" action="{{ route('cfcdc.search') }}" method="post">
+
+                            @csrf
+
+                            <div class="w-full mb-2 lg:mb-0">
+                                <span class="text-xs lg:flex items-center {{ $errors->has('icao') ? 'text-red-500' : '' }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <line x1="7" y1="7" x2="17" y2="17"></line>
+                                        <polyline points="17 8 17 17 8 17"></polyline>
+                                    </svg>
+                                    destination
+                                </span>
+                                <x-forms.input name="icao" class="mt-2 {{ $errors->has('icao') ? 'focus:ring-red-500' : 'focus:ring-indigo-500' }}" placeholder="EGKK or Gatwick? What about Dubai?" />
                             </div>
-                        </div>
-                        <div class="p-6">
-                            <form action="{{ route('cfcdc.search') }}" method="post">
-
-                                @csrf
-
-                                <div class="w-full mb-2 lg:mb-0">
-                                    <span class="text-xs lg:flex items-center {{ $errors->has('icao') ? 'text-red-500' : '' }}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <div class="mt-6 flex justify-end">
+                                <div class="lg:mt-0 mt-3 w-full lg:w-auto">
+                                    <button type="submit" class="text-sm justify-center lg:text-base w-full lg:w-auto flex items-center focus:outline-none px-4 py-2 rounded-full focus:shadow-outline bg-blue-600 hover:bg-blue-700 transition duration-500">
+                                        search aerodomes
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search inline-block w-6 ml-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <line x1="7" y1="7" x2="17" y2="17"></line>
-                                            <polyline points="17 8 17 17 8 17"></polyline>
+                                            <circle cx="10" cy="10" r="7"></circle>
+                                            <line x1="21" y1="21" x2="15" y2="15"></line>
                                         </svg>
-                                        destination
-                                    </span>
-                                    <input name="icao" class="w-full mt-2 outline-none px-4 py-2 rounded-full {{ $errors->has('icao') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-indigo-500' }} bg-gray-800 bg-opacity-60 transition duration-500" placeholder="EGKK or Gatwick? What about Dubai?" />
+                                    </button>
                                 </div>
-                                <div class="mt-6 flex justify-end">
-                                    <div class="lg:mt-0 mt-3 w-full lg:w-auto">
-                                        <button type="submit" class="text-sm justify-center lg:text-base w-full lg:w-auto flex items-center focus:outline-none px-4 py-2 rounded-full focus:shadow-outline bg-blue-600 hover:bg-blue-700 transition duration-500">
-                                            search aerodomes
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search inline-block w-6 ml-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <circle cx="10" cy="10" r="7"></circle>
-                                                <line x1="21" y1="21" x2="15" y2="15"></line>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                            </div>
+                        </form>
+                    </x-card>
                 </div>
                 <div class="w-full lg:w-2/5 mt-8 lg:mt-0">
-                    <div class="bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl p-6">
+                    <x-card>
                         <h5 class="leading-3 font-medium inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-license inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -93,7 +86,7 @@
                         <span class="text-gray-400 flex text-xs">amount of PIREPs filed per month</span>
 
                         <canvas class="mt-6" id="myChart"></canvas>
-                    </div>
+                    </x-card>
                 </div>
             </div>
         </div>

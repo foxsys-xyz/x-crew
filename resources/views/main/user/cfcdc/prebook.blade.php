@@ -15,7 +15,7 @@
         <div class="mt-8">
             <div class="lg:flex w-full gap-8">
                 <div class="w-full lg:w-3/5">
-                    <div class="bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl p-6">
+                    <x-card>
                         <h5 class="leading-3 font-medium inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clipboard inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -43,10 +43,10 @@
                             Now, here below are the listed aircraft which are available at the airport and suits for this route. The aircraft assigned to this route is
                             <span class="text-white">{{ $schedule->aircraft_icao }}</span>. Please select any one. During <span class="text-white">Real Operations</span>, try to fly the aircraft back to avoid disruption.
                         </p>
-                    </div>
+                    </x-card>
                 </div>
                 <div class="w-full lg:w-2/5 mt-8 lg:mt-0">
-                    <div class="bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl p-6">
+                    <x-card>
                         <h5 class="leading-3 font-medium inline-flex items-center">
 
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -67,7 +67,7 @@
                         <span class="text-gray-400 flex text-xs">raw flight route which is to be flown, as shown below</span>
 
                         <div class="mt-6 rounded-xl rounded-br-none z-10 shadow-xl" id="mapid" style="height: 520px;"></div>
-                    </div>
+                    </x-card>
                 </div>
             </div>
         </div>

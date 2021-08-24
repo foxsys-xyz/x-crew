@@ -1,4 +1,7 @@
 {
+    "browserslist": [
+        "last 30 versions"
+    ],
     "private": true,
     "scripts": {
         "development": "mix",

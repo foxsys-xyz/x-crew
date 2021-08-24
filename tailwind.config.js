@@ -9,19 +9,14 @@ module.exports = {
     './resources/**/*.vue',
   ],
   theme: {
-    colors: {
-      transparent: 'transparent',
-      current: 'currentColor',
-      black: colors.black,
-      white: colors.white,
-      gray: colors.gray,
-      red: colors.red,
-      yellow: colors.amber,
-      blue: colors.blue,
-      indigo: colors.indigo,
-      green: colors.green
+    extend: {
+      fontSize: {
+        sm: ['0.775rem', '1.15rem'],
+      },
+      colors: {
+        gray: colors.gray,
+      },
     },
-    extend: {},
   },
   variants: {},
   plugins: [

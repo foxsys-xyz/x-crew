@@ -56,7 +56,7 @@
         <div class="mt-8">
             <div class="lg:flex w-full gap-8">
                 <div class="w-full lg:w-1/3">
-                    <div class="bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl overflow-hidden">
+                    <x-card class="overflow-hidden">
                         <div class="h-40 bg-cover bg-center" style="background-image: url('https://wallpapercave.com/wp/wp2471512.jpg');"></div>
                         <div class="flex justify-left ml-5 -mt-8">
                             <img src="{{ Auth::user()->avatar }}" class="w-24 rounded-3xl -mt-4">		
@@ -98,8 +98,8 @@
                                 </p>
                             @endif
                         </div>
-                    </div>
-                    <div class="bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl mt-8 p-6">
+                    </x-card>
+                    <x-card class="mt-8">
                         <h5 class="leading-3 font-medium inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-circle inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -116,8 +116,8 @@
                             contact your virtual airline management with an image of your license and ask them to verify you. else, if you want to become a part of the management,
                             please email to the appropriate contact.
                         </p>
-                    </div>
-                    <div class="bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl mt-8 p-6">
+                    </x-card>
+                    <x-card class="mt-8">
                         <h5 class="leading-3 font-medium inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-circle inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -133,10 +133,10 @@
                             some fields such as pilot code, first name & last name, hub & nationality cannot be edited without staff's authorization.
                             if you have changes and want to update the details, please contact the staff via respective communication channels.
                         </p>
-                    </div>
+                    </x-card>
                 </div>
                 <div class="w-full lg:w-2/3">
-                    <div class="bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl p-6 mt-8 lg:mt-0">
+                    <x-card class="mt-8 lg:mt-0">
                         <h5 class="leading-3 font-medium inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rotate-clockwise inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -161,7 +161,7 @@
                                         </svg>
                                         pilot code / username
                                     </span>
-                                    <input class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full bg-gray-800 opacity-60 cursor-not-allowed" value="{{ Auth::user()->username }}" disabled />
+                                    <x-forms.input class="mt-2 cursor-not-allowed" value="{{ Auth::user()->username }}" disabled />
                                 </div>
                                 <div class="lg:w-1/3 mb-2 lg:mb-0">
                                     <span class="text-xs lg:flex items-center">
@@ -171,7 +171,7 @@
                                         </svg>
                                         first name
                                     </span>
-                                    <input class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full bg-gray-800 opacity-60 cursor-not-allowed" value="{{ Auth::user()->fname }}" disabled />
+                                    <x-forms.input class="mt-2 cursor-not-allowed" value="{{ Auth::user()->fname }}" disabled />
                                 </div>
                                 <div class="lg:w-1/3">
                                     <span class="text-xs lg:flex items-center">
@@ -181,7 +181,7 @@
                                         </svg>
                                         last name
                                     </span>
-                                    <input class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full bg-gray-800 opacity-60 cursor-not-allowed" value="{{ Auth::user()->lname }}" disabled />
+                                    <x-forms.input class="mt-2 cursor-not-allowed" value="{{ Auth::user()->lname }}" disabled />
                                 </div>
                             </div>
                             <div class="lg:flex mt-2 gap-2">
@@ -194,7 +194,7 @@
                                         </svg>
                                         email
                                     </span>
-                                    <input type="email" name="email" class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full {{ $errors->has('email') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-blue-500' }} bg-gray-800 bg-opacity-60 transition duration-500" value="{{ Auth::user()->email }}" />
+                                    <x-forms.input  name="email" type="email" class="mt-2 {{ $errors->has('email') ? 'focus:ring-red-500' : 'focus:ring-blue-500' }}" value="{{ Auth::user()->email }}" />
                                 </div>
                                 <div class="lg:w-1/5 mb-2 lg:mb-0">
                                     <span class="text-xs lg:flex items-center">
@@ -204,7 +204,7 @@
                                         </svg>
                                         hub
                                     </span>
-                                    <input class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full bg-gray-800 opacity-60 cursor-not-allowed" value="{{ Auth::user()->hub }}" disabled />
+                                    <x-forms.input class="mt-2 cursor-not-allowed" value="{{ Auth::user()->hub }}" disabled />
                                 </div>
                                 <div class="lg:w-1/5 mb-2 lg:mb-0">
                                     <span class="text-xs lg:flex items-center">
@@ -214,7 +214,7 @@
                                         </svg>
                                         nationality
                                     </span>
-                                    <input class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full bg-gray-800 opacity-60 cursor-not-allowed" value="{{ Auth::user()->country }}" disabled />
+                                    <x-forms.input class="mt-2 cursor-not-allowed" value="{{ Auth::user()->country }}" disabled />
                                 </div>
                             </div>
                             <div class="lg:flex mt-2 gap-2">
@@ -227,7 +227,7 @@
                                         </svg>
                                         bio / about
                                     </span>
-                                    <input name="bio" class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full focus:ring focus:ring-blue-500 bg-gray-800 bg-opacity-60 transition duration-500" placeholder="👋🏻 hey! i am Joe, a flight sim enthusiast." value="{{ Auth::user()->bio }}" />
+                                    <x-forms.input name="bio" class="mt-2 focus:ring-blue-500" placeholder="👋🏻 hey! i am Joe, a flight sim enthusiast." value="{{ Auth::user()->bio }}" />
                                 </div>
                             </div>
                             <div class="lg:flex mt-2 gap-2">
@@ -263,8 +263,8 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
-                    <div class="bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl p-6 mt-8">
+                    </x-card>
+                    <x-card class="mt-8">
                         <h5 class="leading-3 font-medium inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-lock inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -292,7 +292,7 @@
                                         </svg>
                                         old password
                                     </span>
-                                    <input name="oldpass" type="password" class="w-full lg:w-full mt-2 outline-none border-none px-4 py-2 rounded-full {{ $errors->has('oldpass') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-blue-500' }} bg-gray-800 bg-opacity-60 transition duration-500" placeholder="••••••••••" />
+                                    <x-forms.input name="oldpass" type="password" class="mt-2 {{ $errors->has('oldpass') ? 'focus:ring-red-500' : 'focus:ring-blue-500' }}" placeholder="••••••••••" />
                                 </div>
                                 <div class="lg:w-1/3 mb-2 lg:mb-0">
                                     <span class="text-xs lg:flex items-center {{ $errors->has('newpass') ? 'text-red-500' : '' }}">
@@ -303,7 +303,7 @@
                                         </svg>
                                         new password
                                     </span>
-                                    <input name="newpass" type="password" class="w-full lg:w-full mt-2 outline-none border-none px-4 py-2 rounded-full {{ $errors->has('newpass') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-blue-500' }} bg-gray-800 bg-opacity-60 transition duration-500" placeholder="••••••••••" />
+                                    <x-forms.input name="newpass" type="password" class="mt-2 {{ $errors->has('newpass') ? 'focus:ring-red-500' : 'focus:ring-blue-500' }}" placeholder="••••••••••" />
                                 </div>
                                 <div class="lg:w-1/3 mb-2 lg:mb-0">
                                     <span class="text-xs lg:flex items-center {{ $errors->has('newpass_confirmation') ? 'text-red-500' : '' }}">
@@ -314,7 +314,7 @@
                                         </svg>
                                         confirm new password
                                     </span>
-                                    <input name="newpass_confirmation" type="password" class="w-full lg:w-full mt-2 outline-none border-none px-4 py-2 rounded-full {{ $errors->has('newpass_confirmation') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-blue-500' }} bg-gray-800 bg-opacity-60 transition duration-500" placeholder="••••••••••" />
+                                    <x-forms.input name="newpass_confirmation" type="password" class="mt-2 {{ $errors->has('newpass_confirmation') ? 'focus:ring-red-500' : 'focus:ring-blue-500' }}" placeholder="••••••••••" />
                                 </div>
                             </div>
                             <div class="mt-6 flex justify-end">
@@ -329,7 +329,7 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
+                    </x-card>
                 </div>
             </div>
         </div>

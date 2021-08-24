@@ -15,7 +15,7 @@
         <div class="mt-8">
             <div class="lg:flex w-full gap-8">
                 <div class="w-full lg:w-3/5">
-                    <div class="bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl p-6 overflow-y-auto">
+                    <x-card class="overflow-y-auto">
                         <table id="search" class="w-full">
                             <thead>
                                 <tr>
@@ -51,12 +51,12 @@
                             @endforeach
                             </tbody>
                         </table>
-                    </div>
+                    </x-card>
                 </div>
                 <div class="w-full lg:w-2/5 mt-8 lg:mt-0">
-                    <div class="bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl p-6 h-96">
+                    <x-card class="h-96">
                         
-                    </div>
+                    </x-card>
                 </div>
             </div>
         </div>
