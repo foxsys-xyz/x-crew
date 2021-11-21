@@ -57,34 +57,36 @@
             <div class="lg:flex w-full gap-8">
                 <div class="w-full lg:w-1/3">
                     <x-card class="overflow-hidden">
-                        <div class="h-40 bg-cover bg-center" style="background-image: url('https://wallpapercave.com/wp/wp2471512.jpg');"></div>
-                        <div class="flex justify-left ml-5 -mt-8">
-                            <img src="{{ Auth::user()->avatar }}" class="w-24 rounded-3xl -mt-4">		
-                        </div>
-                        <div class="p-6 pt-6">
-                            <h3 class="flex items-center font-semibold leading-6">
-                                {{ Auth::user()->fname . ' ' . Auth::user()->lname }} 
-
+                        <div class="-m-8 h-40 bg-cover bg-center relative" style="background-image: url('https://wallpapercave.com/wp/wp2471512.jpg');">
+                            <div class="absolute top-4 right-5 bg-black bg-opacity-40 backdrop-filter backdrop-blur-sm rounded-lg px-4 py-2">
                                 @if (Auth::user()->rwp == true)
-                                    <div class="tooltip">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check text-blue-500 inline-block w-5 ml-3 cursor-pointer" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <div class="text-xs flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check text-white inline-block w-5 mr-2 cursor-pointer" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <circle cx="12" cy="12" r="9"></circle>
                                             <path d="M9 12l2 2l4 -4"></path>
                                         </svg>
-                                        <span class="absolute tooltip-text text-xs font-light px-2 py-1 text-white bg-black bg-opacity-80 -mt-6 pb-1 -ml-5 rounded-full">Real World Pilot</span>
+                                        Real World Pilot
                                     </div>
                                 @endif
 
                                 @if (Auth::user()->staff == true)
-                                    <div class="tooltip">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-crown text-yellow-400 inline-block w-5 {{ Auth::user()->rwp != true ? 'ml-3' : 'ml-2' }} cursor-pointer" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <div class="{{ Auth::user()->rwp == true ? 'mt-1' : '' }} text-xs flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-crown text-yellow-400 inline-block w-5 mr-2 cursor-pointer" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <path d="M12 6l4 6l5 -4l-2 10h-14l-2 -10l5 4z"></path>
                                         </svg>
-                                        <span class="absolute tooltip-text text-xs font-light px-2 py-1 text-white bg-black bg-opacity-80 -mt-6 pb-1 -ml-5 rounded-full">Staff Member</span>
+                                        Staff Operations
                                     </div>
                                 @endif
+                            </div>
+                        </div>
+                        <div class="flex justify-left -mt-8">
+                            <img src="{{ Auth::user()->avatar }}" class="z-10 w-24 rounded-3xl -mt-4">		
+                        </div>
+                        <div class="pt-6">
+                            <h3>
+                                {{ Auth::user()->fname . ' ' . Auth::user()->lname }} 
                             </h3>
 
                             <span class="text-xs font-semibold">[ {{ Auth::user()->username }} ]</span>

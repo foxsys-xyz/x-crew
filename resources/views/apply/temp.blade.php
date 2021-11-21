@@ -32,7 +32,7 @@
 
         @if ($errors->any())
 
-            <div class="w-full lg:flex justify-center absolute right-0 left-0 lg:top-0 text-center px-10 py-5 text-sm bg-red-600">
+            <div class="w-full lg:flex justify-center absolute right-0 left-0 lg:top-0 text-center px-10 py-5 text-xs bg-red-600">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-minus inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <circle cx="12" cy="12" r="9"></circle>
