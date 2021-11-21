@@ -40,7 +40,7 @@
                     x-transition:leave="transition ease-in duration-75"
                     x-transition:leave-start="transform opacity-100 scale-100"
                     x-transition:leave-end="transform opacity-0 scale-95"
-                    class="absolute z-30 right-0 mt-8 w-80 p-3 bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl backdrop-filter backdrop-blur-sm"
+                    class="absolute z-30 right-0 mt-8 w-80 p-3 bg-gray-900 bg-opacity-40 rounded-3xl shadow-2xl backdrop-filter backdrop-blur-sm"
                     style="width: 20rem; display: none;">
                     <a href="#"
                         class="transition duration-500 flex items-center px-4 py-2 rounded-full text-sm hover:bg-gray-800 hover:bg-opacity-60">
@@ -87,7 +87,7 @@
                     x-transition:leave="transition ease-in duration-75"
                     x-transition:leave-start="transform opacity-100 scale-100"
                     x-transition:leave-end="transform opacity-0 scale-95"
-                    class="absolute z-30 right-0 mt-8 w-64 p-3 bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl backdrop-filter backdrop-blur-sm"
+                    class="absolute z-30 right-0 mt-8 w-64 p-3 bg-gray-900 bg-opacity-40 rounded-3xl shadow-2xl backdrop-filter backdrop-blur-sm"
                     style="display: none;">
 
                     <h5 class="font-semibold px-4 pt-2 flex items-center">

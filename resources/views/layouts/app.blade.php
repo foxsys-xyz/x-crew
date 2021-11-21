@@ -34,7 +34,7 @@
             @include('layouts.cloud.sidebar')
 
             <div class="flex-1 flex flex-col overflow-hidden">
-                <div class="bg-gray-900 bg-opacity-80 overflow-y-auto">
+                <div class="bg-gray-900 bg-opacity-40 overflow-y-auto">
 
                     @include('layouts.cloud.header')
 

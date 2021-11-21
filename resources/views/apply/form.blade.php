@@ -4,12 +4,12 @@
 
     <div class="h-screen bg-black text-white">
 
-        <div class="hidden lg:flex items-center absolute bottom-0 left-0 px-10 py-5 text-xs">
+        <div class="hidden lg:flex items-center absolute bottom-0 left-0 pl-10 pb-5">
             <img class="w-4 mr-3" src="{{ asset('img/Logo [Dark Background].svg') }}" />
             <span class="text-xs">foxsys-xyz, {{ date('Y') }}. all rights reserved.</span>
         </div>
 
-        <div class="hidden lg:flex items-center absolute bottom-0 right-0 px-10 py-5 text-xs">
+        <div class="hidden lg:flex items-center absolute bottom-0 right-0 pr-10 pb-5 text-xs">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folder inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2"></path>
@@ -21,7 +21,7 @@
 
         @if ($errors->any())
 
-            <div class="lg:flex justify-center absolute right-0 left-0 lg:top-0 text-center px-10 py-5 text-xs bg-red-500">
+            <div class="w-full lg:flex justify-center absolute right-0 left-0 lg:top-0 text-center px-10 py-5 text-sm bg-red-600">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-minus inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                     <circle cx="12" cy="12" r="9"></circle>
@@ -43,18 +43,30 @@
 
                     <input type="hidden" name="uuid" value="{{ $applicant->uuid }}" />
 
-                    <div class="mt-4 lg:flex w-full gap-2">
+                    <div class="mt-4 w-full">
+                        <div class="w-full lg:w-full mt-1 lg:mt-0">
+                            <x-forms.label :for="__('email')">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M5 12l5 5l10 -10"></path>
+                                </svg>
+                            </x-forms.label>
+                            <x-forms.input type="email" class="mt-2 cursor-not-allowed" value="{{ $applicant->email }}" disabled />
+                        </div>
+                    </div>
+
+                    <div class="mt-2 lg:flex w-full gap-2">
                         <div class="w-full lg:w-full mt-1 lg:mt-0">
                             <div class="{{ $errors->has('fname') ? 'text-red-500' : '' }}">
-                                <x-forms.label :for="__('fname')">
+                                <x-forms.label :for="__('first name')">
                                     @if ($applicant->fname == null)
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <line x1="7" y1="7" x2="17" y2="17"></line>
                                             <polyline points="17 8 17 17 8 17"></polyline>
                                         </svg>
                                     @else
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <path d="M5 12l5 5l10 -10"></path>
                                         </svg>
@@ -69,15 +81,15 @@
                         </div>
                         <div class="w-full lg:w-full mt-1 lg:mt-0">
                             <div class="{{ $errors->has('lname') ? 'text-red-500' : '' }}">
-                                <x-forms.label :for="__('lname')">
+                                <x-forms.label :for="__('last name')">
                                     @if ($applicant->fname == null)
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <line x1="7" y1="7" x2="17" y2="17"></line>
                                             <polyline points="17 8 17 17 8 17"></polyline>
                                         </svg>
                                     @else
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <path d="M5 12l5 5l10 -10"></path>
                                         </svg>
@@ -91,47 +103,38 @@
                             @endif
                         </div>
                     </div>
-                    <div class="mt-2 w-full">
-                        <div class="w-full lg:w-full mt-1 lg:mt-0">
-                            <span class="text-xs lg:flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path d="M5 12l5 5l10 -10"></path>
-                                </svg>
-                                email
-                            </span>
-                            <x-forms.input type="email" class="mt-2 cursor-not-allowed" value="{{ $applicant->email }}" disabled />
-                        </div>
-                    </div>
+
                     <div class="mt-2 lg:flex w-full gap-2">
                         <div class="w-full lg:w-full mt-1 lg:mt-0">
-                            <span class="text-xs lg:flex items-center {{ $errors->has('dob') ? 'text-red-500' : '' }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <line x1="7" y1="7" x2="17" y2="17"></line>
-                                    <polyline points="17 8 17 17 8 17"></polyline>
-                                </svg>
-                                date of birth
-                            </span>
-                            <x-forms.input name="dob" class="mt-2 {{ $errors->has('dob') ? 'focus:ring-red-500' : 'focus:ring-blue-500' }}" placeholder="yyyy-mm-dd" value="{{ $applicant->dob }}" />
-                        </div>
-                        <div class="w-full lg:w-full mt-1 lg:mt-0">
-                            <span class="text-xs lg:flex items-center {{ $errors->has('country') ? 'text-red-500' : '' }}">
-                                @if ($applicant->country == null)
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <div class="{{ $errors->has('dob') ? 'text-red-500' : '' }}">
+                                <x-forms.label :for="__('date of birth')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                         <line x1="7" y1="7" x2="17" y2="17"></line>
                                         <polyline points="17 8 17 17 8 17"></polyline>
                                     </svg>
-                                @else
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M5 12l5 5l10 -10"></path>
-                                    </svg>
-                                @endif
-                                nationality
-                            </span>
-                            <select name="country" class="w-full mt-2 outline-none border-none px-4 py-2 rounded-full {{ $errors->has('country') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-blue-500' }} bg-gray-800 bg-opacity-60 transition duration-500 {{ $applicant->country == null ? '' : 'cursor-not-allowed' }}" @if ($applicant->country != null) disabled @endif>
+                                </x-forms.label>
+                            </div>
+                            <x-forms.input name="dob" class="mt-2 {{ $errors->has('dob') ? 'focus:ring-red-500' : 'focus:ring-blue-500' }}" placeholder="yyyy-mm-dd" value="{{ $applicant->dob }}" />
+                        </div>
+                        <div class="w-full lg:w-full mt-1 lg:mt-0">
+                            <div class="{{ $errors->has('country') ? 'text-red-500' : '' }}">
+                                <x-forms.label :for="__('nationality')">
+                                    @if ($applicant->country == null)
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <line x1="7" y1="7" x2="17" y2="17"></line>
+                                            <polyline points="17 8 17 17 8 17"></polyline>
+                                        </svg>
+                                    @else
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M5 12l5 5l10 -10"></path>
+                                        </svg>
+                                    @endif
+                                </x-forms.label>
+                            </div>
+                            <select name="country" class="mt-2 w-full outline-none border-none px-4 py-1.5 rounded-full focus:ring bg-gray-800 bg-opacity-60 transition duration-150 {{ $errors->has('country') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-blue-500' }} {{ $applicant->country == null ? '' : 'cursor-not-allowed' }}" @if ($applicant->country != null) disabled @endif>
                                 <option hidden>[select]</option>
                                 <option {{ $applicant->country == "AF" ? "selected" : "" }} value="AF">Afghanistan</option>
                                 <option {{ $applicant->country == "AX" ? "selected" : "" }} value="AX">Åland Islands</option>
@@ -386,27 +389,27 @@
                         </div>
                     </div>
                 </form>
-                <div class="lg:flex items-center mt-4 text-xs">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="animate-pulse icon icon-tabler icon-tabler-urgent inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+
+                <div class="mt-8 flex items-center text-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-urgent inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <path d="M8 16v-4a4 4 0 0 1 8 0v4"></path>
                         <path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7"></path>
                         <rect x="6" y="16" width="12" height="4" rx="1"></rect>
                     </svg>
-                    by continuing you agree to our&nbsp;
-                    <a class="text-blue-500" href="{{ route('apply.privacy') }}" target="_blank">privacy policy</a>.
+                    by continuing you agree to our
+                    <a class="text-blue-500 ml-2" href="{{ route('apply.privacy') }}" target="_blank">privacy policy</a>.
                 </div>
-                <div class="mt-4 lg:flex lg:float-right lg:gap-2">
+
+                <div class="mt-4 lg:flex items-center">
                     <div x-data class="lg:mt-0 mt-3 w-full lg:w-auto">
-                        <button x-on:click="document.getElementById('finalize-application').submit();" class="text-sm justify-center lg:text-base w-full lg:w-auto flex items-center focus:outline-none px-4 py-2 rounded-full focus:shadow-outline bg-blue-600 hover:bg-blue-700 transition duration-500" placeholder="username">
-                            submit
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-right inline-block w-6 ml-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <x-buttons.primary name="resend" x-on:click="document.getElementById('finalize-application').submit();">
+                            submit application
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-thumb-up inline-block w-5 ml-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <line x1="13" y1="18" x2="19" y2="12"></line>
-                                <line x1="13" y1="6" x2="19" y2="12"></line>
+                                <path d="M7 11v8a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1v-7a1 1 0 0 1 1 -1h3a4 4 0 0 0 4 -4v-1a2 2 0 0 1 4 0v5h3a2 2 0 0 1 2 2l-1 5a2 3 0 0 1 -2 2h-7a3 3 0 0 1 -3 -3"></path>
                             </svg>
-                        </button>
+                        </x-buttons.primary>
                     </div>
                 </div>
             </x-card>
