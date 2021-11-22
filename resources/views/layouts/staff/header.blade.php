@@ -12,20 +12,10 @@
                 </svg>
             </button>
 
-            <span class="lg:block pull-left hidden text-sm"><img src="{{ asset('img/va_logo.png') }}" class="h-5 mr-4" /></span>
+            <span class="lg:block pull-left hidden text-sm"><img src="{{ asset('img/va_logo.png') }}" class="h-5" /></span>
         </div>
 
         <div class="flex items-center">
-            <div class="flex items-center mx-4 text-xs">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chart-arcs inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <circle cx="12" cy="12" r="1"></circle>
-                    <path d="M16.924 11.132a5 5 0 1 0 -4.056 5.792"></path>
-                    <path d="M3 12a9 9 0 1 0 9 -9"></path>
-                </svg>
-                11 stations active
-            </div>
-
             <div x-data="{ dropdownOpen: false }" class="relative">
                 <button @click="dropdownOpen = ! dropdownOpen"
                     class="relative block w-8 rounded-full overflow-hidden focus:outline-none">
@@ -44,14 +34,14 @@
                     x-transition:leave="transition ease-in duration-75"
                     x-transition:leave-start="transform opacity-100 scale-100"
                     x-transition:leave-end="transform opacity-0 scale-95"
-                    class="absolute z-30 right-0 mt-8 w-64 p-3 bg-gray-900 bg-opacity-80 rounded-3xl shadow-2xl backdrop-filter backdrop-blur-sm"
+                    class="absolute z-30 right-0 mt-8 w-64 p-3 bg-gray-900 bg-opacity-40 rounded-3xl shadow-2xl backdrop-filter backdrop-blur-sm"
                     style="display: none;">
 
                     <h5 class="font-semibold px-4 pt-2 flex items-center">
                         {{ Auth::user()->fname . ' ' . Auth::user()->lname }}
 
                         @if (Auth::user()->rwp == true)
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check text-blue-500 inline-block w-5 ml-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check text-white inline-block w-5 ml-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <circle cx="12" cy="12" r="9"></circle>
                                 <path d="M9 12l2 2l4 -4"></path>
@@ -68,7 +58,7 @@
 
                     <div class="text-gray-400 p-4 leading-4">
                         <span class="text-xs">[ {{ Auth::user()->username }} ]</span> <br />
-                        <span class="text-xs">Human Resources Manager</span>
+                        <span class="text-xs">Airport Operations</span>
                     </div>
 
                     <a href="{{ route('profile') }}"

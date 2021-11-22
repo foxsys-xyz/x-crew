@@ -16,9 +16,9 @@
         <!-- JS -->
         <script src="{{ mix('/js/app.js') }}"></script>
 
-        <!-- Lealet Maps -->
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        <!-- Mapbox -->
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.css' rel='stylesheet' />
 
         <!-- Styles -->
         <link href="{{ mix('/css/app.css') }}" rel="stylesheet" type="text/css" />

@@ -103,7 +103,7 @@
             @if (Auth::user()->staff == true)
 
                 <div x-data="{ tooltip: false }" class="relative z-30 flex items-center justify-center">
-                    <a href="#" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="transition duration-500 flex items-center justify-center p-4 rounded-2xl text-sm hover:bg-gray-800 hover:bg-opacity-60">
+                    <a href="{{ route('staff.dashboard') }}" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="transition duration-500 flex items-center justify-center p-4 rounded-2xl text-sm hover:bg-gray-800 hover:bg-opacity-60">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-drone inline-block w-6" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M10 10h4v4h-4z"></path>

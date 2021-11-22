@@ -81,7 +81,7 @@
                     </h5>
                     <span class="text-gray-400 flex text-xs">11 aircraft stations online</span>
 
-                    <div class="mt-6 rounded-xl rounded-br-none z-10 shadow-xl" id="mapid" style="height: 520px;"></div>
+                    <div class="mt-6 rounded-xl z-10 shadow-xl" id="map" style="height: 520px;"></div>
                 </x-card>
                 
                 <div class="w-full lg:w-2/5 mt-8 lg:mt-0">
@@ -105,28 +105,31 @@
     </div>
 
     <script>
-        var map = L.map('mapid').setView([51.505, -0.2], 5);
-
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> Contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-        }).addTo(map);
-
-        L.marker([51.5, -0.09]).addTo(map)
-        .bindPopup('A pretty CSS3 popup.<br> Easily customizable.');
+        mapboxgl.accessToken = 'pk.eyJ1IjoiaGlhYXJ5YW4iLCJhIjoiY2tzZTl0ajJjMGgydjJwbnVuMG5tOXMxbiJ9.r5-7_9QXjVfz4hcg-yYM4w';
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: 'mapbox://styles/hiaaryan/ckwatwod05wdw14mvtj34e8nk', // style URL
+            center: [40.52, 32.34], // starting position [lng, lat]
+            zoom: 1.5, // starting zoom
+            attributionControl: false
+        });
+        const marker = new mapboxgl.Marker()
+            .setLngLat([30.5, 50.5])
+            .addTo(map);
     </script>
 
     <script>
         const colors = {
-            purple: {
-                default: "rgba(149, 76, 233, 1)",
-                half: "rgba(149, 76, 233, 0.5)",
-                quarter: "rgba(149, 76, 233, 0.25)",
-                zero: "rgba(149, 76, 233, 0)"
-            },
-            indigo: {
-                default: "rgba(80, 102, 120, 1)",
-                quarter: "rgba(80, 102, 120, 0.25)"
-            }
+                purple: {
+                    default: "rgba(149, 76, 233, 1)",
+                    half: "rgba(149, 76, 233, 0.5)",
+                    quarter: "rgba(149, 76, 233, 0.25)",
+                    zero: "rgba(149, 76, 233, 0)"
+                },
+                indigo: {
+                    default: "rgba(80, 102, 120, 1)",
+                    quarter: "rgba(80, 102, 120, 0.25)"
+                }
             };
 
             const weight = [2, 6, 4, 3, 5, 3, 6, 6, 9, 4, 5, 7];
@@ -149,19 +152,13 @@
                 const ctx = document.getElementById("myChart").getContext("2d");
                 ctx.canvas.height = 100;
 
-                gradient = ctx.createLinearGradient(0, 25, 0, 300);
-                gradient.addColorStop(0, colors.purple.half);
-                gradient.addColorStop(0.15, colors.purple.quarter);
-                gradient.addColorStop(0.55, colors.purple.zero);
-
                 const options = {
                 type: "line",
                 data: {
                     labels: labels,
                     datasets: [
                     {
-                        fill: true,
-                        backgroundColor: gradient,
+                        fill: false,
                         pointBackgroundColor: colors.purple.default,
                         borderColor: colors.purple.default,
                         data: weight,

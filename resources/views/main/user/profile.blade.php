@@ -92,7 +92,7 @@
                             <span class="text-xs font-semibold">[ {{ Auth::user()->username }} ]</span>
                             <span class="text-xs">{{ Carbon\Carbon::parse(Auth::user()->dob)->diff(\Carbon\Carbon::now())->format('%y') }} years old.</span>
 
-                            <p class="mt-1 text-xs">{{ Auth::user()->bio == null ? '🚀 Hey there! I am a member of this virtual airline.' : '🚀 ' . Auth::user()->bio }}</p>
+                            <p class="mt-1 text-xs">{{ Auth::user()->bio == null ? '✌🏻 hey there! I am a member of this virtual airline.' : '✌🏻 ' . Auth::user()->bio }}</p>
 
                             @if (!!Auth::user()->vatsim)
                                 <p class="flex items-center mt-6 text-xs text-gray-400">
@@ -109,7 +109,7 @@
                                 <line x1="12" y1="8" x2="12.01" y2="8"></line>
                                 <polyline points="11 12 12 12 12 16 13 16"></polyline>
                             </svg>
-                            about profile badges
+                            Profile Badges
                         </h5>
                         <span class="text-gray-400 flex text-xs">profile badges for real world pilots & management</span>
 
@@ -127,9 +127,9 @@
                                 <line x1="12" y1="8" x2="12.01" y2="8"></line>
                                 <polyline points="11 12 12 12 12 16 13 16"></polyline>
                             </svg>
-                            about uneditable fields
+                            Uneditable Fields
                         </h5>
-                        <span class="text-gray-400 flex text-xs">fields which cannot be edited / updated without staff authorization</span>
+                        <span class="text-gray-400 flex text-xs">cannot be edited / updated without staff authorization</span>
 
                         <p class="mt-6 text-xs max-w-4xl">
                             some fields such as pilot code, first name & last name, hub & nationality cannot be edited without staff's authorization.
@@ -156,92 +156,84 @@
 
                             <div class="lg:flex mt-6 gap-2">
                                 <div class="lg:w-1/3 mb-2 lg:mb-0">
-                                    <span class="text-xs lg:flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <x-forms.label :for="__('pilot code / username')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <path d="M5 12l5 5l10 -10"></path>
                                         </svg>
-                                        pilot code / username
-                                    </span>
+                                    </x-forms.label>
                                     <x-forms.input class="mt-2 cursor-not-allowed" value="{{ Auth::user()->username }}" disabled />
                                 </div>
                                 <div class="lg:w-1/3 mb-2 lg:mb-0">
-                                    <span class="text-xs lg:flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <x-forms.label :for="__('first name')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <path d="M5 12l5 5l10 -10"></path>
                                         </svg>
-                                        first name
-                                    </span>
+                                    </x-forms.label>
                                     <x-forms.input class="mt-2 cursor-not-allowed" value="{{ Auth::user()->fname }}" disabled />
                                 </div>
                                 <div class="lg:w-1/3">
-                                    <span class="text-xs lg:flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <x-forms.label :for="__('last name')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <path d="M5 12l5 5l10 -10"></path>
                                         </svg>
-                                        last name
-                                    </span>
+                                    </x-forms.label>
                                     <x-forms.input class="mt-2 cursor-not-allowed" value="{{ Auth::user()->lname }}" disabled />
                                 </div>
                             </div>
                             <div class="lg:flex mt-2 gap-2">
                                 <div class="lg:w-3/5 mb-2 lg:mb-0">
-                                    <span class="text-xs lg:flex items-center {{ $errors->has('email') ? 'text-red-500' : '' }}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <x-forms.label class="{{ $errors->has('email') ? 'text-red-500' : '' }}" :for="__('email')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <line x1="7" y1="7" x2="17" y2="17"></line>
                                             <polyline points="17 8 17 17 8 17"></polyline>
                                         </svg>
-                                        email
-                                    </span>
+                                    </x-forms.label>
                                     <x-forms.input  name="email" type="email" class="mt-2 {{ $errors->has('email') ? 'focus:ring-red-500' : 'focus:ring-blue-500' }}" value="{{ Auth::user()->email }}" />
                                 </div>
                                 <div class="lg:w-1/5 mb-2 lg:mb-0">
-                                    <span class="text-xs lg:flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <x-forms.label :for="__('hub')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <path d="M5 12l5 5l10 -10"></path>
                                         </svg>
-                                        hub
-                                    </span>
+                                    </x-forms.label>
                                     <x-forms.input class="mt-2 cursor-not-allowed" value="{{ Auth::user()->hub }}" disabled />
                                 </div>
                                 <div class="lg:w-1/5 mb-2 lg:mb-0">
-                                    <span class="text-xs lg:flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <x-forms.label :for="__('nationality')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <path d="M5 12l5 5l10 -10"></path>
                                         </svg>
-                                        nationality
-                                    </span>
+                                    </x-forms.label>
                                     <x-forms.input class="mt-2 cursor-not-allowed" value="{{ Auth::user()->country }}" disabled />
                                 </div>
                             </div>
                             <div class="lg:flex mt-2 gap-2">
                                 <div class="lg:w-full mb-2 lg:mb-0">
-                                    <span class="text-xs lg:flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <x-forms.label :for="__('bio / about')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <line x1="7" y1="7" x2="17" y2="17"></line>
                                             <polyline points="17 8 17 17 8 17"></polyline>
                                         </svg>
-                                        bio / about
-                                    </span>
+                                    </x-forms.label>
                                     <x-forms.input name="bio" class="mt-2 focus:ring-blue-500" placeholder="👋🏻 hey! i am Joe, a flight sim enthusiast." value="{{ Auth::user()->bio }}" />
                                 </div>
                             </div>
                             <div class="lg:flex mt-2 gap-2">
                                 <div class="lg:w-full mb-2 lg:mb-0">
-                                    <span class="text-xs lg:flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <x-forms.label :for="__('avatar')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <line x1="7" y1="7" x2="17" y2="17"></line>
                                             <polyline points="17 8 17 17 8 17"></polyline>
                                         </svg>
-                                        avatar
-                                    </span>
+                                    </x-forms.label>
                                     <label class="mt-2 w-full flex flex-col items-center px-4 py-4 bg-gray-800 bg-opacity-60 rounded-xl border-2 border-dashed cursor-pointer text-sm">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud w-8" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -255,13 +247,13 @@
                             </div>
                             <div class="mt-6 flex justify-end">
                                 <div class="lg:mt-0 mt-3 w-full lg:w-auto">
-                                    <button type="submit" class="text-sm justify-center lg:text-base w-full lg:w-auto flex items-center focus:outline-none px-4 py-2 rounded-full focus:shadow-outline bg-blue-600 hover:bg-blue-700 transition duration-500" placeholder="username">
+                                    <x-buttons.primary type="submit">
                                         update data
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rotate-clockwise inline-block w-6 ml-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rotate-clockwise inline-block w-5 ml-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <path d="M4.05 11a8 8 0 1 1 .5 4m-.5 5v-5h5"></path>
                                         </svg>
-                                    </button>
+                                    </x-buttons.primary>
                                 </div>
                             </div>
                         </form>
@@ -286,48 +278,45 @@
 
                             <div class="lg:flex mt-6 gap-2">
                                 <div class="lg:w-1/3 mb-2 lg:mb-0">
-                                    <span class="text-xs lg:flex items-center {{ $errors->has('oldpass') ? 'text-red-500' : '' }}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <x-forms.label class="{{ $errors->has('oldpass') ? 'text-red-500' : '' }}" :for="__('old password')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <line x1="7" y1="7" x2="17" y2="17"></line>
                                             <polyline points="17 8 17 17 8 17"></polyline>
                                         </svg>
-                                        old password
-                                    </span>
+                                    </x-forms.label>
                                     <x-forms.input name="oldpass" type="password" class="mt-2 {{ $errors->has('oldpass') ? 'focus:ring-red-500' : 'focus:ring-blue-500' }}" placeholder="••••••••••" />
                                 </div>
                                 <div class="lg:w-1/3 mb-2 lg:mb-0">
-                                    <span class="text-xs lg:flex items-center {{ $errors->has('newpass') ? 'text-red-500' : '' }}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <x-forms.label class="{{ $errors->has('newpass') ? 'text-red-500' : '' }}" :for="__('new password')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <line x1="7" y1="7" x2="17" y2="17"></line>
                                             <polyline points="17 8 17 17 8 17"></polyline>
                                         </svg>
-                                        new password
-                                    </span>
+                                    </x-forms.label>
                                     <x-forms.input name="newpass" type="password" class="mt-2 {{ $errors->has('newpass') ? 'focus:ring-red-500' : 'focus:ring-blue-500' }}" placeholder="••••••••••" />
                                 </div>
                                 <div class="lg:w-1/3 mb-2 lg:mb-0">
-                                    <span class="text-xs lg:flex items-center {{ $errors->has('newpass_confirmation') ? 'text-red-500' : '' }}">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <x-forms.label class="{{ $errors->has('newpass_confirmation') ? 'text-red-500' : '' }}" :for="__('aaannnd confirm it...')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <line x1="7" y1="7" x2="17" y2="17"></line>
                                             <polyline points="17 8 17 17 8 17"></polyline>
                                         </svg>
-                                        confirm new password
-                                    </span>
+                                    </x-forms.label>
                                     <x-forms.input name="newpass_confirmation" type="password" class="mt-2 {{ $errors->has('newpass_confirmation') ? 'focus:ring-red-500' : 'focus:ring-blue-500' }}" placeholder="••••••••••" />
                                 </div>
                             </div>
                             <div class="mt-6 flex justify-end">
                                 <div class="lg:mt-0 mt-3 w-full lg:w-auto">
-                                    <button type="submit" class="text-sm justify-center lg:text-base w-full lg:w-auto flex items-center focus:outline-none px-4 py-2 rounded-full focus:shadow-outline bg-blue-600 hover:bg-blue-700 transition duration-500" placeholder="username">
+                                    <x-buttons.primary type="submit">
                                         update password
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rotate-clockwise inline-block w-6 ml-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rotate-clockwise inline-block w-5 ml-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <path d="M4.05 11a8 8 0 1 1 .5 4m-.5 5v-5h5"></path>
                                         </svg>
-                                    </button>
+                                    </x-buttons.primary>
                                 </div>
                             </div>
                         </form>

@@ -28,7 +28,8 @@ class DashboardController extends Controller
      * Redirect user to dashboard domain when authenticated.
      *
      */
-    public function confirmAuthentication() {
+    public function confirmAuthentication() 
+    {
         return redirect()->route('dashboard');
     }
 
@@ -36,7 +37,8 @@ class DashboardController extends Controller
      * Show the application's dashboard.
      *
      */
-    public function index() {
+    public function index() 
+    {
         return view('main.user.dashboard');
     }
 }

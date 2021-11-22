@@ -47,26 +47,25 @@
                             @csrf
 
                             <div class="w-full mb-2 lg:mb-0">
-                                <span class="text-xs lg:flex items-center {{ $errors->has('icao') ? 'text-red-500' : '' }}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <x-forms.label class="{{ $errors->has('icao') ? 'text-red-500' : '' }}" :for="__('destination')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                         <line x1="7" y1="7" x2="17" y2="17"></line>
                                         <polyline points="17 8 17 17 8 17"></polyline>
                                     </svg>
-                                    destination
-                                </span>
+                                </x-forms.label>
                                 <x-forms.input name="icao" class="mt-2 {{ $errors->has('icao') ? 'focus:ring-red-500' : 'focus:ring-indigo-500' }}" placeholder="EGKK or Gatwick? What about Dubai?" />
                             </div>
                             <div class="mt-6 flex justify-end">
                                 <div class="lg:mt-0 mt-3 w-full lg:w-auto">
-                                    <button type="submit" class="text-sm justify-center lg:text-base w-full lg:w-auto flex items-center focus:outline-none px-4 py-2 rounded-full focus:shadow-outline bg-blue-600 hover:bg-blue-700 transition duration-500">
+                                    <x-buttons.primary type="submit">
                                         search aerodomes
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search inline-block w-6 ml-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search inline-block w-5 ml-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <circle cx="10" cy="10" r="7"></circle>
                                             <line x1="21" y1="21" x2="15" y2="15"></line>
                                         </svg>
-                                    </button>
+                                    </x-buttons.primary>
                                 </div>
                             </div>
                         </form>
@@ -126,19 +125,13 @@
                 const ctx = document.getElementById("myChart").getContext("2d");
                 ctx.canvas.height = 100;
 
-                gradient = ctx.createLinearGradient(0, 25, 0, 300);
-                gradient.addColorStop(0, colors.purple.half);
-                gradient.addColorStop(0.15, colors.purple.quarter);
-                gradient.addColorStop(0.55, colors.purple.zero);
-
                 const options = {
                 type: "line",
                 data: {
                     labels: labels,
                     datasets: [
                     {
-                        fill: true,
-                        backgroundColor: gradient,
+                        fill: false,
                         pointBackgroundColor: colors.purple.default,
                         borderColor: colors.purple.default,
                         data: weight,
