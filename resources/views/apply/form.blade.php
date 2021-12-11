@@ -134,7 +134,7 @@
                                     @endif
                                 </x-forms.label>
                             </div>
-                            <select name="country" class="mt-2 w-full outline-none border-none px-4 py-1.5 rounded-full focus:ring bg-gray-800 bg-opacity-60 transition duration-150 {{ $errors->has('country') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-blue-500' }} {{ $applicant->country == null ? '' : 'cursor-not-allowed' }}" @if ($applicant->country != null) disabled @endif>
+                            <select name="country" class="mt-2 w-full outline-none border-none px-4 py-1.5 rounded-xl focus:ring bg-gray-800 bg-opacity-60 transition duration-150 {{ $errors->has('country') ? 'focus:ring focus:ring-red-500' : 'focus:ring focus:ring-blue-500' }} {{ $applicant->country == null ? '' : 'cursor-not-allowed' }}" @if ($applicant->country != null) disabled @endif>
                                 <option hidden>[select]</option>
                                 <option {{ $applicant->country == "AF" ? "selected" : "" }} value="AF">Afghanistan</option>
                                 <option {{ $applicant->country == "AX" ? "selected" : "" }} value="AX">Åland Islands</option>

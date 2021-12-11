@@ -18,7 +18,7 @@
         <div class="flex items-center">
             <div x-data="{ dropdownOpen: false }" class="relative">
                 <button @click="dropdownOpen = ! dropdownOpen"
-                    class="relative block w-8 rounded-full overflow-hidden focus:outline-none">
+                    class="relative block w-8 rounded-xl overflow-hidden focus:outline-none">
                     <img class="h-full w-full object-cover"
                         src="{{ Auth::user()->avatar }}"
                         alt="Your avatar">
@@ -62,7 +62,7 @@
                     </div>
 
                     <a href="{{ route('profile') }}"
-                        class="transition duration-500 flex items-center px-4 py-2 rounded-full text-sm hover:bg-gray-800 hover:bg-opacity-60">
+                        class="transition duration-500 flex items-center px-4 py-2 rounded-xl text-sm hover:bg-gray-800 hover:bg-opacity-60">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <circle cx="12" cy="7" r="4"></circle>
@@ -72,7 +72,7 @@
                     </a>
 
                     <a href="{{ route('cfcdc') }}"
-                        class="transition duration-500 flex items-center px-4 py-2 rounded-full text-sm hover:bg-gray-800 hover:bg-opacity-60">
+                        class="transition duration-500 flex items-center px-4 py-2 rounded-xl text-sm hover:bg-gray-800 hover:bg-opacity-60">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2 -4l-2 -4h3l2 2h4l-2 -7h3z"></path>
@@ -87,7 +87,7 @@
                     </form>
                     
                     <a x-on:click="document.getElementById('logout').submit();"
-                        class="transition duration-500 cursor-pointer flex items-center px-4 py-2 rounded-full text-sm hover:bg-gray-800 hover:bg-opacity-60">
+                        class="transition duration-500 cursor-pointer flex items-center px-4 py-2 rounded-xl text-sm hover:bg-gray-800 hover:bg-opacity-60">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>

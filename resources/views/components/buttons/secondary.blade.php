@@ -3,7 +3,7 @@
 
 <button 
     {{ $attributes->merge(['class' => '
-        justify-center w-full lg:w-auto flex items-center focus:outline-none px-4 py-1.5 rounded-full
+        justify-center w-full lg:w-auto flex items-center focus:outline-none px-4 py-1.5 rounded-xl
         focus:shadow-outline bg-gray-500 hover:bg-gray-600 transition duration-150
     ']) }}
 >

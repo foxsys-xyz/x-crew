@@ -25,4 +25,21 @@ class AirportController extends Controller
             'airports' => $airports
         ]);
     }
+
+    /**
+    * Display Edit Page for Airport.
+    * 
+    */
+    public function edit($id)
+    {
+        $airport = DB::table('airports')->where('id', $id)->first();
+        $runways = DB::table('runways')->where('icao', $airport->icao)->get();
+        $frequencies = DB::table('frequencies')->where('icao', $airport->icao)->get();
+
+        return view('main.staff.cfcdc.airports.edit', [
+            'airport' => $airport,
+            'runways' => $runways,
+            'frequencies' => $frequencies
+        ]);
+    }
 }

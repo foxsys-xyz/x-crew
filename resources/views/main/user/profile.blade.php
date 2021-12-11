@@ -58,7 +58,7 @@
                 <div class="w-full lg:w-1/3">
                     <x-card class="overflow-hidden">
                         <div class="-m-8 h-40 bg-cover bg-center relative" style="background-image: url('https://wallpapercave.com/wp/wp2471512.jpg');">
-                            <div class="absolute top-4 right-5 bg-black bg-opacity-40 backdrop-filter backdrop-blur-sm rounded-lg px-4 py-2">
+                            <div class="absolute top-4 right-5 bg-black bg-opacity-40 backdrop-filter backdrop-blur-sm rounded-xl px-4 py-2">
                                 @if (Auth::user()->rwp == true)
                                     <div class="text-xs flex items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check text-white inline-block w-5 mr-2 cursor-pointer" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -234,7 +234,7 @@
                                             <polyline points="17 8 17 17 8 17"></polyline>
                                         </svg>
                                     </x-forms.label>
-                                    <label class="mt-2 w-full flex flex-col items-center px-4 py-4 bg-gray-800 bg-opacity-60 rounded-xl border-2 border-dashed cursor-pointer text-sm">
+                                    <label class="mt-2 w-full flex flex-col items-center px-4 py-4 bg-gray-800 bg-opacity-60 rounded-xl cursor-pointer text-sm">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud w-8" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-12"></path>
@@ -345,7 +345,7 @@
                 >
                     <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                         <div class="sm:flex sm:items-start">
-                        <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full sm:mx-0 sm:h-10 sm:w-10">
+                        <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-xl sm:mx-0 sm:h-10 sm:w-10">
                             <!-- Heroicon name: outline/exclamation -->
                             <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
