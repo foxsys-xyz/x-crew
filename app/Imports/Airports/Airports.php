@@ -13,7 +13,7 @@ use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class ImportAirports implements ToModel, WithBatchInserts, WithChunkReading, WithHeadingRow
+class Airports implements ToModel, WithBatchInserts, WithChunkReading, WithHeadingRow
 {
     /**
     * @param array $row

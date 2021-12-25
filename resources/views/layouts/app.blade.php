@@ -49,5 +49,9 @@
                 </div>
             </div>
         </div>
+
+        <script>
+            Alpine.start();
+        </script>
     </body>
 </html>

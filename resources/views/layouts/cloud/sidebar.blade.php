@@ -20,7 +20,7 @@
                     </svg>
                 </a>
 
-                <div class="relative flex items-center" x-cloak x-show.transition.origin.right="tooltip">
+                <div class="relative flex items-center" x-cloak x-show="tooltip" x-transition.origin.right>
                     <div class="whitespace-nowrap ml-8 bg-gray-900 bg-opacity-40 backdrop-filter backdrop-blur-sm rounded-xl absolute z-50 px-4 py-2 text-sm text-white">
                         Dashboard
                     </div>
@@ -35,7 +35,7 @@
                     </svg>
                 </a>
 
-                <div class="relative flex items-center" x-cloak x-show.transition.origin.right="tooltip">
+                <div class="relative flex items-center" x-cloak x-show="tooltip" x-transition.origin.right>
                     <div class="whitespace-nowrap ml-8 bg-gray-900 bg-opacity-40 backdrop-filter backdrop-blur-sm rounded-xl absolute z-50 px-4 py-2 text-sm text-white">
                         CFCDC
                     </div>
@@ -55,7 +55,7 @@
                     </svg>
                 </a>
 
-                <div class="relative flex items-center" x-cloak x-show.transition.origin.right="tooltip">
+                <div class="relative flex items-center" x-cloak x-show="tooltip" x-transition.origin.right>
                     <div class="whitespace-nowrap ml-8 bg-gray-900 bg-opacity-40 backdrop-filter backdrop-blur-sm rounded-xl absolute z-50 px-4 py-2 text-sm text-white">
                         Schedule
                     </div>
@@ -73,7 +73,7 @@
                     </svg>
                 </a>
 
-                <div class="relative flex items-center" x-cloak x-show.transition.origin.right="tooltip">
+                <div class="relative flex items-center" x-cloak x-show="tooltip" x-transition.origin.right>
                     <div class="whitespace-nowrap ml-8 bg-gray-900 bg-opacity-40 backdrop-filter backdrop-blur-sm rounded-xl absolute z-50 px-4 py-2 text-sm text-white">
                         Resources
                     </div>
@@ -93,7 +93,7 @@
                     </svg>
                 </a>
 
-                <div class="relative flex items-center" x-cloak x-show.transition.origin.right="tooltip">
+                <div class="relative flex items-center" x-cloak x-show="tooltip" x-transition.origin.right>
                     <div class="whitespace-nowrap ml-8 bg-gray-900 bg-opacity-40 backdrop-filter backdrop-blur-sm rounded-xl absolute z-50 px-4 py-2 text-sm text-white">
                         Support
                     </div>
@@ -118,7 +118,7 @@
                         </svg>
                     </a>
 
-                    <div class="relative flex items-center" x-cloak x-show.transition.origin.right="tooltip">
+                    <div class="relative flex items-center" x-cloak x-show="tooltip" x-transition.origin.right>
                         <div class="whitespace-nowrap ml-8 bg-gray-900 bg-opacity-40 backdrop-filter backdrop-blur-sm rounded-xl absolute z-50 px-4 py-2 text-sm text-white">
                             Staff Center
                         </div>

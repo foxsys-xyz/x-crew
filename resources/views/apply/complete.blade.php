@@ -80,7 +80,7 @@
 
     <script>
         window.onload = function() {
-            var completeTimeLeft = 50;
+            var completeTimeLeft = 5;
             var completeElem = document.getElementById('time');
             var completeTimerId = setInterval(completeCountdown, 1000);
 

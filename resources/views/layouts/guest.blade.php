@@ -28,5 +28,8 @@
 
         @yield('content')
 
+        <script>
+            Alpine.start();
+        </script>
     </body>
 </html>

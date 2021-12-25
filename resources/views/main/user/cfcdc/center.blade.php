@@ -92,99 +92,63 @@
     </div>
 
     <script>
-        const colors = {
-            purple: {
-                default: "rgba(149, 76, 233, 1)",
-                half: "rgba(149, 76, 233, 0.5)",
-                quarter: "rgba(149, 76, 233, 0.25)",
-                zero: "rgba(149, 76, 233, 0)"
-            },
-            indigo: {
-                default: "rgba(80, 102, 120, 1)",
-                quarter: "rgba(80, 102, 120, 0.25)"
-            }
-            };
-
-            const weight = [2, 6, 4, 3, 5, 3, 6, 6, 9, 4, 5, 7];
-
-            const labels = [
-                    "January",
-                    "February",
-                    "March",
-                    "April",
-                    "May",
-                    "June",
-                    "July",
-                    "August",
-                    "September",
-                    "October",
-                    "Novemeber",
-                    "December"
-                ];
-
-                const ctx = document.getElementById("myChart").getContext("2d");
-                ctx.canvas.height = 100;
-
-                const options = {
-                type: "line",
-                data: {
-                    labels: labels,
-                    datasets: [
-                    {
-                        fill: false,
-                        pointBackgroundColor: colors.purple.default,
-                        borderColor: colors.purple.default,
-                        data: weight,
-                        lineTension: 0.4,
-                        borderWidth: 2,
-                        pointRadius: 3
-                    }
-                    ]
-                },
-                options: {
-                    layout: {
-                    padding: 10
-                    },
-                    responsive: true,
-                    legend: {
-                    display: false
-                    },
-
-                    scales: {
-                    xAxes: [
-                        {
-                            display: false,
-                            gridLines: {
-                                display: false
-                            },
-                            ticks: {
-                                padding: 10,
-                                autoSkip: false,
-                                maxRotation: 15,
-                                minRotation: 15
-                            }
-                        }
-                    ],
-                    yAxes: [
-                        {
-                            display: false,
-                            gridLines: {
-                                display: true,
-                                color: colors.indigo.quarter
-                            },
-                            ticks: {
-                                beginAtZero: false,
-                                padding: 10
-                            }
-                        }
-                    ]
-                    }
-                }
-            };
-
-            window.onload = function () {
-            window.myLine = new Chart(ctx, options);
+        const labels = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December',
+        ];
+        
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Flights',
+                backgroundColor: '#4f46e5',
+                borderColor: '#4f46e5',
+                data: [0, 10, 5, 2, 20, 30, 45, 25, 20, 10, 5, 12],
+                tension: 0.4,
+            }]
         };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                layout: {
+                    padding: {
+                        bottom: 20,
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false,
+                    }
+                },
+                scales: {
+                    xAxes: 
+                        {
+                            display: false,
+                        },
+                    yAxes: 
+                        {
+                            display: false,
+                        }
+                },
+            }
+        };
+
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
     </script>
 
 @endsection

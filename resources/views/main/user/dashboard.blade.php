@@ -69,20 +69,22 @@
             </div>
 
             <div class="lg:flex mt-8 gap-8">
-                <x-card class="w-full lg:w-3/5">
-                    <h5 class="leading-3 font-medium inline-flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chart-arcs inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <circle cx="12" cy="12" r="1"></circle>
-                            <path d="M16.924 11.132a5 5 0 1 0 -4.056 5.792"></path>
-                            <path d="M3 12a9 9 0 1 0 9 -9"></path>
-                        </svg>
-                        Company [ ACARS ] Uplink
-                    </h5>
-                    <span class="text-gray-400 flex text-xs">11 aircraft stations online</span>
+                <div class="w-full lg:w-3/5 mt-8 lg:mt-0">
+                    <x-card>
+                        <h5 class="leading-3 font-medium inline-flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chart-arcs inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <circle cx="12" cy="12" r="1"></circle>
+                                <path d="M16.924 11.132a5 5 0 1 0 -4.056 5.792"></path>
+                                <path d="M3 12a9 9 0 1 0 9 -9"></path>
+                            </svg>
+                            Company [ ACARS ] Uplink
+                        </h5>
+                        <span class="text-gray-400 flex text-xs">11 aircraft stations online</span>
 
-                    <div class="mt-6 rounded-xl z-10 shadow-xl" id="map" style="height: 520px;"></div>
-                </x-card>
+                        <div class="mt-6 rounded-xl z-10 shadow-xl" id="map" style="height: 520px;"></div>
+                    </x-card>
+                </div>
                 
                 <div class="w-full lg:w-2/5 mt-8 lg:mt-0">
                     <x-card>
@@ -98,6 +100,23 @@
                         <span class="text-gray-400 flex text-xs">amount of PIREPs filed per month</span>
 
                         <canvas class="mt-6" id="myChart"></canvas>
+                    </x-card>
+
+                    <x-card class="mt-8 bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-600">
+                        <p class="text-xs">
+                            we're glad you're here. unfortunately the system was unable to find any flights that you've booked.
+                            we recommend you to check CFCDC and come back afterwards.
+                        </p>
+                        <div x-data class="mt-6">
+                            <x-buttons.primary x-on:click="window.location.href='{{ route('cfcdc') }}'" class="lg:w-full bg-blue-50 hover:bg-blue-100 bg-opacity-30 hover:bg-opacity-40">
+                                open CFCDC
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-up-right inline-block w-5 ml-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <line x1="17" y1="7" x2="7" y2="17"></line>
+                                    <polyline points="8 7 17 7 17 16"></polyline>
+                                </svg>
+                            </x-buttons.primary>
+                        </div>
                     </x-card>
                 </div>
             </div>
@@ -119,99 +138,63 @@
     </script>
 
     <script>
-        const colors = {
-                purple: {
-                    default: "rgba(149, 76, 233, 1)",
-                    half: "rgba(149, 76, 233, 0.5)",
-                    quarter: "rgba(149, 76, 233, 0.25)",
-                    zero: "rgba(149, 76, 233, 0)"
-                },
-                indigo: {
-                    default: "rgba(80, 102, 120, 1)",
-                    quarter: "rgba(80, 102, 120, 0.25)"
-                }
-            };
-
-            const weight = [2, 6, 4, 3, 5, 3, 6, 6, 9, 4, 5, 7];
-
-            const labels = [
-                    "January",
-                    "February",
-                    "March",
-                    "April",
-                    "May",
-                    "June",
-                    "July",
-                    "August",
-                    "September",
-                    "October",
-                    "Novemeber",
-                    "December"
-                ];
-
-                const ctx = document.getElementById("myChart").getContext("2d");
-                ctx.canvas.height = 100;
-
-                const options = {
-                type: "line",
-                data: {
-                    labels: labels,
-                    datasets: [
-                    {
-                        fill: false,
-                        pointBackgroundColor: colors.purple.default,
-                        borderColor: colors.purple.default,
-                        data: weight,
-                        lineTension: 0.4,
-                        borderWidth: 2,
-                        pointRadius: 3
-                    }
-                    ]
-                },
-                options: {
-                    layout: {
-                    padding: 10
-                    },
-                    responsive: true,
-                    legend: {
-                    display: false
-                    },
-
-                    scales: {
-                    xAxes: [
-                        {
-                            display: false,
-                            gridLines: {
-                                display: false
-                            },
-                            ticks: {
-                                padding: 10,
-                                autoSkip: false,
-                                maxRotation: 15,
-                                minRotation: 15
-                            }
-                        }
-                    ],
-                    yAxes: [
-                        {
-                            display: false,
-                            gridLines: {
-                                display: true,
-                                color: colors.indigo.quarter
-                            },
-                            ticks: {
-                                beginAtZero: false,
-                                padding: 10
-                            }
-                        }
-                    ]
-                    }
-                }
-            };
-
-            window.onload = function () {
-            window.myLine = new Chart(ctx, options);
+        const labels = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December',
+        ];
+        
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Flights',
+                backgroundColor: '#4f46e5',
+                borderColor: '#4f46e5',
+                data: [0, 10, 5, 2, 20, 30, 45, 25, 20, 10, 5, 12],
+                tension: 0.4,
+            }]
         };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                layout: {
+                    padding: {
+                        bottom: 20,
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false,
+                    }
+                },
+                scales: {
+                    xAxes: 
+                        {
+                            display: false,
+                        },
+                    yAxes: 
+                        {
+                            display: false,
+                        }
+                },
+            }
+        };
+
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
     </script>
 
 @endsection

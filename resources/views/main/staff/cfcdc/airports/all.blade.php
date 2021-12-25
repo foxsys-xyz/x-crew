@@ -67,12 +67,114 @@
                     </x-card>
                 </div>
                 <div class="w-full lg:w-2/5 mt-8 lg:mt-0">
-                    <x-card class="h-96">
-                        
+                    <x-card class="mt-8 lg:mt-0">
+                        <h5 class="leading-3 font-medium inline-flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rotate-clockwise inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M4.05 11a8 8 0 1 1 .5 4m-.5 5v-5h5"></path>
+                            </svg>
+                            Import Data
+                        </h5>
+                        <span class="text-gray-400 flex text-xs">please upload the csv files with complete data</span>
+
+                        <div class="lg:flex mt-6 gap-2">
+                            <div class="lg:w-full mb-2 lg:mb-0">
+                                <x-forms.label :for="__('airports (csv)')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <line x1="7" y1="7" x2="17" y2="17"></line>
+                                        <polyline points="17 8 17 17 8 17"></polyline>
+                                    </svg>
+                                </x-forms.label>
+                                <label class="mt-2 w-full flex flex-col items-center px-4 py-4 bg-gray-800 bg-opacity-60 rounded-xl cursor-pointer text-sm">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud w-8" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-12"></path>
+                                    </svg>
+                                    <span class="mt-1 leading-normal">upload csv</span>
+                                    <span id="file-chosen-airports">no file is chosen currently</span>
+                                    <input type="file" name="airports" id="airports" class="hidden" />
+                                </label>
+                            </div>
+                        </div>
+                        <div class="lg:flex mt-2 gap-2">
+                            <div class="lg:w-full mb-2 lg:mb-0">
+                                <x-forms.label :for="__('runways (csv)')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <line x1="7" y1="7" x2="17" y2="17"></line>
+                                        <polyline points="17 8 17 17 8 17"></polyline>
+                                    </svg>
+                                </x-forms.label>
+                                <label class="mt-2 w-full flex flex-col items-center px-4 py-4 bg-gray-800 bg-opacity-60 rounded-xl cursor-pointer text-sm">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud w-8" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-12"></path>
+                                    </svg>
+                                    <span class="mt-1 leading-normal">upload csv</span>
+                                    <span id="file-chosen-runways">no file is chosen currently</span>
+                                    <input type="file" name="runways" id="runways" class="hidden" />
+                                </label>
+                            </div>
+                        </div>
+                        <div class="lg:flex mt-2 gap-2">
+                            <div class="lg:w-full mb-2 lg:mb-0">
+                                <x-forms.label :for="__('frequencies (csv)')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down-right inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <line x1="7" y1="7" x2="17" y2="17"></line>
+                                        <polyline points="17 8 17 17 8 17"></polyline>
+                                    </svg>
+                                </x-forms.label>
+                                <label class="mt-2 w-full flex flex-col items-center px-4 py-4 bg-gray-800 bg-opacity-60 rounded-xl cursor-pointer text-sm">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud w-8" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-12"></path>
+                                    </svg>
+                                    <span class="mt-1 leading-normal">upload csv</span>
+                                    <span id="file-chosen-frequencies">no file is chosen currently</span>
+                                    <input type="file" name="frequencies" id="frequencies" class="hidden" />
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mt-6 flex justify-end">
+                            <div class="lg:mt-0 mt-3 w-full lg:w-auto">
+                                <x-buttons.primary type="submit">
+                                    import data
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rotate-clockwise inline-block w-5 ml-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M4.05 11a8 8 0 1 1 .5 4m-.5 5v-5h5"></path>
+                                    </svg>
+                                </x-buttons.primary>
+                            </div>
+                        </div>
                     </x-card>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        const airports = document.getElementById('airports');
+        const fileChosenAirports = document.getElementById('file-chosen-airports');
+
+        airports.addEventListener('change', function() {
+            fileChosenAirports.textContent = this.files[0].name
+        });
+
+        const runways = document.getElementById('runways');
+        const fileChosenRunways = document.getElementById('file-chosen-runways');
+
+        runways.addEventListener('change', function() {
+            fileChosenRunways.textContent = this.files[0].name
+        });
+
+        const frequencies = document.getElementById('frequencies');
+        const fileChosenFrequencies = document.getElementById('file-chosen-frequencies');
+
+        frequencies.addEventListener('change', function() {
+            fileChosenFrequencies.textContent = this.files[0].name
+        });
+    </script>
 
 @endsection
