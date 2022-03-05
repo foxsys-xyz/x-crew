@@ -37,7 +37,7 @@ class AirportController extends Controller
      */
     public function import(Request $request)
     {
-        $this->validate($request, [
+        $request->validate($request, [
             'airports' => 'mimes:csv,txt',
             'runways' => 'mimes:csv,txt',
             'frequencies' => 'mimes:csv,txt'
