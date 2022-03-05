@@ -6,43 +6,53 @@ namespace App\Imports\Airports;
  * Use Facades Required Additionally
  *
  */
-
-use App\Models\Airport;
-use Maatwebsite\Excel\Concerns\ToModel;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Maatwebsite\Excel\Concerns\ToCollection;
+use Maatwebsite\Excel\Concerns\Importable;
 
-class Airports implements ToModel, WithBatchInserts, WithChunkReading, WithHeadingRow
+class Airports implements ToCollection, WithBatchInserts, WithChunkReading, WithHeadingRow, ShouldQueue
 {
+    use Importable;
+
     /**
-    * @param array $row
-    *
-    * @return Airport|null
+    * @param Collection $collection
     */
-    public function model(array $row)
+    public function collection(Collection $rows)
     {
-        return new Airport([
-            'icao' => $row['icao'],
-            'iata' => $row['iata'],
-            'airport_name' => $row['airport_name'],
-            'city_name' => $row['city_name'],
-            'country' => $row['country'],
-            'continent' => $row['continent'],
-            'elevation' => $row['elevation'],
-            'lat' => $row['lat'],
-            'lng' => $row['lng'],
-            'hub' => $row['hub']
-        ]);
+        foreach ($rows as $row) 
+        {
+            DB::table('airports')->insert([
+                [
+                    'icao' => $row['icao'],
+                    'iata' => $row['iata'],
+                    'airport_name' => $row['airport_name'],
+                    'city_name' => $row['city_name'],
+                    'country' => $row['country'],
+                    'continent' => $row['continent'],
+                    'elevation' => $row['elevation'],
+                    'lat' => $row['lat'],
+                    'lng' => $row['lng'],
+                    'hub' => $row['hub'],
+                    'created_at' => Carbon::now('UTC'),
+                    'updated_at' => Carbon::now('UTC')
+                ]
+            ]);
+        }
     }
 
     public function batchSize(): int
     {
-        return 1000;
+        return 3000;
     }
 
     public function chunkSize(): int
     {
-        return 1000;
+        return 500;
     }
 }

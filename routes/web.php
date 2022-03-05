@@ -123,14 +123,11 @@ Route::middleware(['auth', 'staff'])->domain('staff.' . config('app.url'))->grou
      *
      */
 
-    Route::get('cfcdc/airports', 'Staff\CFCDC\AirportController@index')->name('staff.airports');
-    Route::get('cfcdc/airports/all', 'Staff\CFCDC\AirportController@all')->name('staff.airports.all');
+    Route::get('cfcdc/airports', 'Staff\CFCDC\AirportController@all')->name('staff.airports');
     Route::post('cfcdc/airports/import', 'Staff\CFCDC\AirportController@import')->name('staff.airports.import');
     Route::get('cfcdc/airports/edit/{id}', 'Staff\CFCDC\AirportController@edit')->name('staff.airport.edit');
     Route::put('cfcdc/airports/update/{id}', 'Staff\CFCDC\AirportController@update')->name('staff.airport.update');
     Route::delete('cfcdc/airports/delete/{id}', 'Staff\CFCDC\AirportController@delete')->name('staff.airport.delete');
-    Route::post('cfcdc/airports/runways/import', 'Staff\CFCDC\AirportController@import_r')->name('staff.airports.runways.import');
-    Route::post('cfcdc/airports/frequencies/import', 'Staff\CFCDC\AirportController@import_f')->name('staff.airports.frequencies.import');
 
     /**
      * Staff Access Routes // CFCDC Management // Aircrafts [Do Not Edit Without Lead Dev's Permission]

@@ -16,6 +16,51 @@
         </div>
 
         <div class="flex items-center">
+            <div x-data="{ notificationOpen: false }" class="relative">
+                <button @click="notificationOpen = ! notificationOpen"
+                    class="flex mx-4 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-access-point inline-block w-6" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <line x1="12" y1="12" x2="12" y2="12.01"></line>
+                        <path d="M14.828 9.172a4 4 0 0 1 0 5.656"></path>
+                        <path d="M17.657 6.343a8 8 0 0 1 0 11.314"></path>
+                        <path d="M9.168 14.828a4 4 0 0 1 0 -5.656"></path>
+                        <path d="M6.337 17.657a8 8 0 0 1 0 -11.314"></path>
+                    </svg>
+                </button>
+
+                <div x-show="notificationOpen" @click="notificationOpen = false"
+                class="fixed inset-0 h-full w-full z-10" style="display: none;"></div>
+
+                <div x-show="notificationOpen"
+                    x-transition:enter="transition ease-out duration-100"
+                    x-transition:enter-start="transform opacity-0 scale-95"
+                    x-transition:enter-end="transform opacity-100 scale-100"
+                    x-transition:leave="transition ease-in duration-75"
+                    x-transition:leave-start="transform opacity-100 scale-100"
+                    x-transition:leave-end="transform opacity-0 scale-95"
+                    class="absolute z-30 right-0 mt-8 w-80 p-3 bg-gray-900 bg-opacity-40 rounded-3xl shadow-2xl backdrop-filter backdrop-blur-sm"
+                    style="width: 20rem; display: none;">
+
+                    @php
+                        $notifications = Auth::user()->staff_notams();
+                    @endphp
+
+                    @if ($notifications == '[]')
+
+                    @else
+                        @foreach ($notifications as $notification)
+                            <a href="#"
+                                class="transition duration-500 flex items-center px-4 py-2 rounded-xl text-sm hover:bg-gray-800 hover:bg-opacity-60">
+                                <p class="text-sm mx-2">
+                                    <span class="font-bold" href="#">{{ $notification->title }}</span>
+                                </p>
+                            </a>
+                        @endforeach
+                    @endif
+                </div>
+            </div>
+
             <div x-data="{ dropdownOpen: false }" class="relative">
                 <button @click="dropdownOpen = ! dropdownOpen"
                     class="relative block w-8 rounded-xl overflow-hidden focus:outline-none">

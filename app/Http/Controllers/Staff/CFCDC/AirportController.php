@@ -9,7 +9,12 @@ use Illuminate\Http\Request;
  * Use Facades Required Additionally
  *
  */
+use Carbon\Carbon;
+use App\Models\Airport;
 use Illuminate\Support\Facades\DB;
+use App\Imports\Airports\Airports;
+use App\Imports\Airports\Runways;
+use App\Imports\Airports\Frequencies;
 
 class AirportController extends Controller
 {
@@ -17,13 +22,76 @@ class AirportController extends Controller
     * Display Airports Page.
     * 
     */
-    public function index()
+    public function all()
     {
         $airports = DB::table('airports')->paginate(15);
 
         return view('main.staff.cfcdc.airports.all', [
             'airports' => $airports
         ]);
+    }
+
+    /**
+     * Import Data for Airports.
+     * 
+     */
+    public function import(Request $request)
+    {
+        $this->validate($request, [
+            'airports' => 'mimes:csv,txt',
+            'runways' => 'mimes:csv,txt',
+            'frequencies' => 'mimes:csv,txt'
+        ]);
+
+        if ($request->hasFile('airports')) {
+            DB::table('airports')->truncate();
+
+            (new Airports)->queue($request->file('airports'))->chain([
+                DB::table('broadcasts')->insert([
+                    [
+                        'title' => 'airport imports 👌',
+                        'description' => 'all airports are successfully imported.',
+                        'for' => 'S',
+                        'created_at' => Carbon::now('UTC'),
+                        'updated_at' => Carbon::now('UTC')
+                    ]
+                ]),
+            ]);
+        }
+
+        if ($request->hasFile('runways')) {
+            DB::table('runways')->truncate();
+
+            (new Runways)->queue($request->file('runways'))->chain([
+                DB::table('broadcasts')->insert([
+                    [
+                        'title' => 'runway imports 👌',
+                        'description' => 'all runways are successfully imported.',
+                        'for' => 'S',
+                        'created_at' => Carbon::now('UTC'),
+                        'updated_at' => Carbon::now('UTC')
+                    ]
+                ]),
+            ]);
+        }
+
+        if ($request->hasFile('frequencies')) {
+            DB::table('frequencies')->truncate();
+
+            (new Frequencies)->queue($request->file('frequencies'))->chain([
+                DB::table('broadcasts')->insert([
+                    [
+                        'title' => 'frequency imports 👌',
+                        'description' => 'all frequencies are successfully imported.',
+                        'for' => 'S',
+                        'created_at' => Carbon::now('UTC'),
+                        'updated_at' => Carbon::now('UTC')
+                    ]
+                ]),
+            ]);
+        }
+
+        return redirect()->route('staff.airports')->with('success', 'data resources are being imported. you\'ll be notified when done.');
     }
 
     /**

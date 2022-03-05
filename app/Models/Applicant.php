@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
  * Use Facades Required Additionally
  *
  */
-
 use Illuminate\Notifications\Notifiable;
 use League\OAuth2\Client\Token\AccessToken;
 use App\Http\Controllers\Auth\VATSIM\OAuthController;

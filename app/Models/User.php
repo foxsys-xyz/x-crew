@@ -10,9 +10,9 @@ use Illuminate\Notifications\Notifiable;
  * Use Facades Required Additionally
  *
  */
-
 use League\OAuth2\Client\Token\AccessToken;
 use App\Http\Controllers\Auth\VATSIM\OAuthController;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -96,5 +96,23 @@ class User extends Authenticatable implements MustVerifyEmail
 
             return $token;
         }
+    }
+
+    /**
+     * Return Staff Notifications
+     *
+     */
+    public function staff_notams()
+    {
+        return DB::table('broadcasts')->where('for', 'S')->latest()->limit(5)->get();
+    }
+
+    /**
+     * Return Pilot Notifications
+     *
+     */
+    public function pilot_notams()
+    {
+        return DB::table('broadcasts')->where('for', 'P')->latest()->limit(5)->get();
     }
 }

@@ -16,7 +16,6 @@
         </div>
 
         <div class="flex items-center">
-            
             <div x-data="{ notificationOpen: false }" class="relative">
                 <button @click="notificationOpen = ! notificationOpen"
                     class="flex mx-4 focus:outline-none">
