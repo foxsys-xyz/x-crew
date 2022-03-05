@@ -192,7 +192,7 @@
                                             <polyline points="17 8 17 17 8 17"></polyline>
                                         </svg>
                                     </x-forms.label>
-                                    <x-forms.input  name="email" type="email" class="mt-2 {{ $errors->has('email') ? 'focus:ring-red-500' : 'focus:ring-blue-500' }}" value="{{ Auth::user()->email }}" />
+                                    <x-forms.input  name="email" type="email" class="mt-2 {{ $errors->has('email') ? 'focus:ring-red-500' : 'focus:ring-blue-500' }}" placeholder="john@doe.com" value="{{ Auth::user()->email }}" />
                                 </div>
                                 <div class="lg:w-1/5 mb-2 lg:mb-0">
                                     <x-forms.label :for="__('hub')">

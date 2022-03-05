@@ -124,7 +124,7 @@
     </div>
 
     <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoiaGlhYXJ5YW4iLCJhIjoiY2tzZTl0ajJjMGgydjJwbnVuMG5tOXMxbiJ9.r5-7_9QXjVfz4hcg-yYM4w';
+        mapboxgl.accessToken = '{{ config('services.mapbox.access_token') }}';
         const map = new mapboxgl.Map({
             container: 'map', // container ID
             style: 'mapbox://styles/hiaaryan/ckwatwod05wdw14mvtj34e8nk', // style URL
