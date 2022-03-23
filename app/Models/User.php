@@ -13,10 +13,11 @@ use Illuminate\Notifications\Notifiable;
 use League\OAuth2\Client\Token\AccessToken;
 use App\Http\Controllers\Auth\VATSIM\OAuthController;
 use Illuminate\Support\Facades\DB;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable;
+    use Notifiable, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.

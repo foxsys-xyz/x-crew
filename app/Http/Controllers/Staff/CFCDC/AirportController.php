@@ -19,7 +19,7 @@ use App\Imports\Airports\Frequencies;
 class AirportController extends Controller
 {
     /**
-    * Display Airports Page.
+    * Display airports page.
     * 
     */
     public function all()
@@ -32,12 +32,12 @@ class AirportController extends Controller
     }
 
     /**
-     * Import Data for Airports.
+     * Import data for airports.
      * 
      */
     public function import(Request $request)
     {
-        $request->validate($request, [
+        $request->validate([
             'airports' => 'mimes:csv,txt',
             'runways' => 'mimes:csv,txt',
             'frequencies' => 'mimes:csv,txt'
@@ -95,7 +95,7 @@ class AirportController extends Controller
     }
 
     /**
-    * Display Edit Page for Airport.
+    * Display edit page for airport.
     * 
     */
     public function edit($id)
@@ -109,5 +109,36 @@ class AirportController extends Controller
             'runways' => $runways,
             'frequencies' => $frequencies
         ]);
+    }
+
+    /**
+    * Update data for an airport.
+    * 
+    */
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'airport_name' => 'required',
+            'lat' => 'required|numeric',
+            'lng' => 'required|numeric',
+            'elevation' => 'required|numeric'
+        ]);
+
+        $airport = Airport::find($id);
+
+        $airport->airport_name = request('airport_name');
+        $airport->lat = request('lat');
+        $airport->lng = request('lng');
+        $airport->elevation = request('elevation');
+
+        if (request('hub') === "on") {
+            $airport->hub = true;
+        } elseif (request('hub') === null) {
+            $airport->hub = false;
+        }
+
+        $airport->save();
+
+        return redirect('/cfcdc/airports/edit/' . $id)->with('success', 'airport data updated successfully.');
     }
 }

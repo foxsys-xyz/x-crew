@@ -55,7 +55,7 @@
                         </h5>
                         <span class="text-gray-400 flex text-xs">as required, you can omit or edit airport data</span>   
                         
-                        <form action="{{ route('profile.update') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('staff.airport.update', ['id' => $airport->id]) }}" method="post">
 
                             @csrf
 
@@ -154,7 +154,7 @@
                             </div>
                             
                             <div class="mt-8 flex items-center">
-                                <input id="hub" type="checkbox" class="rounded-full border-none text-blue-500 focus:ring focus:ring-blue-500 transition duration-150 bg-gray-800 bg-opacity-60" name="id" {{ $airport->hub == false ? '' : 'checked' }}>
+                                <input id="hub" type="checkbox" class="rounded-full border-none text-blue-500 focus:ring focus:ring-blue-500 transition duration-150 bg-gray-800 bg-opacity-60" name="hub" {{ $airport->hub == false ? '' : 'checked' }}>
                                 <span class="ml-3 text-sm">this airport is the airline's hub</span>
                             </div>
 
@@ -260,17 +260,14 @@
     </div>
 
     <script>
-        mapboxgl.accessToken = '{{ config('services.mapbox.access_token') }}';
+        mapboxgl.accessToken = `{{ config('services.mapbox.access_token') }}`;
         const map = new mapboxgl.Map({
             container: 'map', // container ID
             style: 'mapbox://styles/hiaaryan/ckwatwod05wdw14mvtj34e8nk', // style URL
-            center: [{{ $airport->lng }}, {{ $airport->lat }}], // starting position [lng, lat]
+            center: [`{{ $airport->lng }}`, `{{ $airport->lat }}`], // starting position [lng, lat]
             zoom: 11.5, // starting zoom
             attributionControl: false
         });
-        const marker = new mapboxgl.Marker()
-            .setLngLat([{{ $airport->lng }}, {{ $airport->lat }}])
-            .addTo(map);
     </script>
 
 @endsection

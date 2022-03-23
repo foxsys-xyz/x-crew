@@ -174,7 +174,7 @@ class RegisterController extends Controller
 
         $verifyUrl = route('apply.verify.email.manual', ['verifyToken' => $verifyToken]);
 
-        $when = now()->addSeconds(30);
+        $when = now()->addSeconds(15);
 
         $applicant->notify((new VerifyEmail($applicant, $verifyUrl))->delay($when));
 
@@ -318,7 +318,7 @@ class RegisterController extends Controller
             ])->save();
         }
 
-        $when = now()->addSeconds(30);
+        $when = now()->addSeconds(90);
 
         $applicant->notify((new CompleteAP($applicant))->delay($when));
 

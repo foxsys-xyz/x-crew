@@ -23,3 +23,7 @@ Route::get('verify/with/vatsim', 'Auth\VATSIM\ConnectController@connectWithVATSI
         ->withoutMiddleware('api')
         ->middleware('web')
         ->name('verify.with.vatsim');
+
+Route::post('login', 'ACARS\LoginController@login')->name('acars.login');
+Route::post('logout', 'ACARS\LoginController@logout')->middleware('auth:sanctum')->name('acars.logout');
+Route::get('user', 'ACARS\LoginController@user')->middleware('auth:sanctum')->name('acars.user');

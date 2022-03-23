@@ -126,16 +126,14 @@ Route::middleware(['auth', 'staff'])->domain('staff.' . config('app.url'))->grou
     Route::get('cfcdc/airports', 'Staff\CFCDC\AirportController@all')->name('staff.airports');
     Route::post('cfcdc/airports/import', 'Staff\CFCDC\AirportController@import')->name('staff.airports.import');
     Route::get('cfcdc/airports/edit/{id}', 'Staff\CFCDC\AirportController@edit')->name('staff.airport.edit');
-    Route::put('cfcdc/airports/update/{id}', 'Staff\CFCDC\AirportController@update')->name('staff.airport.update');
-    Route::delete('cfcdc/airports/delete/{id}', 'Staff\CFCDC\AirportController@delete')->name('staff.airport.delete');
+    Route::patch('cfcdc/airports/update/{id}', 'Staff\CFCDC\AirportController@update')->name('staff.airport.update');
 
     /**
      * Staff Access Routes // CFCDC Management // Aircrafts [Do Not Edit Without Lead Dev's Permission]
      *
      */
 
-    Route::get('cfcdc/aircrafts', 'Staff\CFCDC\AircraftController@index')->name('staff.aircrafts');
-    Route::get('cfcdc/aircrafts/all', 'Staff\CFCDC\AircraftController@all')->name('staff.aircrafts.all');
+    Route::get('cfcdc/aircrafts', 'Staff\CFCDC\AircraftController@all')->name('staff.aircrafts');
     Route::post('cfcdc/aircrafts', 'Staff\CFCDC\AircraftController@add')->name('staff.aircraft.add');
     Route::post('cfcdc/aircrafts/import', 'Staff\CFCDC\AircraftController@import')->name('staff.aircrafts.import');
     Route::get('cfcdc/aircrafts/ops/{id}', 'Staff\CFCDC\AircraftController@edit')->name('staff.aircraft.edit');
@@ -147,11 +145,8 @@ Route::middleware(['auth', 'staff'])->domain('staff.' . config('app.url'))->grou
      *
      */
 
-    Route::get('cfcdc/schedules', 'Staff\CFCDC\ScheduleController@index')->name('staff.schedules');
-    Route::get('cfcdc/schedules/all', 'Staff\CFCDC\ScheduleController@all')->name('staff.schedules.all');
-    Route::post('cfcdc/schedules', 'Staff\CFCDC\ScheduleController@add')->name('staff.schedule.add');
+    Route::get('cfcdc/schedules', 'Staff\CFCDC\ScheduleController@all')->name('staff.schedules');
     Route::post('cfcdc/schedules/import', 'Staff\CFCDC\ScheduleController@import')->name('staff.schedules.import');
     Route::get('cfcdc/schedules/ops/{id}', 'Staff\CFCDC\ScheduleController@edit')->name('staff.schedule.edit');
     Route::put('cfcdc/schedules/update/{id}', 'Staff\CFCDC\ScheduleController@update')->name('staff.schedule.update');
-    Route::delete('cfcdc/schedules/delete/{id}', 'Staff\CFCDC\ScheduleController@delete')->name('staff.schedule.delete');
 });
