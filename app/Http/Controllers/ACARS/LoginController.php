@@ -29,7 +29,7 @@ class LoginController extends Controller
 
         $user = User::where('username', request('username'))->first();
 
-        if (!$user || !Hash::check(request('password'), $user->password)) {
+        if (! $user || ! Hash::check(request('password'), $user->password)) {
             return response([
                 'message' => 'Invalid Credentials.'
             ], 401);
