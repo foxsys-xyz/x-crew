@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
  * Use Facades Required Additionally
  *
  */
-
 use League\OAuth2\Client\Token;
 use App\Http\Controllers\Auth\VATSIM\OAuthController;
 use League\OAuth2\Client\Provider\GenericProvider;

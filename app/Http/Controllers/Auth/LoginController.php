@@ -10,7 +10,6 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
  * Use Facades Required Additionally
  *
  */
-
 use Illuminate\Http\Request;
 use League\OAuth2\Client\Token;
 use App\Models\User;

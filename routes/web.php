@@ -133,12 +133,10 @@ Route::middleware(['auth', 'staff'])->domain('staff.' . config('app.url'))->grou
      *
      */
 
-    Route::get('cfcdc/aircrafts', 'Staff\CFCDC\AircraftController@all')->name('staff.aircrafts');
-    Route::post('cfcdc/aircrafts', 'Staff\CFCDC\AircraftController@add')->name('staff.aircraft.add');
-    Route::post('cfcdc/aircrafts/import', 'Staff\CFCDC\AircraftController@import')->name('staff.aircrafts.import');
-    Route::get('cfcdc/aircrafts/ops/{id}', 'Staff\CFCDC\AircraftController@edit')->name('staff.aircraft.edit');
-    Route::put('cfcdc/aircrafts/update/{id}', 'Staff\CFCDC\AircraftController@update')->name('staff.aircraft.update');
-    Route::delete('cfcdc/aircrafts/delete/{id}', 'Staff\CFCDC\AircraftController@delete')->name('staff.aircraft.delete');
+    Route::get('cfcdc/aircraft', 'Staff\CFCDC\AircraftController@all')->name('staff.aircraft');
+    Route::post('cfcdc/aircraft/import', 'Staff\CFCDC\AircraftController@import')->name('staff.aircraft.import');
+    Route::get('cfcdc/aircraft/edit/{id}', 'Staff\CFCDC\AircraftController@edit')->name('staff.aircraft.edit');
+    Route::put('cfcdc/aircraft/update/{id}', 'Staff\CFCDC\AircraftController@update')->name('staff.aircraft.update');
 
     /**
      * Staff Access Routes // CFCDC Management // Schedules [Do Not Edit Without Lead Dev's Permission]
@@ -147,6 +145,6 @@ Route::middleware(['auth', 'staff'])->domain('staff.' . config('app.url'))->grou
 
     Route::get('cfcdc/schedules', 'Staff\CFCDC\ScheduleController@all')->name('staff.schedules');
     Route::post('cfcdc/schedules/import', 'Staff\CFCDC\ScheduleController@import')->name('staff.schedules.import');
-    Route::get('cfcdc/schedules/ops/{id}', 'Staff\CFCDC\ScheduleController@edit')->name('staff.schedule.edit');
+    Route::get('cfcdc/schedules/edit/{id}', 'Staff\CFCDC\ScheduleController@edit')->name('staff.schedule.edit');
     Route::put('cfcdc/schedules/update/{id}', 'Staff\CFCDC\ScheduleController@update')->name('staff.schedule.update');
 });

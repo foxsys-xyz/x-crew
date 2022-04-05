@@ -36,7 +36,6 @@ class CreateAircraftTable extends Migration
             // State Codes ['CLD/IDL', Cold & Dark | 'PFL/BKD' Preflight & Booked | 'IFL/ENR' In Flight & En-Route | 'MTN/IDL' Maintainance & Idle].
 
             $table->string('state')->nullable();
-            $table->string('state_file')->nullable();
             $table->string('gate')->nullable();
             $table->string('pilot_comments')->nullable();
 

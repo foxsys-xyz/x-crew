@@ -8,7 +8,6 @@ use Illuminate\Database\Seeder;
  * Use Facades Required Additionally
  *
  */
-
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 

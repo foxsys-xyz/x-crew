@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
  * Use Facades Required Additionally
  *
  */
-
 use Illuminate\Http\Response;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -59,6 +58,10 @@ class LoginController extends Controller
         return response($response, 200);
     }
 
+    /**
+     * Send authenticated user details via sanctum token.
+     *
+     */
     public function user()
     {
         $user = auth()->user();

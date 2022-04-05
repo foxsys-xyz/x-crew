@@ -64,15 +64,15 @@
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2 -4l-2 -4h3l2 2h4l-2 -7h3z"></path>
                             </svg>
-                            Aircraft Data
+                            Aircraft / Fleet Data
                         </h5>
                         <span class="text-gray-400 flex text-xs">profile badges for real world pilots & management</span>
 
                         <p class="mt-6 text-xs">aircraft: {{ $aircraft }}</p>
 
                         <div class="mt-6">
-                            <div class="lg:mt-0 mt-3 w-full lg:w-auto">
-                                <x-buttons.primary>
+                            <div x-data class="lg:mt-0 mt-3 w-full lg:w-auto">
+                                <x-buttons.primary x-on:click="window.location.href='{{ route('staff.aircraft') }}'">
                                     manage data
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-up-right inline-block w-5 ml-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>

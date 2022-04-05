@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
  * Use Facades Required Additionally
  *
  */
-
 use App\Models\PIREP;
 use App\Models\Airport;
 use App\Models\Booking;

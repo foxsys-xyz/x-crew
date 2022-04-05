@@ -23,9 +23,14 @@
         </div>
 
         <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
-            <div>
-                <p class="text-sm text-gray-400 leading-5">
-                    {!! __('Showing') !!}
+            <div class="flex items-center text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <circle cx="10" cy="10" r="7"></circle>
+                    <line x1="21" y1="21" x2="15" y2="15"></line>
+                </svg>
+                <p class="text-sm leading-5">
+                    {!! __('retrieved & showing') !!}
                     <span class="font-medium">{{ $paginator->firstItem() }}</span>
                     {!! __('to') !!}
                     <span class="font-medium">{{ $paginator->lastItem() }}</span>

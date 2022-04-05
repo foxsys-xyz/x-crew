@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Validator;
  * Use Facades Required Additionally
  *
  */
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use League\OAuth2\Client\Token;

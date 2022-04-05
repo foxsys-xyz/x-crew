@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
  * Use Facades Required Additionally
  *
  */
-
 use Illuminate\Support\Facades\Auth;
 
 class Staff
