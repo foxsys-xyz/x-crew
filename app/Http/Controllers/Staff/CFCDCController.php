@@ -30,7 +30,7 @@ class CFCDCController extends Controller
             'schedules' => $schedules,
             'aircraft' => $aircraft,
             'runways' => $runways,
-            'frequencies' => $frequencies
+            'frequencies' => $frequencies,
         ]);
     }
 }

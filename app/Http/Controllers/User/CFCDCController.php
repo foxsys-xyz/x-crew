@@ -21,16 +21,6 @@ use Illuminate\Support\Facades\Crypt;
 class CFCDCController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
      * Show Centralized Flight Crew Data Center.
      *
      */
@@ -73,7 +63,7 @@ class CFCDCController extends Controller
             'weather' => $weather,
             'booking' => $booking,
             'schedule' => $schedule,
-            'aircraft' => $aircraft
+            'aircraft' => $aircraft,
         ]);
     }
 
@@ -84,7 +74,7 @@ class CFCDCController extends Controller
     public function search(Request $request)
     {
         $request->validate([
-            'icao' => 'required'
+            'icao' => 'required',
         ]);
 
         $lastrep = PIREP::where('user_id', Auth::user()->id)->latest()->limit(1)->first();
@@ -114,7 +104,7 @@ class CFCDCController extends Controller
         return view('main.user.cfcdc.search', [
             'schedules' => $schedules,
             'currentloc' => $currentloc,
-            'lastrep' => $lastrep
+            'lastrep' => $lastrep,
         ]);
     }
 
@@ -145,7 +135,7 @@ class CFCDCController extends Controller
             'currentloc' => $currentloc,
             'departure' => $departure,
             'arrival' => $arrival,
-            'aircrafts' => $aircrafts
+            'aircrafts' => $aircrafts,
         ]);
     }
 
@@ -153,7 +143,7 @@ class CFCDCController extends Controller
     public function booking_confirm(Request $request, $id)
     {
         $request->validate([
-            'aircraft' => 'required'
+            'aircraft' => 'required',
         ]);
 
         $validate = Booking::where('user_id', Auth::user()->id)->first();
@@ -179,7 +169,7 @@ class CFCDCController extends Controller
         $booking->save();
 
         $update = Aircraft::find(request('aircraft'))->update([
-            'state' => 'PRE/BKD'
+            'state' => 'PRE/BKD',
         ]);
 
         return redirect('/preflight')->with(['booking' => $booking]);
@@ -190,7 +180,7 @@ class CFCDCController extends Controller
         $booking = Booking::where('user_id', Auth::user()->id)->first();
 
         $update = Aircraft::find($booking->aircraft_id)->update([
-            'state' => 'CLD/IDL'
+            'state' => 'CLD/IDL',
         ]);
 
         $delete = Booking::destroy($booking->id);
@@ -205,7 +195,7 @@ class CFCDCController extends Controller
         return redirect('/preflight')->with(['booking' => $booking]);
     }
 
-    public function preflight()
+    public function preflight(Request $request)
     {
         $booking = $request->session()->get('booking');
 
@@ -245,7 +235,7 @@ class CFCDCController extends Controller
             'departure_frequencies' => $departure_frequencies, 
             'arrival_frequencies' => $arrival_frequencies, 
             'deph' => $deph, 
-            'depm' => $depm
+            'depm' => $depm,
         ]);
     }
 
@@ -314,7 +304,7 @@ class CFCDCController extends Controller
         $this->updateBooking($deptime, $duration, $arrtime);
 
         return view('user.ops.briefing', [
-            'xml' => $xml
+            'xml' => $xml,
         ]);
     }
 }

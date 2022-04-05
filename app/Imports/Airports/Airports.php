@@ -40,8 +40,8 @@ class Airports implements ToCollection, WithBatchInserts, WithChunkReading, With
                     'lng' => $row['lng'],
                     'hub' => $row['hub'],
                     'created_at' => Carbon::now('UTC'),
-                    'updated_at' => Carbon::now('UTC')
-                ]
+                    'updated_at' => Carbon::now('UTC'),
+                ],
             ]);
         }
     }

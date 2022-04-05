@@ -41,8 +41,8 @@ class Runways implements ToCollection, WithBatchInserts, WithChunkReading, WithH
                     'he_elevation' => $row['he_elevation'],
                     'he_heading' => $row['he_heading'],
                     'created_at' => Carbon::now('UTC'),
-                    'updated_at' => Carbon::now('UTC')
-                ]
+                    'updated_at' => Carbon::now('UTC'),
+                ],
             ]);
         }
     }

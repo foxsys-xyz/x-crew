@@ -23,14 +23,14 @@ class LoginController extends Controller
     {
         $request->validate([
             'username' => 'required|string',
-            'password' => 'required|string'
+            'password' => 'required|string',
         ]);
 
         $user = User::where('username', request('username'))->first();
 
         if (! $user || ! Hash::check(request('password'), $user->password)) {
             return response([
-                'message' => 'Invalid Credentials.'
+                'message' => 'Invalid Credentials.',
             ], 401);
         }
 
@@ -52,7 +52,7 @@ class LoginController extends Controller
         $request->user()->currentAccessToken()->delete();
 
         $response = [
-            'message' => 'Logged Out.'
+            'message' => 'Logged Out.',
         ];
 
         return response($response, 200);

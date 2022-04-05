@@ -34,8 +34,8 @@ class Frequencies implements ToCollection, WithBatchInserts, WithChunkReading, W
                     'description' => $row['description'],
                     'frequency' => $row['frequency'],
                     'created_at' => Carbon::now('UTC'),
-                    'updated_at' => Carbon::now('UTC')
-                ]
+                    'updated_at' => Carbon::now('UTC'),
+                ],
             ]);
         }
     }

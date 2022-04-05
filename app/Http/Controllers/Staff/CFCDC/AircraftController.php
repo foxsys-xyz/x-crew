@@ -25,7 +25,7 @@ class AircraftController extends Controller
         $aircraft = DB::table('aircraft')->paginate(15);
 
         return view('main.staff.cfcdc.aircraft.all', [
-            'fleet' => $aircraft
+            'fleet' => $aircraft,
         ]);
     }
 
@@ -56,8 +56,8 @@ class AircraftController extends Controller
                     'description' => 'all aircraft are successfully imported.',
                     'for' => 'S',
                     'created_at' => Carbon::now('UTC'),
-                    'updated_at' => Carbon::now('UTC')
-                ]
+                    'updated_at' => Carbon::now('UTC'),
+                ],
             ]),
         ]);
 
@@ -77,7 +77,7 @@ class AircraftController extends Controller
         return view('main.staff.cfcdc.airports.edit', [
             'airport' => $airport,
             'runways' => $runways,
-            'frequencies' => $frequencies
+            'frequencies' => $frequencies,
         ]);
     }
 
@@ -91,7 +91,7 @@ class AircraftController extends Controller
             'airport_name' => 'required',
             'lat' => 'required|numeric',
             'lng' => 'required|numeric',
-            'elevation' => 'required|numeric'
+            'elevation' => 'required|numeric',
         ]);
 
         $airport = Aircraft::find($id);

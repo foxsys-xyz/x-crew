@@ -16,17 +16,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
-{
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-    
+{    
     /**
      * Show the user profile & update form.
      *
@@ -82,7 +72,7 @@ class ProfileController extends Controller
         $request->validate([
             'oldpass' => 'required',
             'newpass' => 'required|confirmed',
-            'newpass_confirmation' => 'required'
+            'newpass_confirmation' => 'required',
         ]);
 
         $user = User::find(Auth::user()->id);
@@ -92,7 +82,7 @@ class ProfileController extends Controller
         }
 
         $user->update([
-            'password' => Hash::make(request('newpass'))
+            'password' => Hash::make(request('newpass')),
         ]);
 
         return redirect('/profile')->with('success', 'your password has been updated successfully.');

@@ -27,7 +27,7 @@ class AirportController extends Controller
         $airports = DB::table('airports')->paginate(15);
 
         return view('main.staff.cfcdc.airports.all', [
-            'airports' => $airports
+            'airports' => $airports,
         ]);
     }
 
@@ -40,7 +40,7 @@ class AirportController extends Controller
         $request->validate([
             'airports' => 'mimes:csv,txt',
             'runways' => 'mimes:csv,txt',
-            'frequencies' => 'mimes:csv,txt'
+            'frequencies' => 'mimes:csv,txt',
         ]);
 
         if ($request->hasFile('airports')) {
@@ -53,8 +53,8 @@ class AirportController extends Controller
                         'description' => 'all airports are successfully imported.',
                         'for' => 'S',
                         'created_at' => Carbon::now('UTC'),
-                        'updated_at' => Carbon::now('UTC')
-                    ]
+                        'updated_at' => Carbon::now('UTC'),
+                    ],
                 ]),
             ]);
         }
@@ -69,8 +69,8 @@ class AirportController extends Controller
                         'description' => 'all runways are successfully imported.',
                         'for' => 'S',
                         'created_at' => Carbon::now('UTC'),
-                        'updated_at' => Carbon::now('UTC')
-                    ]
+                        'updated_at' => Carbon::now('UTC'),
+                    ],
                 ]),
             ]);
         }
@@ -85,8 +85,8 @@ class AirportController extends Controller
                         'description' => 'all frequencies are successfully imported.',
                         'for' => 'S',
                         'created_at' => Carbon::now('UTC'),
-                        'updated_at' => Carbon::now('UTC')
-                    ]
+                        'updated_at' => Carbon::now('UTC'),
+                    ],
                 ]),
             ]);
         }
@@ -107,7 +107,7 @@ class AirportController extends Controller
         return view('main.staff.cfcdc.airports.edit', [
             'airport' => $airport,
             'runways' => $runways,
-            'frequencies' => $frequencies
+            'frequencies' => $frequencies,
         ]);
     }
 
@@ -121,7 +121,7 @@ class AirportController extends Controller
             'airport_name' => 'required',
             'lat' => 'required|numeric',
             'lng' => 'required|numeric',
-            'elevation' => 'required|numeric'
+            'elevation' => 'required|numeric',
         ]);
 
         $airport = Airport::find($id);
