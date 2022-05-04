@@ -59,6 +59,7 @@ class Aircraft implements ToCollection, WithBatchInserts, WithChunkReading, With
                     'maxpax' => $row['maxpax'],
                     'maxcargo' => $row['maxcargo'],
                     'location' => $acLocation,
+                    'state' => 'CLD/IDL',
                     'created_at' => Carbon::now('UTC'),
                     'updated_at' => Carbon::now('UTC'),
                 ],

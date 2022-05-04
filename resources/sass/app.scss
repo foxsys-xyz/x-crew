@@ -7,6 +7,12 @@
 @tailwind utilities;
 
 /*
+    Brand Font
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
+
+/*
     Custom Styled Scrollbar
 */
 
@@ -28,6 +34,23 @@
 
 *::-webkit-scrollbar-thumb {
     @apply rounded-full bg-black hover:bg-gray-900 bg-opacity-80;
+}
+
+/* 
+    Hide scrollbar for Chrome, Safari and Opera
+*/
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* 
+    Hide scrollbar for IE, Edge and Firefox
+*/
+
+.no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
 
 /*
@@ -57,9 +80,50 @@ select {
 }
 
 /*
-    Leaflet CSS 
+    Custom Select CSS
 */
 
-.leaflet-container {
-    @apply font-mono bg-transparent outline-none; 
+.custom-select {
+    @apply relative;
+}
+
+.custom-select select {
+    display: none;
+}
+
+.select-selected {
+    @apply mt-2 w-full outline-none border-none px-4 py-1.5 rounded-xl bg-gray-800 bg-opacity-60 cursor-pointer;
+}
+
+.select-items div {
+    @apply transition duration-150 flex items-center px-4 py-2 rounded-xl text-sm hover:bg-gray-800 hover:bg-opacity-60 cursor-pointer;
+}
+
+.select-items {
+    @apply w-full absolute mt-2 z-10 p-3 bg-gray-900 bg-opacity-40 rounded-3xl shadow-2xl backdrop-filter backdrop-blur-sm max-h-72 overflow-y-scroll no-scrollbar;
+}
+
+.select-hide {
+    display: none;
+}
+
+.same-as-selected {
+    @apply bg-gray-800 bg-opacity-60;
+}
+
+/*
+    Mapbox CSS
+*/
+
+.mapboxgl-popup {
+    @apply bg-gray-900 bg-opacity-40 rounded-xl backdrop-filter backdrop-blur-sm;
+}
+
+.mapboxgl-popup-tip {
+    @apply hidden;
+}
+
+.mapboxgl-popup-content {
+    @apply py-1 px-2 bg-transparent shadow-none font-mono;
+    font-size: 0.7rem;
 }

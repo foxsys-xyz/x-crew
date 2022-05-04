@@ -26,5 +26,12 @@ class SettingSeeder extends Seeder
             'created_at' => Carbon::now('UTC'),
             'updated_at' => Carbon::now('UTC'),
         ]);
+
+        DB::table('settings')->insert([
+            'name' => 'units',
+            'status' => false,
+            'created_at' => Carbon::now('UTC'),
+            'updated_at' => Carbon::now('UTC'),
+        ]);
     }
 }

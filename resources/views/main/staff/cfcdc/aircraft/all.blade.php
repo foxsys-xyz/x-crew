@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="mx-auto px-8 py-8">
-        <h4 class="text-2xl leading-3 font-medium inline-flex items-center">
+        <h4 class="text-2xl leading-3 inline-flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database-import inline-block w-8 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <ellipse cx="12" cy="6" rx="8" ry="3"></ellipse>
@@ -57,10 +57,10 @@
                         <table id="search" class="mt-6 w-full">
                             <thead>
                                 <tr>
-                                    <th class="pb-2 text-left px-4" data-priority="1">Model</th>
-                                    <th class="pb-2 text-left" data-priority="2">Range</th>
+                                    <th class="pb-2 text-left px-4" data-priority="1">Airline</th>
+                                    <th class="pb-2 text-left" data-priority="2">Model</th>
                                     <th class="pb-2 text-left" data-priority="3">Registration</th>
-                                    <th class="pb-2 text-left" data-priority="4">Airline</th>
+                                    <th class="pb-2 text-left" data-priority="4">Range</th>
                                     <th class="pb-2 text-left px-4" data-priority="5">Manage</th>
                                 </tr>
                             </thead>
@@ -68,10 +68,15 @@
                             @foreach ($fleet as $aircraft)
 
                                 <tr class="hover:bg-gray-800 hover:bg-opacity-60 transition duration-150">
-                                    <td class="text-sm truncate py-2 px-4 rounded-l-xl">{{ $aircraft->manufacturer }} {{ $aircraft->model }}</td>
-                                    <td class="text-sm truncate py-2">{{ $aircraft->range }}nm</td>
+                                    <td class="text-sm truncate py-2 px-4 rounded-l-xl">
+                                        <p class="flex items-center">
+                                            <img class="mr-3 h-5 rounded-md" src="https://flightaware.com/images/airline_logos/90p/{{ $aircraft->airline_icao }}.png">
+                                            {{ $aircraft->airline_icao }}
+                                        </p>
+                                    </td>
+                                    <td class="text-sm truncate py-2">{{ $aircraft->manufacturer }} {{ $aircraft->model }}</td>
                                     <td class="text-sm truncate py-2">{{ $aircraft->registration }} [{{ $aircraft->icao }}]</td>
-                                    <td class="text-sm truncate py-2">{{ $aircraft->airline_icao }}</td>
+                                    <td class="text-sm truncate py-2">{{ $aircraft->range }}nm</td>
                                     <td class="text-sm truncate py-2 px-4 rounded-r-xl">
                                         <a class="hover:text-gray-400 trasition duration-150" href="{{ route('staff.aircraft.edit', ['id' => $aircraft->id]) }}" target="_blank">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-up-right transform hover:rotate-45 transition duration-150 inline-block w-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -108,7 +113,7 @@
                         <p class="mt-6 text-xs max-w-4xl">
                             while importing the aircraft / fleet data, the location of all aircraft (starting point) must be defined.
                             this can be done by entering the ICAO code of the airport. if the ICAO code does not exist, the import will fail.
-                            alternatively, you can leave the field blank and the default location of the fleet will be set to a a random hub of the airline.
+                            alternatively, you can leave the field blank and the default location of the fleet will be set to a random hub of the airline.
                         </p>
                     </x-card>
 
@@ -151,7 +156,7 @@
                                             <polyline points="17 8 17 17 8 17"></polyline>
                                         </svg>
                                     </x-forms.label>
-                                    <x-forms.input name="location" class="mt-2 {{ $errors->has('location') ? 'focus:ring-red-500' : 'focus:ring-blue-500' }}" placeholder="OMDB or EGLL?" maxlength="4" />
+                                    <x-forms.input name="location" class="uppercase mt-2 {{ $errors->has('location') ? 'focus:ring-red-500' : 'focus:ring-blue-500' }}" placeholder="OMDB or EGLL?" maxlength="4" />
                                 </div>
                             </div>
 

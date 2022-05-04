@@ -20,6 +20,7 @@ class CreateSettingsTable extends Migration
             
             $table->string('name')->unique();
             $table->boolean('status');
+            $table->string('value')->nullable();
 
             $table->timestamps();
         });

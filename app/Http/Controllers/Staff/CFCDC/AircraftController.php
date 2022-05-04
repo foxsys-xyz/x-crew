@@ -45,7 +45,7 @@ class AircraftController extends Controller
             ]);
         }
 
-        $location = request('location');
+        $location = strtoupper(request('location'));
 
         DB::table('aircraft')->truncate();
 
@@ -65,19 +65,18 @@ class AircraftController extends Controller
     }
 
     /**
-    * Display edit page for airport.
+    * Display edit page for aircraft.
     * 
     */
     public function edit($id)
     {
-        $airport = DB::table('airports')->where('id', $id)->first();
-        $runways = DB::table('runways')->where('icao', $airport->icao)->get();
-        $frequencies = DB::table('frequencies')->where('icao', $airport->icao)->get();
+        $aircraft = DB::table('aircraft')->where('id', $id)->first();
 
-        return view('main.staff.cfcdc.airports.edit', [
+        $airport = DB::table('airports')->where('icao', $aircraft->location)->first();
+
+        return view('main.staff.cfcdc.aircraft.edit', [
+            'aircraft' => $aircraft,
             'airport' => $airport,
-            'runways' => $runways,
-            'frequencies' => $frequencies,
         ]);
     }
 

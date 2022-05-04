@@ -3,7 +3,7 @@
 @section('content')
  
     <div class="mx-auto px-8 py-8" x-data="{ 'showModal': false }" @keydown.escape="showModal = false">
-        <h4 class="text-2xl leading-3 font-medium inline-flex items-center">
+        <h4 class="text-2xl leading-3 inline-flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user inline-block w-8 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <circle cx="12" cy="7" r="4"></circle>

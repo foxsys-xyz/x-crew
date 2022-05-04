@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="mx-auto px-8 py-8">
-        <h4 class="text-2xl leading-3 font-medium inline-flex items-center">
+        <h4 class="text-2xl leading-3 inline-flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane inline-block w-8 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2 -4l-2 -4h3l2 2h4l-2 -7h3z"></path>
@@ -11,6 +11,19 @@
             CFCDC
         </h4>
         <span class="text-gray-400 flex leading-3 text-xs">the central flight crew data center, for all.</span>
+
+        @if (session()->has('error'))
+
+            <div class="lg:flex justify-center text-center px-10 py-5 text-xs bg-red-500 mt-8 rounded-3xl shadow-2xl">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-minus inline-block w-4 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <line x1="9" y1="12" x2="15" y2="12"></line>
+                </svg>
+                {{ session()->get('error') }}
+            </div>
+
+        @endif
 
         <!-- Laravel's Validation Errors -->
 
@@ -69,6 +82,25 @@
                                 </div>
                             </div>
                         </form>
+                    </x-card>
+                    <x-card class="mt-8">
+                        <h5 class="leading-3 font-medium inline-flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-license inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M15 21h-9a3 3 0 0 1 -3 -3v-1h10v2a2 2 0 0 0 4 0v-14a2 2 0 1 1 2 2h-2m2 -4h-11a3 3 0 0 0 -3 3v11"></path>
+                                <line x1="9" y1="7" x2="13" y2="7"></line>
+                                <line x1="9" y1="11" x2="13" y2="11"></line>
+                            </svg>
+                            Upcoming Flight [Booking]
+                        </h5>
+                        <span class="text-gray-400 flex text-xs">details of the airframe & last booked flight</span>
+
+                        <p class="text-xs mt-6">
+                            <span class="font-bold">{{ $schedule->airline_icao . $schedule->flightnum }}</span><br />
+                            {{ $schedule->departure }} >> {{ $schedule->arrival }}<br /><br />
+
+                            {{ $aircraft }}
+                        </p>
                     </x-card>
                 </div>
                 <div class="w-full lg:w-2/5 mt-8 lg:mt-0">

@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="mx-auto px-8 py-8">
-        <h4 class="text-2xl leading-3 font-medium inline-flex items-center">
+        <h4 class="text-2xl leading-3 inline-flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database-import inline-block w-8 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <ellipse cx="12" cy="6" rx="8" ry="3"></ellipse>
@@ -58,21 +58,26 @@
                         <table id="search" class="mt-6 w-full">
                             <thead>
                                 <tr>
-                                    <th class="pb-2 text-left px-4" data-priority="1">ICAO</th>
-                                    <th class="pb-2 text-left" data-priority="2">Airport Name</th>
-                                    <th class="pb-2 text-left" data-priority="3">City Name</th>
-                                    <th class="pb-2 text-left" data-priority="4">Country</th>
-                                    <th class="pb-2 text-left px-4" data-priority="7">Manage</th>
+                                <th class="pb-2 text-left px-4" data-priority="1">Country</th>
+                                    <th class="pb-2 text-left" data-priority="2">ICAO</th>
+                                    <th class="pb-2 text-left" data-priority="3">Airport Name</th>
+                                    <th class="pb-2 text-left" data-priority="4">City Name</th>
+                                    <th class="pb-2 text-left px-4" data-priority="5">Manage</th>
                                 </tr>
                             </thead>
                             <tbody>
                             @foreach ($airports as $airport)
 
                                 <tr class="hover:bg-gray-800 hover:bg-opacity-60 transition duration-150">
-                                    <td class="text-sm truncate py-2 px-4 rounded-l-xl">{{ $airport->icao }}</td>
+                                    <td class="text-sm truncate py-2 px-4 rounded-l-xl">
+                                        <p class="flex items-center">
+                                            <img class="mr-3 h-5 rounded-md" src="{{ asset('img/flags/' . strtolower($airport->country) . '.svg') }}" />
+                                            {{ $airport->country }}
+                                        </p>
+                                    </td>
+                                    <td class="text-sm truncate py-2">{{ $airport->icao }}</td>
                                     <td class="text-sm truncate py-2">{{ $airport->airport_name }}</td>
                                     <td class="text-sm truncate py-2">{{ $airport->city_name }}</td>
-                                    <td class="text-sm truncate py-2 flex items-center"><img class="mr-3 h-3" src="{{ asset('img/flags/' . strtolower($airport->country) . '.png') }}?=fdsafasdf" />{{ $airport->country }}</td>
                                     <td class="text-sm truncate py-2 px-4 rounded-r-xl">
                                         <a class="hover:text-gray-400 trasition duration-150" href="{{ route('staff.airport.edit', ['id' => $airport->id]) }}" target="_blank">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-up-right transform hover:rotate-45 transition duration-150 inline-block w-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">

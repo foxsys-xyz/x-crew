@@ -47,14 +47,14 @@ class CFCDCController extends Controller
 
         $validate = Booking::where('user_id', Auth::user()->id)->first();
 
+        $booking = null;
+        $schedule = null;
+        $aircraft = null;
+
         if ($validate != null) {
             $booking = Booking::where('user_id', Auth::user()->id)->first();
             $schedule = Schedule::find($booking->schedule_id);
             $aircraft = Aircraft::find($booking->aircraft_id);
-        } else {
-            $booking = null;
-            $schedule = null;
-            $aircraft = null;
         }
 
         return view('main.user.cfcdc.center', [
@@ -68,7 +68,7 @@ class CFCDCController extends Controller
     }
 
     /**
-     * Search Schedules Available for Booking.
+     * Search schedules available for booking.
      *
      */
     public function search(Request $request)
@@ -109,7 +109,7 @@ class CFCDCController extends Controller
     }
 
     /**
-     * Render Pre Booking Page with Aircrafts Available.
+     * Render pre booking page with aircrafts available.
      *
      */
     public function preBook($id)
@@ -128,19 +128,24 @@ class CFCDCController extends Controller
 
         $arrival = Airport::where('icao', $schedule->arrival)->first();
 
-        $aircrafts = Aircraft::where('icao', $schedule->aircraft)->where('location', $currentloc->icao)->where('state', 'CLD/IDL')->get();
+        $aircraft = Aircraft::where('icao', $schedule->aircraft_icao)->where('location', $currentloc->icao)->where('state', 'CLD/IDL')->get();
+
+        //dd($aircraft, $schedule, $currentloc);
 
         return view('main.user.cfcdc.prebook', [
             'schedule' => $schedule,
             'currentloc' => $currentloc,
             'departure' => $departure,
             'arrival' => $arrival,
-            'aircrafts' => $aircrafts,
+            'aircraft' => $aircraft,
         ]);
     }
 
-    // Confirm the Booking
-    public function booking_confirm(Request $request, $id)
+    /**
+     * Confirm the booking with the airframe selected.
+     *
+     */
+    public function confirmFlight(Request $request, $id)
     {
         $request->validate([
             'aircraft' => 'required',
@@ -149,13 +154,13 @@ class CFCDCController extends Controller
         $validate = Booking::where('user_id', Auth::user()->id)->first();
 
         if ($validate != null) {
-            return redirect('/cfcdc')->with('error', 'You cannot book multiple schedules at a time.');
+            return redirect('/cfcdc')->with('error', 'you cannot book multiple schedules at a time.');
         }
 
         $bookings = Booking::where('schedule_id', $id)->first();
 
         if ($bookings != null) {
-            return redirect('/cfcdc')->with('error', 'This schedule is already booked.');
+            return redirect('/cfcdc')->with('error', 'this schedule is already booked.');
         }
 
         $booking = new Booking;
@@ -168,7 +173,7 @@ class CFCDCController extends Controller
 
         $booking->save();
 
-        $update = Aircraft::find(request('aircraft'))->update([
+        Aircraft::find(request('aircraft'))->update([
             'state' => 'PRE/BKD',
         ]);
 

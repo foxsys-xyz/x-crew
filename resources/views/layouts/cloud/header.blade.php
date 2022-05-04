@@ -16,6 +16,10 @@
         </div>
 
         <div class="flex items-center">
+            <p class="text-sm" id="zuluClock"></p>
+        </div>
+
+        <div class="flex items-center">
             <div x-data="{ notificationOpen: false }" class="relative">
                 <button @click="notificationOpen = ! notificationOpen"
                     class="flex mx-4 focus:outline-none">
@@ -151,5 +155,20 @@
             </div>
         </div>
     </header>
+
+    <script>
+        var span = document.getElementById('zuluClock');
+
+        function time() {
+        var d = new Date();
+        var s = d.getUTCSeconds();
+        var m = d.getUTCMinutes();
+        var h = d.getUTCHours();
+        span.textContent = 
+            ("0" + h).substr(-2) + ":" + ("0" + m).substr(-2) + ":" + ("0" + s).substr(-2) + 'z';
+        }
+
+        setInterval(time, 1000);
+    </script>
 
 <!-- Application Header End -->
