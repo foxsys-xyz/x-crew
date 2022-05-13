@@ -218,7 +218,7 @@
                     </x-card>
                 </div>
                 <div class="w-full lg:w-2/5 mt-8 lg:mt-0">
-                    <x-card class="mt-8 lg:mt-0">
+                    <x-card>
                         <h5 class="leading-3 font-medium inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane-departure inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>

@@ -11,6 +11,9 @@ use Illuminate\Http\Request;
  */
 use Illuminate\Http\Response;
 use App\Models\User;
+use App\Models\Booking;
+use App\Models\Schedule;
+use App\Models\Aircraft;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
@@ -67,5 +70,31 @@ class LoginController extends Controller
         $user = auth()->user();
 
         return response($user, 200);
+    }
+
+    /**
+     * Send authenticated user details including current booking via sanctum token.
+     *
+     */
+    public function dashboard()
+    {
+        $user = auth()->user();
+
+        $validate = Booking::where('user_id', $user->id)->first();
+
+        $booking = null;
+        $schedule = null;
+        $aircraft = null;
+
+        if ($validate != null) {
+            $booking = Booking::where('user_id', $user->id)->first();
+            $schedule = Schedule::find($booking->schedule_id);
+            $aircraft = Aircraft::find($booking->aircraft_id);
+        }
+
+        return response(
+            [$user, $booking, $schedule, $aircraft],
+            200
+        );
     }
 }

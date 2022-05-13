@@ -36,13 +36,6 @@ class CFCDCController extends Controller
             $currentloc = Airport::where('icao', $lastrep->arrival)->first();
         }
 
-        // METAR Script
-
-        $url = 'https://www.aviationweather.gov/adds/dataserver_current/httpparam?dataSource=metars&requestType=retrieve&format=xml&hoursBeforeNow=2&mostRecent=true&stationString=' . $currentloc->icao;
-        $xml = simplexml_load_file($url);
-
-        $weather = $xml->data->METAR;
-
         // Booking Script
 
         $validate = Booking::where('user_id', Auth::user()->id)->first();
@@ -60,7 +53,6 @@ class CFCDCController extends Controller
         return view('main.user.cfcdc.center', [
             'lastrep' => $lastrep,
             'currentloc' => $currentloc,
-            'weather' => $weather,
             'booking' => $booking,
             'schedule' => $schedule,
             'aircraft' => $aircraft,

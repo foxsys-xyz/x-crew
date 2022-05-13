@@ -12,7 +12,7 @@
         <nav class="mt-10 grid gap-2">
 
             <div x-data="{ tooltip: false }" class="relative z-30 flex items-center justify-center">
-                <a href="{{ route('dashboard') }}" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="transition duration-500 flex items-center justify-center p-4 rounded-2xl text-sm hover:bg-gray-800 hover:bg-opacity-60">
+                <a href="{{ route('dashboard') }}" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="transition duration-150 flex items-center justify-center p-4 rounded-2xl text-sm hover:bg-gray-800 hover:bg-opacity-60">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-smart-home inline-block w-6" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <path d="M19 8.71l-5.333 -4.148a2.666 2.666 0 0 0 -3.274 0l-5.334 4.148a2.665 2.665 0 0 0 -1.029 2.105v7.2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-7.2c0 -.823 -.38 -1.6 -1.03 -2.105"></path>
@@ -28,7 +28,7 @@
             </div>
 
             <div x-data="{ tooltip: false }" class="relative z-30 flex items-center justify-center">
-                <a href="{{ route('staff.cfcdc') }}" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="transition duration-500 flex items-center justify-center p-4 rounded-2xl text-sm hover:bg-gray-800 hover:bg-opacity-60">
+                <a href="{{ route('staff.cfcdc') }}" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="transition duration-150 flex items-center justify-center p-4 rounded-2xl text-sm hover:bg-gray-800 hover:bg-opacity-60">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database-import inline-block w-6" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <ellipse cx="12" cy="6" rx="8" ry="3"></ellipse>
@@ -45,7 +45,7 @@
             </div>
 
             <div x-data="{ tooltip: false }" class="relative z-30 flex items-center justify-center">
-                <a href="#" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="transition duration-500 flex items-center justify-center p-4 rounded-2xl text-sm hover:bg-gray-800 hover:bg-opacity-60">
+                <a href="#" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="transition duration-150 flex items-center justify-center p-4 rounded-2xl text-sm hover:bg-gray-800 hover:bg-opacity-60">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hierarchy inline-block w-6" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <circle cx="12" cy="5" r="2"></circle>
@@ -64,7 +64,7 @@
             </div>
 
             <div x-data="{ tooltip: false }" class="relative z-30 flex items-center justify-center">
-                <a href="#" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="transition duration-500 flex items-center justify-center p-4 rounded-2xl text-sm hover:bg-gray-800 hover:bg-opacity-60">
+                <a href="#" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="transition duration-150 flex items-center justify-center p-4 rounded-2xl text-sm hover:bg-gray-800 hover:bg-opacity-60">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-import inline-block w-6" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
@@ -80,7 +80,7 @@
             </div>
 
             <div x-data="{ tooltip: false }" class="relative z-30 flex items-center justify-center">
-                <a href="#" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="transition duration-500 flex items-center justify-center p-4 rounded-2xl text-sm hover:bg-gray-800 hover:bg-opacity-60">
+                <a href="#" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="transition duration-150 flex items-center justify-center p-4 rounded-2xl text-sm hover:bg-gray-800 hover:bg-opacity-60">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users inline-block w-6" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <circle cx="9" cy="7" r="4"></circle>
@@ -98,7 +98,7 @@
             </div>
 
             <div x-data="{ tooltip: false }" class="relative z-30 flex items-center justify-center">
-                <a href="#" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="transition duration-500 flex items-center justify-center p-4 rounded-2xl text-sm hover:bg-gray-800 hover:bg-opacity-60">
+                <a href="#" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="transition duration-150 flex items-center justify-center p-4 rounded-2xl text-sm hover:bg-gray-800 hover:bg-opacity-60">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-settings inline-block w-6" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"></path>
@@ -114,7 +114,7 @@
             </div>
 
             <div x-data="{ tooltip: false }" class="relative z-30 flex items-center justify-center">
-                <a href="#" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="transition duration-500 flex items-center justify-center p-4 rounded-2xl text-sm hover:bg-gray-800 hover:bg-opacity-60">
+                <a href="#" x-on:mouseover="tooltip = true" x-on:mouseleave="tooltip = false" class="transition duration-150 flex items-center justify-center p-4 rounded-2xl text-sm hover:bg-gray-800 hover:bg-opacity-60">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud inline-block w-6" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-12"></path>

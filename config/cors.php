@@ -21,6 +21,7 @@ return [
         'logout',
         'user',
         'sanctum/csrf-cookie',
+        'dashboard',
     ],
 
     'allowed_methods' => ['*'],
