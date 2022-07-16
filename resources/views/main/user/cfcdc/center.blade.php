@@ -109,7 +109,14 @@
                             {{ $aircraft->icao }} // {{ $aircraft->manufacturer . ' ' . $aircraft->model }} [{{ $aircraft->registration }}]
                         </p>
                         <div x-data class="mt-6 lg:flex items-center gap-2">
-                            <x-buttons.primary x-on:click="window.location.href='{{ route('cfcdc') }}'" class="w-full lg:w-1/3 bg-blue-50 hover:bg-blue-100 bg-opacity-30 hover:bg-opacity-40">
+
+                            <form id="cancelFlight" action="{{ route('cfcdc.flight.cancel') }}" method="post">
+
+                                @csrf
+
+                            </form>
+
+                            <x-buttons.primary x-on:click="document.getElementById('cancelFlight').submit();" class="w-full lg:w-1/3 bg-blue-50 hover:bg-blue-100 bg-opacity-30 hover:bg-opacity-40">
                                 cancel
                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x inline-block w-5 ml-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <desc>Download more icon variants from https://tabler-icons.io/i/x</desc>

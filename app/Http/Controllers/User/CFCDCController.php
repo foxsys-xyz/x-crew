@@ -172,17 +172,21 @@ class CFCDCController extends Controller
         return redirect('/preflight')->with(['booking' => $booking]);
     }
 
-    public function cancel_booking(Request $request)
+    /**
+     * Cancel the booking and free aircraft.
+     *
+     */
+    public function cancelFlight()
     {
         $booking = Booking::where('user_id', Auth::user()->id)->first();
 
-        $update = Aircraft::find($booking->aircraft_id)->update([
+        Aircraft::find($booking->aircraft_id)->update([
             'state' => 'CLD/IDL',
         ]);
 
-        $delete = Booking::destroy($booking->id);
+        Booking::destroy($booking->id);
 
-        return redirect('/cfcdc')->with('success', 'Your booking has been cancelled. Always avoid cancellations.');
+        return redirect('/cfcdc')->with('success', 'your booking has been cancelled. please try to avoid cancellations.');
     }
 
     public function generate_preflight(Request $request)
