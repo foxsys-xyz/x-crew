@@ -72,7 +72,7 @@
 
                     <div class="mt-8 flex items-center">
                         <input id="remember_me" type="checkbox" class="rounded-full border-none text-blue-500 focus:ring focus:ring-blue-500 transition duration-150 bg-gray-800 bg-opacity-60" name="remember" checked>
-                        <span class="ml-3 text-sm">remember my credentials</span>
+                        <span class="ml-3 text-xs">remember my credentials</span>
                     </div>
                 </form>
 

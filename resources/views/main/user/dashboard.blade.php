@@ -3,8 +3,8 @@
 @section('content')
  
     <div class="mx-auto px-8 py-8">
-        <h4 class="text-2xl leading-3 inline-flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-smart-home inline-block w-8 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <h4 class="text-xl leading-3 inline-flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-smart-home inline-block w-6 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M19 8.71l-5.333 -4.148a2.666 2.666 0 0 0 -3.274 0l-5.334 4.148a2.665 2.665 0 0 0 -1.029 2.105v7.2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-7.2c0 -.823 -.38 -1.6 -1.03 -2.105"></path>
                 <path d="M16 15c-2.21 1.333 -5.792 1.333 -8 0"></path>
@@ -27,7 +27,7 @@
                         </div>
 
                         <div class="mx-5">
-                            <h4 class="text-2xl">2</h4>
+                            <h4>2</h4>
                             <div class="text-gray-400">PIREPs</div>
                         </div>
                     </x-card>
@@ -44,7 +44,7 @@
                         </div>
 
                         <div class="mx-5">
-                            <h4 class="text-2xl">03:21</h4>
+                            <h4>03:21</h4>
                             <div class="text-gray-400">Chrono</div>
                         </div>
                     </x-card>
@@ -61,8 +61,8 @@
                         </div>
 
                         <div class="mx-5">
-                            <h4 class="text-2xl">-221</h4>
-                            <div class="text-gray-400">Average</div>
+                            <h4>-221</h4>
+                            <div class="text-gray-400">Average LR</div>
                         </div>
                     </x-card>
                 </div>
@@ -71,7 +71,7 @@
             <div class="lg:flex mt-8 gap-8">
                 <div class="w-full lg:w-3/5 mt-8 lg:mt-0">
                     <x-card>
-                        <h5 class="leading-3 font-medium inline-flex items-center">
+                        <h5 class="leading-3 inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chart-arcs inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <circle cx="12" cy="12" r="1"></circle>
@@ -88,7 +88,7 @@
                 
                 <div class="w-full lg:w-2/5 mt-8 lg:mt-0">
                     <x-card>
-                        <h5 class="leading-3 font-medium inline-flex items-center">
+                        <h5 class="leading-3 inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-license inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M15 21h-9a3 3 0 0 1 -3 -3v-1h10v2a2 2 0 0 0 4 0v-14a2 2 0 1 1 2 2h-2m2 -4h-11a3 3 0 0 0 -3 3v11"></path>
@@ -99,7 +99,7 @@
                         </h5>
                         <span class="text-gray-400 flex text-xs">amount of PIREPs filed per month</span>
 
-                        <canvas class="mt-6" id="myChart"></canvas>
+                        <div class="mt-6" id="chart"></div>
                     </x-card>
 
                     <x-card class="mt-8 bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-600">
@@ -138,63 +138,73 @@
     </script>
 
     <script>
-        const labels = [
-            'January',
-            'February',
-            'March',
-            'April',
-            'May',
-            'June',
-            'July',
-            'August',
-            'September',
-            'October',
-            'November',
-            'December',
-        ];
-        
-        const data = {
-            labels: labels,
-            datasets: [{
-                label: 'Flights',
-                backgroundColor: '#4f46e5',
-                borderColor: '#4f46e5',
-                data: [0, 10, 5, 2, 20, 30, 45, 25, 20, 10, 5, 12],
-                tension: 0.4,
-            }]
-        };
-
-        const config = {
-            type: 'line',
-            data: data,
-            options: {
-                layout: {
-                    padding: {
-                        bottom: 20,
-                    }
+        var options = {
+          series: [{
+            name: "PIREPs",
+                data: [10, 5, 8, 15, 20, 11, 3, 9, 18, 21, 25, 17]
+            }],
+            chart: {
+                height: 350,
+                type: 'area',
+                zoom: {
+                    enabled: false
                 },
-                plugins: {
-                    legend: {
-                        display: false,
-                    }
+                fontFamily: 'Jetbrains Mono',
+                toolbar: {
+                    show: false
                 },
-                scales: {
-                    xAxes: 
-                        {
-                            display: false,
-                        },
-                    yAxes: 
-                        {
-                            display: false,
-                        }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'smooth',
+                lineCap: 'round',
+            },
+            grid: {
+                show: false,
+            },
+            fill: {
+                type: 'gradient',
+                gradient: {
+                    shadeIntensity: 0,
+                    opacityFrom: 0.7,
+                    opacityTo: 0.1,
+                    stops: [0, 100]
+                }
+            },
+            theme: {
+                mode: 'dark',
+                monochrome: {
+                    enabled: true,
+                    color: '#255aee',
+                    shadeTo: 'light',
+                    shadeIntensity: 0.65,
                 },
+            },
+            yaxis: {
+                show: false,
+            },
+            xaxis: {
+                show: false,
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                labels: {
+                    show: false,
+                },
+                axisTicks: {
+                    show: false,
+                },
+                axisBorder: {
+                    show: false,
+                },
+                tooltip: {
+                    enabled: false,
+                }
             }
         };
 
-        const myChart = new Chart(
-            document.getElementById('myChart'),
-            config
-        );
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
     </script>
 
 @endsection

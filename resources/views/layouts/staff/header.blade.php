@@ -12,11 +12,11 @@
                 </svg>
             </button>
 
-            <span class="lg:block pull-left hidden text-sm"><img src="{{ asset('img/va_logo.png') }}" class="h-5" /></span>
+            <span class="lg:block pull-left hidden"><img src="{{ asset('img/va_logo.png') }}" class="h-5" /></span>
         </div>
 
         <div class="flex items-center">
-            <p class="text-sm" id="zuluClock"></p>
+            <p class="text-xs" id="zuluClock"></p>
         </div>
 
         <div class="flex items-center">
@@ -55,9 +55,9 @@
                     @else
                         @foreach ($notifications as $notification)
                             <a href="#"
-                                class="transition duration-150 flex items-center px-4 py-2 rounded-xl text-sm hover:bg-gray-800 hover:bg-opacity-60">
-                                <p class="text-sm mx-2">
-                                    <span class="font-bold" href="#">{{ $notification->title }}</span>
+                                class="transition duration-150 flex items-center px-4 py-2 rounded-xl text-xs hover:bg-gray-800 hover:bg-opacity-60">
+                                <p class="mx-2">
+                                    <span href="#">{{ $notification->title }}</span>
                                 </p>
                             </a>
                         @endforeach
@@ -111,17 +111,16 @@
                     </div>
 
                     <a href="{{ route('profile') }}"
-                        class="transition duration-150 flex items-center px-4 py-2 rounded-xl text-sm hover:bg-gray-800 hover:bg-opacity-60">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        class="transition duration-150 flex items-center px-4 py-2 rounded-xl text-xs hover:bg-gray-800 hover:bg-opacity-60">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-bolt inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+                            <polyline points="13 3 13 10 19 10 11 21 11 14 5 14 13 3"></polyline>
                         </svg>
                         Profile
                     </a>
 
                     <a href="{{ route('cfcdc') }}"
-                        class="transition duration-150 flex items-center px-4 py-2 rounded-xl text-sm hover:bg-gray-800 hover:bg-opacity-60">
+                        class="transition duration-150 flex items-center px-4 py-2 rounded-xl text-xs hover:bg-gray-800 hover:bg-opacity-60">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2 -4l-2 -4h3l2 2h4l-2 -7h3z"></path>
@@ -136,7 +135,7 @@
                     </form>
                     
                     <a x-on:click="document.getElementById('logout').submit();"
-                        class="transition duration-150 cursor-pointer flex items-center px-4 py-2 rounded-xl text-sm hover:bg-gray-800 hover:bg-opacity-60">
+                        class="transition duration-150 cursor-pointer flex items-center px-4 py-2 rounded-xl text-xs hover:bg-gray-800 hover:bg-opacity-60">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"></path>

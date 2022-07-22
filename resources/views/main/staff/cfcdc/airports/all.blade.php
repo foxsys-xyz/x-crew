@@ -3,8 +3,8 @@
 @section('content')
 
     <div class="mx-auto px-8 py-8">
-        <h4 class="text-2xl leading-3 inline-flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database-import inline-block w-8 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <h4 class="text-xl leading-3 inline-flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database-import inline-block w-6 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <ellipse cx="12" cy="6" rx="8" ry="3"></ellipse>
                 <path d="M4 6v8m5.009 .783c.924 .14 1.933 .217 2.991 .217c4.418 0 8 -1.343 8 -3v-6"></path>
@@ -45,7 +45,7 @@
             <div class="lg:flex w-full gap-8">
                 <div class="w-full lg:w-3/5">
                     <x-card class="overflow-y-auto">
-                        <h5 class="leading-3 font-medium inline-flex items-center">
+                        <h5 class="leading-3 inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane-departure inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M15 12h5a2 2 0 0 1 0 4h-15l-3 -6h3l2 2h3l-2 -7h3z" transform="rotate(-15 12 12) translate(0 -1)"></path>
@@ -69,16 +69,16 @@
                             @foreach ($airports as $airport)
 
                                 <tr class="hover:bg-gray-800 hover:bg-opacity-60 transition duration-150">
-                                    <td class="text-sm truncate py-2 px-4 rounded-l-xl">
+                                    <td class="text-xs truncate py-2 px-4 rounded-l-xl">
                                         <p class="flex items-center">
                                             <img class="mr-3 h-5 rounded-md" src="{{ asset('img/flags/' . strtolower($airport->country) . '.svg') }}" />
                                             {{ $airport->country }}
                                         </p>
                                     </td>
-                                    <td class="text-sm truncate py-2">{{ $airport->icao }}</td>
-                                    <td class="text-sm truncate py-2">{{ $airport->airport_name }}</td>
-                                    <td class="text-sm truncate py-2">{{ $airport->city_name }}</td>
-                                    <td class="text-sm truncate py-2 px-4 rounded-r-xl">
+                                    <td class="text-xs truncate py-2">{{ $airport->icao }}</td>
+                                    <td class="text-xs truncate py-2">{{ $airport->airport_name }}</td>
+                                    <td class="text-xs truncate py-2">{{ $airport->city_name }}</td>
+                                    <td class="text-xs truncate py-2 px-4 rounded-r-xl">
                                         <a class="hover:text-gray-400 trasition duration-150" href="{{ route('staff.airport.edit', ['id' => $airport->id]) }}" target="_blank">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-up-right transform hover:rotate-45 transition duration-150 inline-block w-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -100,7 +100,7 @@
                 </div>
                 <div class="w-full lg:w-2/5 mt-8 lg:mt-0">
                     <x-card class="mt-8 lg:mt-0">
-                        <h5 class="leading-3 font-medium inline-flex items-center">
+                        <h5 class="leading-3 inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rotate-clockwise inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M4.05 11a8 8 0 1 1 .5 4m-.5 5v-5h5"></path>
@@ -122,7 +122,7 @@
                                             <polyline points="17 8 17 17 8 17"></polyline>
                                         </svg>
                                     </x-forms.label>
-                                    <label class="mt-2 w-full flex flex-col items-center px-4 py-4 bg-gray-800 bg-opacity-60 rounded-xl cursor-pointer text-sm">
+                                    <label class="mt-2 w-full flex flex-col items-center px-4 py-4 bg-gray-800 bg-opacity-60 rounded-xl cursor-pointer text-xs">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud w-8" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-12"></path>
@@ -142,7 +142,7 @@
                                             <polyline points="17 8 17 17 8 17"></polyline>
                                         </svg>
                                     </x-forms.label>
-                                    <label class="mt-2 w-full flex flex-col items-center px-4 py-4 bg-gray-800 bg-opacity-60 rounded-xl cursor-pointer text-sm">
+                                    <label class="mt-2 w-full flex flex-col items-center px-4 py-4 bg-gray-800 bg-opacity-60 rounded-xl cursor-pointer text-xs">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud w-8" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-12"></path>
@@ -162,7 +162,7 @@
                                             <polyline points="17 8 17 17 8 17"></polyline>
                                         </svg>
                                     </x-forms.label>
-                                    <label class="mt-2 w-full flex flex-col items-center px-4 py-4 bg-gray-800 bg-opacity-60 rounded-xl cursor-pointer text-sm">
+                                    <label class="mt-2 w-full flex flex-col items-center px-4 py-4 bg-gray-800 bg-opacity-60 rounded-xl cursor-pointer text-xs">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud w-8" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-12"></path>

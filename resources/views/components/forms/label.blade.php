@@ -3,7 +3,7 @@
 
     <span 
         {{ $attributes->merge(['class' => '
-            text-sm flex items-center
+            text-xs flex items-center
         ']) }}
     >
         {{ $slot }} {{ $for }}

@@ -3,8 +3,8 @@
 @section('content')
 
     <div class="mx-auto px-8 py-8">
-        <h4 class="text-2xl leading-3 inline-flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database-import inline-block w-8 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <h4 class="text-xl leading-3 inline-flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database-import inline-block w-6 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <ellipse cx="12" cy="6" rx="8" ry="3"></ellipse>
                 <path d="M4 6v8m5.009 .783c.924 .14 1.933 .217 2.991 .217c4.418 0 8 -1.343 8 -3v-6"></path>
@@ -45,7 +45,7 @@
             <div class="lg:flex w-full gap-8">
                 <div class="w-full lg:w-3/5">
                     <x-card class="overflow-y-auto">
-                        <h5 class="leading-3 font-medium inline-flex items-center">
+                        <h5 class="leading-3 inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane-departure inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M15 12h5a2 2 0 0 1 0 4h-15l-3 -6h3l2 2h3l-2 -7h3z" transform="rotate(-15 12 12) translate(0 -1)"></path>
@@ -168,7 +168,7 @@
                     </x-card>
 
                     <x-card class="mt-8">
-                        <h5 class="leading-3 font-medium inline-flex items-center">
+                        <h5 class="leading-3 inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-circle inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <circle cx="12" cy="12" r="9"></circle>
@@ -191,7 +191,7 @@
 
                 <div class="w-full lg:w-2/5 mt-8 lg:mt-0">
                     <x-card class="mt-8 lg:mt-0">
-                        <h5 class="leading-3 font-medium inline-flex items-center">
+                        <h5 class="leading-3 inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane-departure inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M15 12h5a2 2 0 0 1 0 4h-15l-3 -6h3l2 2h3l-2 -7h3z" transform="rotate(-15 12 12) translate(0 -1)"></path>

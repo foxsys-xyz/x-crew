@@ -3,8 +3,8 @@
 @section('content')
 
     <div class="mx-auto px-8 py-8">
-        <h4 class="text-2xl leading-3 inline-flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane inline-block w-8 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <h4 class="text-xl leading-3 inline-flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane inline-block w-6 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2 -4l-2 -4h3l2 2h4l-2 -7h3z"></path>
             </svg>
@@ -44,7 +44,7 @@
             <div class="lg:flex w-full gap-8">
                 <div class="w-full lg:w-3/5">
                     <x-card class="overflow-hidden">
-                        <h5 class="leading-3 font-medium inline-flex items-center">
+                        <h5 class="leading-3 inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-safari inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <polyline points="8 16 10 10 16 8 14 14 8 16"></polyline>
@@ -88,7 +88,7 @@
                 <div class="w-full lg:w-2/5 mt-8 lg:mt-0">
                     @if ($booking != null)
                     <x-card class="mb-8 bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-600">
-                        <h5 class="leading-3 font-medium inline-flex items-center">
+                        <h5 class="leading-3 inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-server-2 inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <rect x="3" y="4" width="18" height="8" rx="3"></rect>
@@ -139,7 +139,7 @@
                     @endif
 
                     <x-card>
-                        <h5 class="leading-3 font-medium inline-flex items-center">
+                        <h5 class="leading-3 inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-license inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M15 21h-9a3 3 0 0 1 -3 -3v-1h10v2a2 2 0 0 0 4 0v-14a2 2 0 1 1 2 2h-2m2 -4h-11a3 3 0 0 0 -3 3v11"></path>
@@ -150,7 +150,7 @@
                         </h5>
                         <span class="text-gray-400 flex text-xs">amount of PIREPs filed per month</span>
 
-                        <canvas class="mt-6" id="myChart"></canvas>
+                        <div class="mt-6" id="chart"></div>
                     </x-card>
                 </div>
             </div>
@@ -169,63 +169,73 @@
     </script>
 
     <script>
-        const labels = [
-            'January',
-            'February',
-            'March',
-            'April',
-            'May',
-            'June',
-            'July',
-            'August',
-            'September',
-            'October',
-            'November',
-            'December',
-        ];
-        
-        const data = {
-            labels: labels,
-            datasets: [{
-                label: 'Flights',
-                backgroundColor: '#4f46e5',
-                borderColor: '#4f46e5',
-                data: [0, 10, 5, 2, 20, 30, 45, 25, 20, 10, 5, 12],
-                tension: 0.4,
-            }]
-        };
-
-        const config = {
-            type: 'line',
-            data: data,
-            options: {
-                layout: {
-                    padding: {
-                        bottom: 20,
-                    }
+        var options = {
+          series: [{
+            name: "PIREPs",
+                data: [10, 5, 8, 15, 20, 11, 3, 9, 18, 21, 25, 31]
+            }],
+            chart: {
+                height: 350,
+                type: 'area',
+                zoom: {
+                    enabled: false
                 },
-                plugins: {
-                    legend: {
-                        display: false,
-                    }
+                fontFamily: 'Jetbrains Mono',
+                toolbar: {
+                    show: false
                 },
-                scales: {
-                    xAxes: 
-                        {
-                            display: false,
-                        },
-                    yAxes: 
-                        {
-                            display: false,
-                        }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'smooth',
+                lineCap: 'round',
+            },
+            grid: {
+                show: false,  
+            },
+            fill: {
+                type: 'gradient',
+                gradient: {
+                    shadeIntensity: 0,
+                    opacityFrom: 0.7,
+                    opacityTo: 0.1,
+                    stops: [0, 100]
+                }
+            },
+            theme: {
+                mode: 'dark',
+                monochrome: {
+                    enabled: true,
+                    color: '#255aee',
+                    shadeTo: 'light',
+                    shadeIntensity: 0.65,
                 },
+            },
+            yaxis: {
+                show: false,
+            },
+            xaxis: {
+                show: false,
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                labels: {
+                    show: false,
+                },
+                axisTicks: {
+                    show: false,
+                },
+                axisBorder: {
+                    show: false,
+                },
+                tooltip: {
+                    enabled: false,
+                }
             }
         };
 
-        const myChart = new Chart(
-            document.getElementById('myChart'),
-            config
-        );
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
     </script>
 
 @endsection

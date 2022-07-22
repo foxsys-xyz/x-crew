@@ -14,9 +14,6 @@ module.exports = {
 			fontFamily: {
 				'mono': ['JetBrains Mono', ...defaultTheme.fontFamily.mono],
 			},
-			fontSize: {
-				sm: ['0.775rem', '1.15rem'],
-			},
 			colors: {
 				gray: colors.zinc,
 			},

@@ -3,8 +3,8 @@
 @section('content')
 
     <div class="mx-auto px-8 py-8">
-        <h4 class="text-2xl leading-3 inline-flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database-import inline-block w-8 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <h4 class="text-xl leading-3 inline-flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database-import inline-block w-6 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <ellipse cx="12" cy="6" rx="8" ry="3"></ellipse>
                 <path d="M4 6v8m5.009 .783c.924 .14 1.933 .217 2.991 .217c4.418 0 8 -1.343 8 -3v-6"></path>
@@ -45,7 +45,7 @@
             <div class="lg:flex w-full gap-8">
                 <div class="w-full lg:w-3/5">
                     <x-card class="overflow-y-auto">
-                        <h5 class="leading-3 font-medium inline-flex items-center">
+                        <h5 class="leading-3 inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane-departure inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M15 12h5a2 2 0 0 1 0 4h-15l-3 -6h3l2 2h3l-2 -7h3z" transform="rotate(-15 12 12) translate(0 -1)"></path>
@@ -155,7 +155,7 @@
                             
                             <div class="mt-8 flex items-center">
                                 <input id="hub" type="checkbox" class="rounded-full border-none text-blue-500 focus:ring focus:ring-blue-500 transition duration-150 bg-gray-800 bg-opacity-60" name="hub" {{ $airport->hub == false ? '' : 'checked' }}>
-                                <span class="ml-3 text-sm">this airport is the airline's hub</span>
+                                <span class="ml-3 text-xs">this airport is the airline's hub</span>
                             </div>
 
                             <div class="mt-4 flex justify-end">
@@ -173,7 +173,7 @@
                     </x-card>
 
                     <x-card class="mt-8">
-                        <h5 class="leading-3 font-medium inline-flex items-center">
+                        <h5 class="leading-3 inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-road inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M4 19l4 -14"></path>
@@ -186,7 +186,7 @@
                         </h5>
                         <span class="text-gray-400 flex text-xs">listed are all the runways associated with the airport</span>
                         
-                        <div class="mt-6 rounded-xl bg-gray-800 p-6 text-sm">
+                        <div class="mt-6 rounded-xl bg-gray-800 p-6 text-xs">
                             @foreach ($runways as $runway)
                                 <div class="mb-2">
                                     Runway <span class="font-bold">{{ $runway->he_ident }} // {{ $runway->le_ident }}</span><br />
@@ -197,7 +197,7 @@
                     </x-card>
 
                     <x-card class="mt-8">
-                        <h5 class="leading-3 font-medium inline-flex items-center">
+                        <h5 class="leading-3 inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-circle inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <circle cx="12" cy="12" r="9"></circle>
@@ -219,7 +219,7 @@
                 </div>
                 <div class="w-full lg:w-2/5 mt-8 lg:mt-0">
                     <x-card>
-                        <h5 class="leading-3 font-medium inline-flex items-center">
+                        <h5 class="leading-3 inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane-departure inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M15 12h5a2 2 0 0 1 0 4h-15l-3 -6h3l2 2h3l-2 -7h3z" transform="rotate(-15 12 12) translate(0 -1)"></path>
@@ -233,7 +233,7 @@
                     </x-card>
 
                     <x-card class="mt-8">
-                        <h5 class="leading-3 font-medium inline-flex items-center">
+                        <h5 class="leading-3 inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-radar-2 inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <circle cx="12" cy="12" r="1"></circle>
@@ -245,7 +245,7 @@
                         </h5>
                         <span class="text-gray-400 flex text-xs">following are the atc frequencies in the vicinity</span>
                         
-                        <div class="mt-6 rounded-xl bg-gray-800 p-6 text-sm">
+                        <div class="mt-6 rounded-xl bg-gray-800 p-6 text-xs">
                             @foreach ($frequencies as $frequency)
                                 <div class="mb-2">
                                     {{ $frequency->type }} // <span class="font-bold">{{ $frequency->frequency }}</span><br />

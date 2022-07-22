@@ -3,8 +3,8 @@
 @section('content')
 
     <div class="mx-auto px-8 py-8">
-        <h4 class="text-2xl leading-3 inline-flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database-import inline-block w-8 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <h4 class="text-xl leading-3 inline-flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database-import inline-block w-6 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <ellipse cx="12" cy="6" rx="8" ry="3"></ellipse>
                 <path d="M4 6v8m5.009 .783c.924 .14 1.933 .217 2.991 .217c4.418 0 8 -1.343 8 -3v-6"></path>
@@ -18,7 +18,7 @@
             <div class="lg:flex w-full gap-8">
                 <div class="w-full lg:w-2/5">
                     <x-card>
-                        <h5 class="leading-3 font-medium inline-flex items-center">
+                        <h5 class="leading-3 inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane-departure inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M15 12h5a2 2 0 0 1 0 4h-15l-3 -6h3l2 2h3l-2 -7h3z" transform="rotate(-15 12 12) translate(0 -1)"></path>
@@ -59,7 +59,7 @@
                     </x-card>
 
                     <x-card class="mt-8">
-                        <h5 class="leading-3 font-medium inline-flex items-center">
+                        <h5 class="leading-3 inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2 -4l-2 -4h3l2 2h4l-2 -7h3z"></path>
@@ -85,7 +85,7 @@
                     </x-card>
 
                     <x-card class="mt-8">
-                        <h5 class="leading-3 font-medium inline-flex items-center">
+                        <h5 class="leading-3 inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plane inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2 -4l-2 -4h3l2 2h4l-2 -7h3z"></path>
@@ -111,12 +111,90 @@
                     </x-card>
                 </div>
                 <div class="w-full lg:w-3/5 mt-8 lg:mt-0">
-                    <x-card class="h-96">
-                        
+                    <x-card>
+                        <h5 class="leading-3 inline-flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chart-bar inline-block w-5 mr-3" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <rect x="3" y="12" width="6" height="8" rx="1"></rect>
+                                <rect x="9" y="8" width="6" height="12" rx="1"></rect>
+                                <rect x="15" y="4" width="6" height="16" rx="1"></rect>
+                                <line x1="4" y1="20" x2="18" y2="20"></line>
+                            </svg>
+                            CFCDC Statistical Data
+                        </h5>
+                        <span class="text-gray-400 flex text-xs">number of airports, aircraft & schedules registered</span>
+
+                        <div class="mt-6" id="chart"></div>
                     </x-card>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        var options = {
+            series: [{
+                name: "CFCDC DB",
+                data: [`{{ $airports }}`, `{{ $aircraft }}`, `{{ $schedules }}`]
+            }],
+            chart: {
+                height: 350,
+                type: 'bar',
+                events: {
+                    click: function(chart, w, e) {
+                    // console.log(chart, w, e)
+                    }
+                },
+                fontFamily: 'Jetbrains Mono',
+                toolbar: {
+                    show: false
+                },
+            },
+            plotOptions: {
+                bar: {
+                    columnWidth: '45%',
+                    distributed: true,
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            legend: {
+                show: false
+            },
+            grid: {
+                show: false,  
+            },
+            theme: {
+                mode: 'dark',
+                monochrome: {
+                    enabled: true,
+                    color: '#255aee',
+                    shadeTo: 'light',
+                    shadeIntensity: 1,
+                },
+            },
+            plotOptions: {
+                bar: {
+                    borderRadius: 15,
+                }
+            },
+            xaxis: {
+                categories: [
+                    'Airports',
+                    'Aircraft',
+                    'Schedules',
+                ],
+                labels: {
+                    style: {
+                        fontSize: '12px'
+                    }
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
 
 @endsection

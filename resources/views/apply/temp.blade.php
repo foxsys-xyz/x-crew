@@ -70,7 +70,7 @@
                     </div>
                 </form>
 
-                <div class="mt-8 flex items-center text-sm">
+                <div class="mt-8 flex items-center text-xs">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-urgent inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <path d="M8 16v-4a4 4 0 0 1 8 0v4"></path>
