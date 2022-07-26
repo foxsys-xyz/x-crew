@@ -72,22 +72,22 @@
                                     <x-forms.input class="mt-2 cursor-not-allowed" value="{{ $aircraft->icao }}" disabled />
                                 </div>
                                 <div class="lg:w-1/3 mb-2 lg:mb-0">
-                                    <x-forms.label :for="__('manufacturer')">
+                                    <x-forms.label :for="__('manufacturer & model')">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <path d="M5 12l5 5l10 -10"></path>
                                         </svg>
                                     </x-forms.label>
-                                    <x-forms.input class="mt-2 cursor-not-allowed" value="{{ $aircraft->manufacturer }}" disabled />
+                                    <x-forms.input class="mt-2 cursor-not-allowed" value="{{ $aircraft->manufacturer }} {{ $aircraft->model }}" disabled />
                                 </div>
                                 <div class="lg:w-1/3">
-                                    <x-forms.label :for="__('model')">
+                                    <x-forms.label :for="__('airline')">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check inline-block w-4 mr-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <path d="M5 12l5 5l10 -10"></path>
                                         </svg>
                                     </x-forms.label>
-                                    <x-forms.input class="mt-2 cursor-not-allowed" value="{{ $aircraft->model }}" disabled />
+                                    <x-forms.input class="mt-2 cursor-not-allowed" value="{{ $aircraft->airline_icao }}" disabled />
                                 </div>
                             </div>
                             <div class="lg:flex mt-2 gap-2">

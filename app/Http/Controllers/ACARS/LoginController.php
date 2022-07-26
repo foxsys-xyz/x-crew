@@ -82,10 +82,6 @@ class LoginController extends Controller
 
         $validate = Booking::where('user_id', $user->id)->first();
 
-        $booking = null;
-        $schedule = null;
-        $aircraft = null;
-
         if ($validate != null) {
             $booking = Booking::where('user_id', $user->id)->first();
             $schedule = Schedule::find($booking->schedule_id);
