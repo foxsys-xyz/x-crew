@@ -172,7 +172,7 @@
         var options = {
           series: [{
             name: "PIREPs",
-                data: [10, 5, 8, 15, 20, 11, 3, 9, 18, 21, 25, 31]
+                data: [10, 9, 18, 21, 25, 31]
             }],
             chart: {
                 height: 350,
@@ -218,7 +218,7 @@
             },
             xaxis: {
                 show: false,
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                categories: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                 labels: {
                     show: false,
                 },

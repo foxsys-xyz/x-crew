@@ -100,7 +100,7 @@ select {
 }
 
 .select-items {
-    @apply w-full absolute mt-2 z-10 p-3 bg-gray-900 bg-opacity-40 rounded-3xl shadow-2xl backdrop-filter backdrop-blur-sm max-h-72 overflow-y-scroll no-scrollbar;
+    @apply w-full absolute mt-2 z-10 p-3 bg-gray-900 bg-opacity-40 rounded-xl shadow-2xl backdrop-filter backdrop-blur-sm max-h-72 overflow-y-scroll no-scrollbar;
 }
 
 .select-hide {

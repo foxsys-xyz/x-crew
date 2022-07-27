@@ -14,6 +14,7 @@ use App\Models\User;
 use App\Models\Booking;
 use App\Models\Schedule;
 use App\Models\Aircraft;
+use App\Models\Airport;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
@@ -82,14 +83,23 @@ class LoginController extends Controller
 
         $validate = Booking::where('user_id', $user->id)->first();
 
+        $booking = null;
+        $schedule = null;
+        $departure = null;
+        $arrival = null;
+        $aircraft = null;
+
         if ($validate != null) {
             $booking = Booking::where('user_id', $user->id)->first();
             $schedule = Schedule::find($booking->schedule_id);
             $aircraft = Aircraft::find($booking->aircraft_id);
+            $departure = Airport::where('icao', $schedule->departure)->first();
+            $arrival = Airport::where('icao', $schedule->arrival)->first();
+            $schedule->push($departure);
         }
 
         return response(
-            [$user, $booking, $schedule, $aircraft],
+            [$user, $booking, $schedule, $departure, $arrival, $aircraft],
             200
         );
     }
